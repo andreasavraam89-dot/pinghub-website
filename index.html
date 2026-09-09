@@ -1,151 +1,706 @@
-HTML
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PingHub | Autonomous Table Tennis</title>
+  <title>PingHub | Αυτόνομος Χώρος Επιτραπέζιας Αντισφαίρισης</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0f19;
-      --card-bg: #131b2e;
-      --accent: #00e599;
+      --bg: #0b0f17;
+      --card-bg: rgba(17, 24, 39, 0.85);
+      --border: rgba(0, 242, 254, 0.2);
+      --cyan: #00f2fe;
+      --pink: #ff007f;
+      --accent: #00ffaa;
       --text: #f3f4f6;
       --muted: #9ca3af;
+      --gradient: linear-gradient(135deg, #00f2fe 0%, #ff007f 100%);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.07) 0%, transparent 45%);
     }
+
+    h1, h2, h3, .brand-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* HEADER */
     header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 15, 23, 0.88);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .nav-container {
+      max-width: 1180px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
+      padding: 1rem 1.5rem;
     }
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: #fff;
     }
-    .logo span { color: var(--accent); }
+    .logo span {
+      color: var(--cyan);
+      text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-left: 1.4rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+
+    /* HERO */
     .hero {
-      text-align: center;
-      padding: 5rem 1.5rem;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 1180px;
+      margin: 2.5rem auto 3.5rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
     }
     .badge {
-      display: inline-block;
-      padding: 0.35rem 0.85rem;
-      border-radius: 50px;
-      background: rgba(0, 229, 153, 0.1);
-      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      color: var(--cyan);
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(0, 229, 153, 0.2);
+      margin-bottom: 1rem;
     }
-    h1 {
-      font-size: 3rem;
-      line-height: 1.15;
-      font-weight: 800;
-      margin-bottom: 1.25rem;
+    .badge-dot {
+      width: 7px; height: 7px; background: var(--accent); border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
     }
-    p.subtitle {
-      font-size: 1.15rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
+    .hero h1 {
+      font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+      line-height: 1.12;
+      margin-bottom: 1rem;
     }
-    .btn {
+    .hero h1 span {
+      background: linear-gradient(90deg, #00f2fe, #ff007f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-text-gr {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      margin-bottom: 1.8rem;
+      line-height: 1.65;
+    }
+    .btn-hero {
       display: inline-block;
-      background: var(--accent);
-      color: #0b0f19;
+      background: linear-gradient(90deg, #00f2fe, #00ffaa);
+      color: #0b0f17;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      padding: 0.9rem 2rem;
-      border-radius: 8px;
+      padding: 0.85rem 1.8rem;
+      border-radius: 10px;
       text-decoration: none;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .btn:hover {
+    .btn-hero:hover {
       transform: translateY(-2px);
-      opacity: 0.9;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
     }
-    .features {
+
+    .hero-img-box {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+    .hero-img-box img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* PRICING / FEATURES */
+    .highlights {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
-      margin: 3rem auto;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+      max-width: 1180px;
+      margin: 0 auto 4.5rem;
       padding: 0 1.5rem;
     }
-    .card {
+    .h-card {
       background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      position: relative;
+      overflow: hidden;
     }
-    .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-      color: #fff;
+    .h-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 3px;
+      background: var(--gradient);
     }
-    .card p {
+    .h-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; color: #fff; }
+    .h-card p { font-size: 0.9rem; color: var(--muted); }
+    .pill {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    /* BOOKING BOX */
+    .booking-section {
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+    }
+    .booking-box {
+      background: #111827;
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+    .booking-box h2 {
+      text-align: center;
+      font-size: 1.9rem;
+      margin-bottom: 0.4rem;
+    }
+    .booking-box .sub {
+      text-align: center;
       color: var(--muted);
       font-size: 0.95rem;
+      margin-bottom: 2rem;
     }
-    footer {
+
+    /* TABS */
+    .tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1.8rem;
+    }
+    @media (max-width: 650px) { .tabs { grid-template-columns: 1fr; } }
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--muted);
+      padding: 0.9rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.92rem;
       text-align: center;
-      padding: 3rem 1.5rem;
+      transition: all 0.2s;
+    }
+    .tab-btn span { display: block; font-size: 0.78rem; font-weight: normal; margin-top: 0.2rem; }
+    .tab-btn.active {
+      background: rgba(0, 242, 254, 0.12);
+      border-color: var(--cyan);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+    }
+
+    /* FORM */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+    .input-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    select, input[type="date"], input[type="text"] {
+      width: 100%;
+      background: #080c14;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      padding: 0.8rem 0.95rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+    }
+    select:focus, input:focus {
+      border-color: var(--cyan);
+    }
+
+    /* COACH PANEL */
+    .coach-panel {
+      display: none;
+      background: rgba(255, 0, 127, 0.05);
+      border: 1px dashed rgba(255, 0, 127, 0.35);
+      padding: 1.25rem;
+      border-radius: 12px;
+      margin-bottom: 1.25rem;
+    }
+    .coach-panel.visible { display: block; }
+    .drill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .drill-badge {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #e2e8f0;
+    }
+
+    /* SOCIAL ALERT */
+    .social-alert {
+      display: none;
+      background: rgba(0, 242, 254, 0.08);
+      border-left: 4px solid var(--cyan);
+      padding: 0.85rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      margin-bottom: 1.25rem;
+    }
+    .social-alert.visible { display: block; }
+
+    /* SUMMARY BAR */
+    .summary-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 1.4rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+    }
+    .total-title { font-size: 0.9rem; color: var(--muted); }
+    .total-price {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .btn-checkout {
+      width: 100%;
+      background: linear-gradient(90deg, #00f2fe, #00ffaa);
+      border: none;
+      color: #0b0f17;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-checkout:hover { opacity: 0.92; }
+
+    /* MODAL */
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(6px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 1rem;
+    }
+    .modal-backdrop.active { display: flex; }
+    .stripe-card {
+      background: #131b2c;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      max-width: 420px;
+      width: 100%;
+      padding: 2rem;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+    .stripe-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #635bff;
+      background: rgba(99, 91, 255, 0.12);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.8rem;
+    }
+    .qr-box {
+      display: none;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .qr-box.visible { display: block; }
+    .qr-code {
+      width: 150px;
+      height: 150px;
+      background: #fff;
+      color: #0b0f17;
+      margin: 1.2rem auto;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      border: 5px solid var(--cyan);
+      font-size: 0.82rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
       color: var(--muted);
       font-size: 0.85rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      margin-top: 4rem;
     }
   </style>
 </head>
 <body>
 
+  <!-- NAVIGATION -->
   <header>
-    <div class="logo">Ping<span>Hub</span></div>
+    <div class="nav-container">
+      <div class="logo">PING<span>HUB</span></div>
+      <nav class="nav-links">
+        <a href="#about">Σχετικά</a>
+        <a href="#pricing">Τιμές</a>
+        <a href="#booking">Κράτηση</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="badge">Coming Soon</div>
-      <h1>Autonomous Table Tennis on Your Terms.</h1>
-      <p class="subtitle">Book your table online, unlock the door with your phone, and play anytime. Professional tables, climate control, and zero hassle.</p>
-      <a href="#notify" class="btn">Get Early Access</a>
-    </section>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div>
+      <div class="badge">
+        <span class="badge-dot"></span> 24/7 Αυτόνομη Πρόσβαση &bull; Λευκωσία
+      </div>
+      <h1>Το Πινγκ Πονγκ, <span>Όπως Πρέπει Να Είναι.</span></h1>
+      <p class="hero-text-gr">
+        Κλείσε τραπέζι online, ξεκλείδωσε τον χώρο απευθείας από το κινητό σου και παίξε χωρίς καθυστερήσεις. Επαγγελματικός εξοπλισμός, αυτόνομη είσοδος, ατομικές προπονήσεις και ανοιχτές βραδιές κοινωνικού παιχνιδιού (Social Nights) κάθε Τρίτη και Πέμπτη.
+      </p>
+      <a href="#booking" class="btn-hero">Κάνε Κράτηση Τώρα</a>
+    </div>
 
-    <section class="features">
-      <div class="card">
-        <h3>📱 100% Contactless</h3>
-        <p>Book online and receive a instant mobile key to access the venue.</p>
+    <div class="hero-img-box">
+      <!-- Reference to the 3-table brick/neon image -->
+      <img src="watermarked_img_13767363894254268891.jpg" alt="PingHub 3-Table Venue" />
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS / RATES -->
+  <section class="highlights" id="pricing">
+    <div class="h-card">
+      <h3>⚡ Off-Peak Hours</h3>
+      <p>Πρωινές και μεσημεριανές ώρες για ήρεμη προπόνηση ή φιλικά ματς (07:00 – 13:00).</p>
+      <div class="pill">€10 / ώρα</div>
+    </div>
+    <div class="h-card">
+      <h3>🔥 Peak Hours</h3>
+      <p>Απογευματινές και βραδινές ώρες αιχμής με πλήρη φωτισμό και μουσική (14:00 – 23:00).</p>
+      <div class="pill">€13 / ώρα</div>
+    </div>
+    <div class="h-card">
+      <h3>🎯 Private Training</h3>
+      <p>Ατομική προπόνηση με έμπειρο παίκτη, ασκήσεις ποδιών (footwork), drills και τεχνική καθοδήγηση.</p>
+      <div class="pill">€25 / συνεδρία</div>
+    </div>
+    <div class="h-card">
+      <h3>🤝 Social Play Nights</h3>
+      <p>Κάθε Τρίτη & Πέμπτη (17:00–19:00). Έλα μόνος σου, γνώρισε νέους παίκτες με συνεχή εναλλαγή τραπεζιών!</p>
+      <div class="pill">€10 / άτομο / ώρα</div>
+    </div>
+  </section>
+
+  <!-- BOOKING SECTION -->
+  <section class="booking-section" id="booking">
+    <div class="booking-box">
+      <h2>Κράτηση & Είσοδος</h2>
+      <p class="sub">Επίλεξε τύπο παιχνιδιού, ώρα και ολοκλήρωσε την πληρωμή μέσω Stripe.</p>
+
+      <!-- Selection Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" onclick="setMode('court')">
+          🏓 Κράτηση Τραπεζιού
+          <span>Off-Peak €10 / Peak €13</span>
+        </button>
+        <button class="tab-btn" onclick="setMode('coaching')">
+          🎯 Private Training
+          <span>€25 / Συνεδρία</span>
+        </button>
+        <button class="tab-btn" onclick="setMode('social')">
+          🤝 Social Play
+          <span>Τρ & Πεμπ &bull; €10/άτομο</span>
+        </button>
       </div>
-      <div class="card">
-        <h3>🏓 Pro Equipment</h3>
-        <p>ITTF-approved tables, tournament-grade flooring, and automated ball dispensers.</p>
+
+      <!-- Social Night Info -->
+      <div class="social-alert" id="socialAlert">
+        <strong>👥 Social Rotation Play:</strong> Διαθέσιμο αποκλειστικά κάθε <strong>Τρίτη και Πέμπτη (17:00–19:00)</strong>. Δεν χρειάζεσαι συμπαίκτη—γίνεται εναλλαγή αντιπάλων και τραπεζιών ανά παιχνίδι!
       </div>
-      <div class="card">
-        <h3>🕒 Flexible Hours</h3>
-        <p>Play early morning or late at night. The space is ready when you are.</p>
+
+      <!-- Form Inputs -->
+      <div class="form-grid">
+        <div class="input-group">
+          <label>Ημερομηνία</label>
+          <input type="date" id="bookDate" onchange="recalc()" />
+        </div>
+
+        <div class="input-group">
+          <label>Ώρα Συνεδρίας</label>
+          <select id="bookTime" onchange="recalc()">
+            <option value="07:00" data-tier="offpeak">07:00 - 08:00 (Off-Peak)</option>
+            <option value="08:00" data-tier="offpeak">08:00 - 09:00 (Off-Peak)</option>
+            <option value="09:00" data-tier="offpeak">09:00 - 10:00 (Off-Peak)</option>
+            <option value="10:00" data-tier="offpeak">10:00 - 11:00 (Off-Peak)</option>
+            <option value="11:00" data-tier="offpeak">11:00 - 12:00 (Off-Peak)</option>
+            <option value="12:00" data-tier="offpeak">12:00 - 13:00 (Off-Peak)</option>
+            <option value="14:00" data-tier="peak">14:00 - 15:00 (Peak)</option>
+            <option value="15:00" data-tier="peak">15:00 - 16:00 (Peak)</option>
+            <option value="16:00" data-tier="peak">16:00 - 17:00 (Peak)</option>
+            <option value="17:00" data-tier="peak" selected>17:00 - 18:00 (Peak / Social Slot)</option>
+            <option value="18:00" data-tier="peak">18:00 - 19:00 (Peak / Social Slot)</option>
+            <option value="19:00" data-tier="peak">19:00 - 20:00 (Peak)</option>
+            <option value="20:00" data-tier="peak">20:00 - 21:00 (Peak)</option>
+            <option value="21:00" data-tier="peak">21:00 - 22:00 (Peak)</option>
+            <option value="22:00" data-tier="peak">22:00 - 23:00 (Peak)</option>
+          </select>
+        </div>
       </div>
-    </section>
-  </main>
+
+      <!-- Private Coaching Details -->
+      <div class="coach-panel" id="coachPanel">
+        <div class="input-group" style="margin-bottom: 0.8rem;">
+          <label>Επιλογή Coach / Sparring Partner</label>
+          <select id="coachSelect">
+            <option value="coach1">Coach Ανδρέας (Εξειδίκευση: Topspin, Footwork & Drills)</option>
+            <option value="coach2">Coach Μαρία (Εξειδίκευση: Τακτική Αγώνα & Service Returns)</option>
+            <option value="coach3">Coach Γιώργος (Εξειδίκευση: High-speed Multiball Drills)</option>
+          </select>
+        </div>
+        <div style="font-size: 0.82rem; color: var(--cyan); font-weight:600;">Περιλαμβάνονται στη συνεδρία 60':</div>
+        <div class="drill-badges">
+          <span class="drill-badge">✔ Ασκήσεις Footwork</span>
+          <span class="drill-badge">✔ Εντατικά Multiball Drills</span>
+          <span class="drill-badge">✔ Match Simulation</span>
+          <span class="drill-badge">✔ Τεχνικές Οδηγίες</span>
+        </div>
+      </div>
+
+      <!-- Price Summary -->
+      <div class="summary-bar">
+        <div>
+          <div class="total-title" id="summaryTitle">Κράτηση Τραπεζιού (1 Ώρα)</div>
+          <div style="font-size: 0.82rem; color: var(--muted);" id="summarySubtitle">Peak Rate (14:00 - 23:00)</div>
+        </div>
+        <div class="total-price" id="priceDisplay">€13</div>
+      </div>
+
+      <button class="btn-checkout" onclick="openPayment()">
+        Πληρωμή μέσω Stripe &rarr;
+      </button>
+    </div>
+  </section>
+
+  <!-- STRIPE MODAL -->
+  <div class="modal-backdrop" id="payModal">
+    <div class="stripe-card">
+      <button class="close-btn" onclick="closePayment()">&times;</button>
+
+      <div id="paymentForm">
+        <div class="stripe-tag">🔒 STRIPE SECURE CHECKOUT</div>
+        <h3 style="margin-bottom: 0.3rem;">PingHub Nicosia</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem;" id="modalOrderSummary">
+          Κράτηση Τραπεζιού &bull; Σύνολο: €13
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 1.5rem;">
+          <div>
+            <label style="font-size: 0.75rem; color: var(--muted); display:block; margin-bottom:0.3rem;">ΟΝΟΜΑΤΕΠΩΝΥΜΟ</label>
+            <input type="text" placeholder="Demetris C." value="Demetris C." />
+          </div>
+          <div>
+            <label style="font-size: 0.75rem; color: var(--muted); display:block; margin-bottom:0.3rem;">ΑΡΙΘΜΟΣ ΚΑΡΤΑΣ</label>
+            <input type="text" value="•••• •••• •••• 4242" />
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+            <div>
+              <label style="font-size: 0.75rem; color: var(--muted); display:block; margin-bottom:0.3rem;">ΗΜ. ΛΗΞΗΣ</label>
+              <input type="text" value="09/28" />
+            </div>
+            <div>
+              <label style="font-size: 0.75rem; color: var(--muted); display:block; margin-bottom:0.3rem;">CVC</label>
+              <input type="text" value="•••" />
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-checkout" onclick="confirmPayment()">
+          Ολοκλήρωση Πληρωμής
+        </button>
+      </div>
+
+      <!-- Success Screen -->
+      <div class="qr-box" id="qrResult">
+        <h3 style="color: var(--accent); margin-bottom: 0.4rem;">Η Πληρωμή Ολοκληρώθηκε!</h3>
+        <p style="font-size: 0.84rem; color: var(--muted);">
+          Ο ψηφιακός κωδικός πρόσβασης για την είσοδο του PingHub δημιουργήθηκε επιτυχώς:
+        </p>
+
+        <div class="qr-code">[ QR ENTRY KEY ]</div>
+        <div style="font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; color: var(--cyan);">PIN: 4891#</div>
+        <p style="font-size: 0.75rem; color: var(--muted); margin-top: 0.7rem;">
+          Ο κωδικός ενεργοποιείται αυτόματα 10 λεπτά πριν την έναρξη της κράτησής σου.
+        </p>
+      </div>
+    </div>
+  </div>
 
   <footer>
-    &copy; 2026 PingHub. All rights reserved.
+    &copy; 2026 PingHub. Αυτόνομος Χώρος Επιτραπέζιας Αντισφαίρισης &bull; Hosted on Vercel
   </footer>
 
+  <script>
+    // Set date picker to today
+    const dateField = document.getElementById('bookDate');
+    const todayISO = new Date().toISOString().split('T')[0];
+    dateField.value = todayISO;
+    dateField.min = todayISO;
+
+    let activeType = 'court'; // court | coaching | social
+
+    function setMode(type) {
+      activeType = type;
+
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      const coachPanel = document.getElementById('coachPanel');
+      const socialAlert = document.getElementById('socialAlert');
+      const timeSelect = document.getElementById('bookTime');
+
+      coachPanel.classList.remove('visible');
+      socialAlert.classList.remove('visible');
+
+      if (type === 'court') {
+        buttons[0].classList.add('active');
+      } else if (type === 'coaching') {
+        buttons[1].classList.add('active');
+        coachPanel.classList.add('visible');
+      } else if (type === 'social') {
+        buttons[2].classList.add('active');
+        socialAlert.classList.add('visible');
+        timeSelect.value = "17:00"; // Preset to social play hour
+      }
+
+      recalc();
+    }
+
+    function recalc() {
+      const timeSelect = document.getElementById('bookTime');
+      const selected = timeSelect.options[timeSelect.selectedIndex];
+      const tier = selected.getAttribute('data-tier');
+
+      const titleEl = document.getElementById('summaryTitle');
+      const subEl = document.getElementById('summarySubtitle');
+      const priceEl = document.getElementById('priceDisplay');
+
+      if (activeType === 'court') {
+        if (tier === 'offpeak') {
+          titleEl.textContent = "Κράτηση Τραπεζιού (Off-Peak)";
+          subEl.textContent = "Πρωινή Ζώνη (07:00 – 13:00)";
+          priceEl.textContent = "€10";
+        } else {
+          titleEl.textContent = "Κράτηση Τραπεζιού (Peak Hours)";
+          subEl.textContent = "Απογευματινή / Βραδινή Ζώνη (14:00 – 23:00)";
+          priceEl.textContent = "€13";
+        }
+      } else if (activeType === 'coaching') {
+        titleEl.textContent = "Private Pro Coaching Session";
+        subEl.textContent = "1-on-1 Footwork, Drills & Τακτική Αγώνα";
+        priceEl.textContent = "€25";
+      } else if (activeType === 'social') {
+        titleEl.textContent = "Social Play (Ατομική Συμμετοχή)";
+        subEl.textContent = "Τρίτη / Πέμπτη (17:00 – 19:00) με εναλλαγή τραπεζιών";
+        priceEl.textContent = "€10";
+      }
+    }
+
+    function openPayment() {
+      const price = document.getElementById('priceDisplay').textContent;
+      const title = document.getElementById('summaryTitle').textContent;
+      document.getElementById('modalOrderSummary').textContent = `${title} • Σύνολο: ${price}`;
+      document.getElementById('paymentForm').style.display = 'block';
+      document.getElementById('qrResult').classList.remove('visible');
+      document.getElementById('payModal').classList.add('active');
+    }
+
+    function closePayment() {
+      document.getElementById('payModal').classList.remove('active');
+    }
+
+    function confirmPayment() {
+      document.getElementById('paymentForm').style.display = 'none';
+      document.getElementById('qrResult').classList.add('visible');
+    }
+
+    recalc();
+  </script>
 </body>
 </html>
