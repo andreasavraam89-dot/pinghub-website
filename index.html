@@ -9,15 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0f17;
-      --card-bg: rgba(17, 24, 39, 0.85);
-      --border: rgba(0, 242, 254, 0.2);
+      --bg: #070a12;
+      --card-bg: rgba(15, 23, 42, 0.82);
+      --border: rgba(0, 242, 254, 0.22);
       --cyan: #00f2fe;
       --pink: #ff007f;
       --accent: #00ffaa;
       --text: #f3f4f6;
-      --muted: #9ca3af;
-      --gradient: linear-gradient(135deg, #00f2fe 0%, #ff007f 100%);
+      --muted: #94a3b8;
+      --gradient: linear-gradient(135deg, #00f2fe 0%, #a855f7 50%, #ff007f 100%);
+      --neon-shadow: 0 0 15px rgba(0, 242, 254, 0.45), 0 0 30px rgba(0, 242, 254, 0.2);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,8 +28,9 @@
       color: var(--text);
       line-height: 1.6;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.08) 0%, transparent 45%);
+        radial-gradient(circle at 12% 18%, rgba(0, 242, 254, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 88% 82%, rgba(255, 0, 127, 0.1) 0%, transparent 42%),
+        radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 60%);
     }
 
     h1, h2, h3, .brand-font {
@@ -40,44 +42,49 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      backdrop-filter: blur(12px);
-      background: rgba(11, 15, 23, 0.88);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      background: rgba(7, 10, 18, 0.88);
+      border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
     .nav-container {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 1.1rem 1.5rem;
     }
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: #fff;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
     }
     .logo span {
       color: var(--cyan);
-      text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+      text-shadow: 0 0 15px rgba(0, 242, 254, 0.8), 0 0 30px var(--cyan);
     }
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
       font-size: 0.92rem;
       font-weight: 600;
-      margin-left: 1.4rem;
-      transition: color 0.2s;
+      margin-left: 1.5rem;
+      transition: color 0.2s, text-shadow 0.2s;
     }
-    .nav-links a:hover { color: var(--cyan); }
+    .nav-links a:hover {
+      color: var(--cyan);
+      text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+    }
 
     /* HERO */
     .hero {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 2.5rem auto 3.5rem;
       padding: 0 1.5rem;
       display: grid;
@@ -92,21 +99,22 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.35rem 0.9rem;
+      padding: 0.4rem 1rem;
       border-radius: 999px;
       background: rgba(0, 242, 254, 0.1);
-      border: 1px solid rgba(0, 242, 254, 0.25);
+      border: 1px solid rgba(0, 242, 254, 0.35);
       color: var(--cyan);
       font-size: 0.85rem;
       font-weight: 600;
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
       margin-bottom: 1rem;
     }
     .badge-dot {
-      width: 7px; height: 7px; background: var(--accent); border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent);
+      width: 8px; height: 8px; background: var(--accent); border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
     }
     .hero h1 {
-      font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+      font-size: clamp(2.3rem, 4.5vw, 3.5rem);
       line-height: 1.12;
       margin-bottom: 1rem;
     }
@@ -114,48 +122,51 @@
       background: linear-gradient(90deg, #00f2fe, #ff007f);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.4));
     }
     .hero-text {
       font-size: 1.05rem;
       color: #cbd5e1;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
       line-height: 1.65;
     }
-    .free-gear-pill {
+    .gear-included-banner {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: rgba(0, 255, 170, 0.12);
-      border: 1px solid rgba(0, 255, 170, 0.3);
+      gap: 0.6rem;
+      background: rgba(0, 255, 170, 0.1);
+      border: 1px solid rgba(0, 255, 170, 0.35);
       color: var(--accent);
-      padding: 0.4rem 0.9rem;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
+      box-shadow: 0 0 15px rgba(0, 255, 170, 0.2);
       margin-bottom: 1.8rem;
     }
     .btn-hero {
       display: inline-block;
       background: linear-gradient(90deg, #00f2fe, #00ffaa);
-      color: #0b0f17;
+      color: #070a12;
       font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      padding: 0.85rem 1.8rem;
+      font-weight: 800;
+      padding: 0.9rem 2rem;
       border-radius: 10px;
       text-decoration: none;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .btn-hero:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+      box-shadow: 0 0 35px rgba(0, 242, 254, 0.7);
     }
 
     .hero-img-box {
       position: relative;
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
-      border: 1px solid rgba(0, 242, 254, 0.3);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      box-shadow: var(--neon-shadow);
     }
     .hero-img-box img {
       width: 100%;
@@ -164,26 +175,70 @@
       object-fit: cover;
     }
 
-    /* ABOUT US SECTION (GREEK) */
+    /* VISUAL GEAR SHOWCASE STRIP */
+    .gear-visual-strip {
+      max-width: 1200px;
+      margin: 0 auto 3.5rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .gear-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .gear-card.highlight {
+      border-color: rgba(255, 0, 127, 0.4);
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.2);
+    }
+    .gear-card img {
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.3));
+    }
+    .gear-card h4 {
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+    .gear-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ABOUT US CARD (GREEK) */
     .about-card-section {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 0 auto 4rem;
       padding: 0 1.5rem;
     }
     .about-card {
-      background: rgba(18, 26, 43, 0.7);
-      border: 1px solid rgba(0, 242, 254, 0.25);
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(0, 242, 254, 0.3);
       border-radius: 18px;
-      padding: 2rem;
+      padding: 2.2rem;
       display: flex;
-      gap: 1.5rem;
+      gap: 1.8rem;
       align-items: flex-start;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 242, 254, 0.05);
     }
     .about-card .greek-flag-pill {
       background: rgba(0, 242, 254, 0.15);
       color: var(--cyan);
-      padding: 0.25rem 0.6rem;
+      padding: 0.25rem 0.65rem;
       border-radius: 6px;
       font-size: 0.75rem;
       font-weight: 700;
@@ -203,22 +258,23 @@
       line-height: 1.7;
     }
 
-    /* HIGHLIGHTS */
+    /* PRICING & MEMBERSHIP CARDS */
     .highlights {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.25rem;
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 0 auto 4.5rem;
       padding: 0 1.5rem;
     }
     .h-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 1.6rem;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
     .h-card::before {
       content: '';
@@ -226,40 +282,48 @@
       top: 0; left: 0; width: 100%; height: 3px;
       background: var(--gradient);
     }
-    .card-racket-icon {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
+    .h-card.membership-featured {
+      border-color: rgba(255, 0, 127, 0.5);
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.25);
+    }
+    .h-card.membership-featured::before {
+      background: linear-gradient(90deg, #ff007f, #00f2fe);
+    }
+    .card-icon {
+      font-size: 1.35rem;
+      margin-bottom: 0.4rem;
       display: inline-block;
     }
     .h-card h3 { font-size: 1.15rem; margin-bottom: 0.4rem; color: #fff; }
-    .h-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+    .h-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
     .pill {
       display: inline-block;
       margin-top: 0.9rem;
-      padding: 0.3rem 0.75rem;
+      padding: 0.35rem 0.8rem;
       border-radius: 6px;
       background: rgba(255, 255, 255, 0.06);
       color: var(--cyan);
       font-weight: 700;
       font-size: 0.88rem;
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
     }
 
-    /* BOOKING CONTAINER */
+    /* BOOKING & MEMBERSHIP ENGINE */
     .booking-section {
-      max-width: 900px;
-      margin: 0 auto 5rem;
+      max-width: 950px;
+      margin: 0 auto 5.5rem;
       padding: 0 1.5rem;
     }
     .booking-box {
-      background: #111827;
+      background: #0d1424;
       border: 1px solid rgba(0, 242, 254, 0.35);
-      border-radius: 20px;
-      padding: 2.2rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      border-radius: 22px;
+      padding: 2.4rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0, 242, 254, 0.05);
     }
     .booking-box h2 {
       text-align: center;
-      font-size: 1.9rem;
+      font-size: 2rem;
       margin-bottom: 0.4rem;
     }
     .booking-box .sub {
@@ -269,54 +333,86 @@
       margin-bottom: 1.8rem;
     }
 
-    /* TABS */
+    /* 4-COLUMN TABS */
     .tabs {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0.75rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
       margin-bottom: 1.8rem;
     }
-    @media (max-width: 650px) { .tabs { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .tabs { grid-template-columns: 1fr 1fr; } }
     .tab-btn {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--muted);
-      padding: 0.9rem;
+      padding: 0.85rem 0.5rem;
       border-radius: 10px;
       cursor: pointer;
       font-family: inherit;
       font-weight: 600;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       text-align: center;
       transition: all 0.2s;
     }
-    .tab-btn span { display: block; font-size: 0.78rem; font-weight: normal; margin-top: 0.2rem; }
+    .tab-btn span { display: block; font-size: 0.76rem; font-weight: normal; margin-top: 0.2rem; }
     .tab-btn.active {
       background: rgba(0, 242, 254, 0.12);
       border-color: var(--cyan);
       color: #fff;
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+    }
+    .tab-btn.active-sub {
+      background: rgba(255, 0, 127, 0.15);
+      border-color: var(--pink);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
     }
 
-    /* CALENDAR TRIGGER BUTTON */
+    /* MEMBERSHIP DETAIL VIEW */
+    .sub-notice-panel {
+      display: none;
+      background: rgba(255, 0, 127, 0.08);
+      border: 1px solid rgba(255, 0, 127, 0.35);
+      border-radius: 12px;
+      padding: 1.4rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.15);
+    }
+    .sub-notice-panel.visible { display: block; }
+    .sub-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.8rem;
+    }
+    .sub-point {
+      font-size: 0.85rem;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* CALENDAR TRIGGER CARD */
     .calendar-trigger-card {
-      background: rgba(8, 12, 20, 0.9);
+      background: rgba(7, 10, 18, 0.92);
       border: 1px solid rgba(0, 242, 254, 0.3);
-      padding: 1.2rem 1.5rem;
+      padding: 1.1rem 1.4rem;
       border-radius: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
       margin-bottom: 1.5rem;
-      transition: border-color 0.2s, background 0.2s;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+      transition: all 0.2s;
     }
     .calendar-trigger-card:hover {
       border-color: var(--cyan);
-      background: rgba(14, 20, 32, 0.95);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
     }
     .cal-info-title {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
       color: var(--cyan);
@@ -338,28 +434,39 @@
       font-weight: 700;
     }
 
-    /* COACH PANEL */
+    /* COACH SELECTOR GRID */
     .coach-panel {
       display: none;
-      background: rgba(255, 0, 127, 0.05);
-      border: 1px dashed rgba(255, 0, 127, 0.35);
-      padding: 1.25rem;
-      border-radius: 12px;
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      padding: 1.4rem;
+      border-radius: 14px;
       margin-bottom: 1.5rem;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
     }
     .coach-panel.visible { display: block; }
-    select {
-      width: 100%;
-      background: #080c14;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      padding: 0.8rem 0.95rem;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 0.92rem;
-      outline: none;
-      margin-bottom: 0.8rem;
+    .coach-selector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.8rem;
+      margin: 0.8rem 0 1rem;
     }
+    .coach-card-choice {
+      background: rgba(7, 10, 18, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .coach-card-choice:hover { border-color: #a855f7; }
+    .coach-card-choice.selected {
+      border-color: #a855f7;
+      background: rgba(168, 85, 247, 0.2);
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.35);
+    }
+    .coach-name { font-weight: 700; color: #fff; font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .coach-spec { font-size: 0.78rem; color: var(--muted); }
     .drill-badges {
       display: flex;
       flex-wrap: wrap;
@@ -369,7 +476,7 @@
       background: rgba(255, 255, 255, 0.08);
       padding: 0.25rem 0.65rem;
       border-radius: 6px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #e2e8f0;
     }
 
@@ -378,10 +485,11 @@
       display: none;
       background: rgba(0, 242, 254, 0.08);
       border-left: 4px solid var(--cyan);
-      padding: 0.85rem 1.1rem;
+      padding: 0.9rem 1.2rem;
       border-radius: 8px;
       font-size: 0.88rem;
       margin-bottom: 1.5rem;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
     }
     .social-alert.visible { display: block; }
 
@@ -390,47 +498,54 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.1rem 1.4rem;
+      padding: 1.2rem 1.5rem;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       margin-bottom: 1.5rem;
     }
-    .total-title { font-size: 0.9rem; color: var(--muted); }
-    .gear-included-tag {
-      font-size: 0.78rem;
+    .total-title { font-size: 0.92rem; color: var(--muted); }
+    .equipment-notice-tag {
+      font-size: 0.8rem;
       color: var(--accent);
-      font-weight: 600;
-      margin-top: 0.2rem;
+      font-weight: 700;
+      margin-top: 0.25rem;
+      text-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
     }
     .total-price {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       font-weight: 800;
       color: var(--accent);
       font-family: 'Space Grotesk', sans-serif;
+      text-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
     }
 
     .btn-checkout {
       width: 100%;
       background: linear-gradient(90deg, #00f2fe, #00ffaa);
       border: none;
-      color: #0b0f17;
+      color: #070a12;
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 800;
       font-size: 1.05rem;
       padding: 1rem;
       border-radius: 10px;
       cursor: pointer;
-      transition: opacity 0.2s;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .btn-checkout:hover { opacity: 0.92; }
+    .btn-checkout:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
+    }
 
-    /* CALENDAR MODAL */
+    /* MODAL POPUPS */
     .modal-backdrop {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.82);
-      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
       display: none;
       justify-content: center;
       align-items: center;
@@ -439,13 +554,14 @@
     }
     .modal-backdrop.active { display: flex; }
     .cal-modal {
-      background: #131b2c;
-      border: 1px solid rgba(0, 242, 254, 0.3);
+      background: #11192a;
+      border: 1px solid rgba(0, 242, 254, 0.4);
       border-radius: 20px;
       max-width: 520px;
       width: 100%;
       padding: 1.8rem;
       position: relative;
+      box-shadow: var(--neon-shadow);
     }
     .close-btn {
       position: absolute;
@@ -481,13 +597,14 @@
     }
     .cal-day-btn:hover:not(.disabled) {
       border-color: var(--cyan);
-      background: rgba(0, 242, 254, 0.1);
+      background: rgba(0, 242, 254, 0.15);
     }
     .cal-day-btn.selected {
       background: var(--cyan);
-      color: #0b0f17;
+      color: #070a12;
       font-weight: 800;
       border-color: var(--cyan);
+      box-shadow: 0 0 15px var(--cyan);
     }
     .cal-day-btn.disabled {
       opacity: 0.25;
@@ -520,32 +637,32 @@
       text-align: center;
       transition: all 0.15s;
     }
-    .slot-pill:hover {
-      border-color: var(--cyan);
-    }
+    .slot-pill:hover { border-color: var(--cyan); }
     .slot-pill.active {
       background: var(--cyan);
-      color: #0b0f17;
+      color: #070a12;
       font-weight: 800;
       border-color: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan);
     }
 
     /* STRIPE MODAL */
     .stripe-card {
-      background: #131b2c;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #11192a;
+      border: 1px solid rgba(0, 242, 254, 0.4);
       border-radius: 18px;
       max-width: 420px;
       width: 100%;
       padding: 2rem;
       position: relative;
+      box-shadow: var(--neon-shadow);
     }
     .stripe-tag {
       font-size: 0.72rem;
       font-weight: 700;
       color: #635bff;
-      background: rgba(99, 91, 255, 0.12);
-      padding: 0.25rem 0.5rem;
+      background: rgba(99, 91, 255, 0.15);
+      padding: 0.25rem 0.55rem;
       border-radius: 4px;
       display: inline-block;
       margin-bottom: 0.8rem;
@@ -571,7 +688,7 @@
       width: 150px;
       height: 150px;
       background: #fff;
-      color: #0b0f17;
+      color: #070a12;
       margin: 1.2rem auto;
       border-radius: 10px;
       display: flex;
@@ -580,10 +697,11 @@
       font-weight: 800;
       border: 5px solid var(--cyan);
       font-size: 0.82rem;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
     }
 
     footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(0, 242, 254, 0.15);
       text-align: center;
       padding: 2.5rem 1.5rem;
       color: var(--muted);
@@ -599,7 +717,8 @@
       <div class="logo">🏓 PING<span>HUB</span></div>
       <nav class="nav-links">
         <a href="#about">About</a>
-        <a href="#rates">Pricing</a>
+        <a href="#rates">Pricing & Pass</a>
+        <a href="#gear">Equipment</a>
         <a href="#booking">Book Table</a>
       </nav>
     </div>
@@ -613,11 +732,11 @@
       </div>
       <h1>Play in the <span>Future of Table Tennis.</span></h1>
       <p class="hero-text">
-        Book your court online, unlock the facility doors with your smartphone, and jump straight into match play. Tournament-grade tables, high-contrast ambient lighting, and automated access.
+        Book your court online, unlock the facility doors with your smartphone, and jump straight into match play. Tournament-grade tables, high-contrast neon ambient lighting, and automated access.
       </p>
 
-      <div class="free-gear-pill">
-        🏓 Premium Paddles & Balls Included Free With Every Booking
+      <div class="gear-included-banner">
+        🏓 Rackets and balls are completely included with every booking!
       </div>
 
       <div>
@@ -630,15 +749,40 @@
     </div>
   </section>
 
+  <!-- VISUAL GEAR SHOWCASE STRIP -->
+  <section class="gear-visual-strip" id="gear">
+    <div class="gear-card">
+      <img src="https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?w=180&auto=format&fit=crop&q=80" alt="Ping Pong Racket" />
+      <div>
+        <h4>🏓 Rackets Included</h4>
+        <p>Premium ergonomic rubber paddles pre-positioned at every table.</p>
+      </div>
+    </div>
+    <div class="gear-card highlight">
+      <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?w=180&auto=format&fit=crop&q=80" alt="Ping Pong Balls" />
+      <div>
+        <h4>⚡ Balls Included</h4>
+        <p>Clean match balls waiting at your court with full ball-dispenser access.</p>
+      </div>
+    </div>
+    <div class="gear-card">
+      <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=180&auto=format&fit=crop&q=80" alt="Pro Tournaments" />
+      <div>
+        <h4>🏆 League & Tournaments</h4>
+        <p>Included in the monthly subscription for competitive ranking play.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- GREEK ABOUT US CARD -->
   <section class="about-card-section" id="about">
     <div class="about-card">
-      <div style="font-size: 2rem;">🏓</div>
+      <div style="font-size: 2.2rem; text-shadow: 0 0 15px var(--cyan);">🏓</div>
       <div>
         <span class="greek-flag-pill">Σχετικα με το PingHub</span>
         <h3>Ο Νέος Αυτόνομος Χώρος στη Λευκωσία</h3>
         <p>
-          Το <strong>PingHub</strong> φέρνει μια εντελώς νέα εμπειρία στο πινγκ πονγκ. Ένας σύγχρονος, πλήρως αυτόνομος χώρος με επαγγελματικά τραπέζια και neon αισθητική, προσβάσιμος 24/7 απευθείας από το κινητό σου. Κλείσε το τραπέζι σου online, ξεκλείδωσε την πόρτα με τον ψηφιακό σου κωδικό και παίξε χωρίς καθυστερήσεις. Όλος ο εξοπλισμός (ποιοτικές ρακέτες και μπάλες) συμπεριλαμβάνεται δωρεάν στην τιμή!
+          Το <strong>PingHub</strong> φέρνει μια εντελώς νέα εμπειρία στο πινγκ πονγκ. Ένας σύγχρονος, πλήρως αυτόνομος χώρος με επαγγελματικά τραπέζια και neon αισθητική, προσβάσιμος 24/7 απευθείας από το κινητό σου. Κλείσε το τραπέζι σου online, ξεκλείδωσε την πόρτα με τον ψηφιακό σου κωδικό και παίξε χωρίς καθυστερήσεις. Όλος ο εξοπλισμός (ρακέτες και μπάλες) συμπεριλαμβάνεται δωρεάν στην τιμή!
         </p>
       </div>
     </div>
@@ -647,27 +791,33 @@
   <!-- HIGHLIGHTS / RATES -->
   <section class="highlights" id="rates">
     <div class="h-card">
-      <div class="card-racket-icon">🏓</div>
+      <div class="card-icon">⚡</div>
       <h3>Off-Peak Hours</h3>
-      <p>Clean focus morning & midday slots. High-grade gear provided.</p>
+      <p>Clean focus morning & midday slots. Rackets & balls included.</p>
       <div class="pill">€10 / hr (07:00 – 13:00)</div>
     </div>
     <div class="h-card">
-      <div class="card-racket-icon">⚡</div>
+      <div class="card-icon">🔥</div>
       <h3>Peak Hours</h3>
       <p>Prime evening hours with ambient lounge soundtrack & neon lighting.</p>
       <div class="pill">€13 / hr (14:00 – 23:00)</div>
     </div>
+    <div class="h-card membership-featured">
+      <div class="card-icon">🏆</div>
+      <h3>Monthly Subscription</h3>
+      <p>Full autonomous play access plus entry to PingHub tournaments. (Booking still required).</p>
+      <div class="pill" style="color: var(--pink); box-shadow: 0 0 10px rgba(255,0,127,0.3);">€60 / month</div>
+    </div>
     <div class="h-card">
-      <div class="card-racket-icon">🎯</div>
+      <div class="card-icon">🎯</div>
       <h3>Private Training</h3>
-      <p>1-on-1 sparring session, intensive footwork, multi-ball drills & tactical coaching.</p>
+      <p>1-on-1 sparring session with your chosen coach, drills & tactical coaching.</p>
       <div class="pill">€25 / session</div>
     </div>
     <div class="h-card">
-      <div class="card-racket-icon">🤝</div>
+      <div class="card-icon">🤝</div>
       <h3>Social Play Nights</h3>
-      <p>Every Tuesday & Thursday (17:00–19:00). Turn up solo and rotate tables & partners!</p>
+      <p>Tue & Thu (17:00–19:00). Turn up solo and rotate tables & partners!</p>
       <div class="pill">€10 / person / hr</div>
     </div>
   </section>
@@ -675,17 +825,21 @@
   <!-- BOOKING SECTION -->
   <section class="booking-section" id="booking">
     <div class="booking-box">
-      <h2>Reserve Your Session</h2>
-      <p class="sub">Pick your session format, choose your slot on the calendar, and checkout via Stripe.</p>
+      <h2>Reserve Your Court & Access</h2>
+      <p class="sub">Choose court rental, coaching, social night, or activate your monthly unlimited membership.</p>
 
       <!-- Selection Tabs -->
       <div class="tabs">
         <button class="tab-btn active" onclick="setMode('court')">
-          🏓 Standard Court
-          <span>Off-Peak €10 / Peak €13</span>
+          🏓 Court Rental
+          <span>€10 Off / €13 Peak</span>
+        </button>
+        <button class="tab-btn" onclick="setMode('subscription')">
+          👑 Monthly Pass
+          <span>€60 / Month</span>
         </button>
         <button class="tab-btn" onclick="setMode('coaching')">
-          🎯 Private Training
+          🎯 Private Coach
           <span>€25 / Session</span>
         </button>
         <button class="tab-btn" onclick="setMode('social')">
@@ -694,33 +848,60 @@
         </button>
       </div>
 
+      <!-- Monthly Subscription Panel -->
+      <div class="sub-notice-panel" id="subPanel">
+        <div style="font-weight: 800; font-size: 1.05rem; color: #fff; margin-bottom: 0.3rem;">
+          👑 PingHub Club Monthly Membership — €60 / Month
+        </div>
+        <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5;">
+          Get unlimited autonomous court access and free entry into all official PingHub tournaments!
+        </p>
+        <div class="sub-points">
+          <div class="sub-point">✔ Monthly autonomous facility access</div>
+          <div class="sub-point">✔ Free registration to all monthly tournaments</div>
+          <div class="sub-point">✔ Court reservations still required to hold tables</div>
+          <div class="sub-point">✔ Equipment (rackets & balls) always ready</div>
+        </div>
+      </div>
+
       <!-- Social Alert -->
       <div class="social-alert" id="socialAlert">
-        <strong>👥 Solo Matchmaking:</strong> Social Play runs exclusively on <strong>Tuesdays and Thursdays from 17:00 to 19:00</strong>. No partner required—players rotate opponents and tables after each game!
+        <strong>👥 Solo Matchmaking:</strong> Social Play runs exclusively on <strong>Tuesdays and Thursdays from 17:00 to 19:00</strong>. No partner needed—players rotate opponents and tables after each game!
       </div>
 
       <!-- Interactive Calendar Popup Trigger -->
-      <div class="calendar-trigger-card" onclick="openCalendarModal()">
+      <div class="calendar-trigger-card" id="calCard" onclick="openCalendarModal()">
         <div>
-          <div class="cal-info-title">📅 Selected Date & Time</div>
+          <div class="cal-info-title">📅 Selected Date & Time (Reservation)</div>
           <div class="cal-selected-val" id="selectedSlotText">Wed, Sep 9 &bull; 17:00 - 18:00</div>
         </div>
         <div class="btn-change-slot">Select on Calendar 🏓</div>
       </div>
 
-      <!-- Coach Selection Panel -->
+      <!-- Coach Selection Panel with Dedicated Coach Options -->
       <div class="coach-panel" id="coachPanel">
-        <label style="font-size: 0.8rem; font-weight:700; color:var(--muted); text-transform:uppercase; display:block; margin-bottom:0.4rem;">Select Your Pro Coach / Sparring Partner</label>
-        <select id="coachSelect">
-          <option value="c1">Coach Andreas (Specialization: Topspin Attack & Footwork)</option>
-          <option value="c2">Coach Elena (Specialization: Serve Returns & Match Tactics)</option>
-          <option value="c3">Coach George (Specialization: High-Speed Multiball Drills)</option>
-        </select>
+        <label style="font-size: 0.82rem; font-weight:700; color:var(--cyan); text-transform:uppercase; display:block;">Select Your Pro Coach / Sparring Partner:</label>
+        
+        <div class="coach-selector-grid">
+          <div class="coach-card-choice selected" onclick="pickCoach(this, 'Coach Andreas')">
+            <div class="coach-name">🏓 Coach Andreas</div>
+            <div class="coach-spec">Topspin Attack & Footwork Specialist</div>
+          </div>
+          <div class="coach-card-choice" onclick="pickCoach(this, 'Coach Elena')">
+            <div class="coach-name">⚡ Coach Elena</div>
+            <div class="coach-spec">Serve Variations & Match Strategy</div>
+          </div>
+          <div class="coach-card-choice" onclick="pickCoach(this, 'Coach George')">
+            <div class="coach-name">🎯 Coach George</div>
+            <div class="coach-spec">High-Speed Multiball Drills</div>
+          </div>
+        </div>
+
         <div class="drill-badges">
           <span class="drill-badge">✔ Rackets & Balls Included</span>
-          <span class="drill-badge">✔ Footwork Mastery</span>
-          <span class="drill-badge">✔ Multi-ball Drills</span>
-          <span class="drill-badge">✔ Tactical Sparring</span>
+          <span class="drill-badge">✔ Intensive Footwork Drills</span>
+          <span class="drill-badge">✔ Tactical Match Play</span>
+          <span class="drill-badge">✔ Multiball Repetitions</span>
         </div>
       </div>
 
@@ -728,7 +909,7 @@
       <div class="summary-bar">
         <div>
           <div class="total-title" id="summaryTitle">Standard Court (1 Hour)</div>
-          <div class="gear-included-tag">🏓 Professional Rackets & 3-Star Balls Included</div>
+          <div class="equipment-notice-tag">🏓 Rackets & balls are included with your booking</div>
         </div>
         <div class="total-price" id="priceDisplay">€13</div>
       </div>
@@ -862,39 +1043,53 @@
   </div>
 
   <footer>
-    &copy; 2026 PingHub. Autonomous Table Tennis Club &bull; All Equipment Included &bull; Hosted on Vercel
+    &copy; 2026 PingHub. Autonomous Table Tennis Club &bull; Rackets & Balls Included with Every Booking &bull; Hosted on Vercel
   </footer>
 
   <script>
-    let activeType = 'court'; // court | coaching | social
+    let activeType = 'court'; // court | subscription | coaching | social
     let selectedDateString = 'Wed, Sep 9';
     let selectedSlotString = '17:00 - 18:00';
     let selectedTier = 'peak'; // offpeak | peak
+    let selectedCoach = 'Coach Andreas';
 
     function setMode(type) {
       activeType = type;
 
       const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
+      buttons.forEach(btn => btn.className = 'tab-btn');
 
       const coachPanel = document.getElementById('coachPanel');
       const socialAlert = document.getElementById('socialAlert');
+      const subPanel = document.getElementById('subPanel');
 
       coachPanel.classList.remove('visible');
       socialAlert.classList.remove('visible');
+      subPanel.classList.remove('visible');
 
       if (type === 'court') {
         buttons[0].classList.add('active');
+      } else if (type === 'subscription') {
+        buttons[1].classList.add('active-sub');
+        subPanel.classList.add('visible');
       } else if (type === 'coaching') {
-        buttons[1].classList.add('active');
+        buttons[2].classList.add('active');
         coachPanel.classList.add('visible');
       } else if (type === 'social') {
-        buttons[2].classList.add('active');
+        buttons[3].classList.add('active');
         socialAlert.classList.add('visible');
         selectedDateString = 'Thu, Sep 10';
         selectedSlotString = '17:00 - 18:00';
       }
 
+      updateDisplay();
+    }
+
+    function pickCoach(el, coachName) {
+      const cards = document.querySelectorAll('.coach-card-choice');
+      cards.forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedCoach = coachName;
       updateDisplay();
     }
 
@@ -931,14 +1126,17 @@
 
       if (activeType === 'court') {
         if (selectedTier === 'offpeak') {
-          titleEl.textContent = "Standard Court (Off-Peak 07:00-13:00)";
+          titleEl.textContent = "Standard Court (Off-Peak 07:00 - 13:00)";
           priceEl.textContent = "€10";
         } else {
-          titleEl.textContent = "Standard Court (Peak 14:00-23:00)";
+          titleEl.textContent = "Standard Court (Peak 14:00 - 23:00)";
           priceEl.textContent = "€13";
         }
+      } else if (activeType === 'subscription') {
+        titleEl.textContent = "Monthly Club Membership (Play Access + Tournaments)";
+        priceEl.textContent = "€60";
       } else if (activeType === 'coaching') {
-        titleEl.textContent = "Private Pro Training (1-on-1 Drills & Instruction)";
+        titleEl.textContent = `Private Training Session with ${selectedCoach}`;
         priceEl.textContent = "€25";
       } else if (activeType === 'social') {
         titleEl.textContent = "Social Play (Solo Matchmaking Session)";
