@@ -175,7 +175,7 @@
       object-fit: cover;
     }
 
-    /* VISUAL GEAR SHOWCASE STRIP */
+    /* VISUAL GEAR SHOWCASE */
     .gear-visual-strip {
       max-width: 1200px;
       margin: 0 auto 3.5rem;
@@ -258,7 +258,7 @@
       line-height: 1.7;
     }
 
-    /* PRICING & MEMBERSHIP CARDS */
+    /* PRICING & SUBSCRIPTION CARDS */
     .highlights {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -282,11 +282,12 @@
       top: 0; left: 0; width: 100%; height: 3px;
       background: var(--gradient);
     }
-    .h-card.membership-featured {
-      border-color: rgba(255, 0, 127, 0.5);
+    .h-card.subscription-card {
+      border-color: rgba(255, 0, 127, 0.55);
       box-shadow: 0 0 25px rgba(255, 0, 127, 0.25);
+      background: linear-gradient(180deg, rgba(255, 0, 127, 0.08) 0%, rgba(15, 23, 42, 0.9) 100%);
     }
-    .h-card.membership-featured::before {
+    .h-card.subscription-card::before {
       background: linear-gradient(90deg, #ff007f, #00f2fe);
     }
     .card-icon {
@@ -307,8 +308,14 @@
       font-size: 0.88rem;
       box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
     }
+    .pill-sub {
+      color: #ff007f;
+      background: rgba(255, 0, 127, 0.12);
+      border: 1px solid rgba(255, 0, 127, 0.3);
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+    }
 
-    /* BOOKING & MEMBERSHIP ENGINE */
+    /* BOOKING & CHECKOUT SECTION */
     .booking-section {
       max-width: 950px;
       margin: 0 auto 5.5rem;
@@ -333,7 +340,7 @@
       margin-bottom: 1.8rem;
     }
 
-    /* 4-COLUMN TABS */
+    /* SELECTION TABS */
     .tabs {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -368,7 +375,7 @@
       box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
     }
 
-    /* MEMBERSHIP DETAIL VIEW */
+    /* MONTHLY SUBSCRIPTION EXPANDED PANEL */
     .sub-notice-panel {
       display: none;
       background: rgba(255, 0, 127, 0.08);
@@ -717,7 +724,7 @@
       <div class="logo">🏓 PING<span>HUB</span></div>
       <nav class="nav-links">
         <a href="#about">About</a>
-        <a href="#rates">Pricing & Pass</a>
+        <a href="#rates">Pricing</a>
         <a href="#gear">Equipment</a>
         <a href="#booking">Book Table</a>
       </nav>
@@ -788,7 +795,7 @@
     </div>
   </section>
 
-  <!-- HIGHLIGHTS / RATES -->
+  <!-- PRICING & SUBSCRIPTION SECTION -->
   <section class="highlights" id="rates">
     <div class="h-card">
       <div class="card-icon">⚡</div>
@@ -802,11 +809,11 @@
       <p>Prime evening hours with ambient lounge soundtrack & neon lighting.</p>
       <div class="pill">€13 / hr (14:00 – 23:00)</div>
     </div>
-    <div class="h-card membership-featured">
-      <div class="card-icon">🏆</div>
+    <div class="h-card subscription-card">
+      <div class="card-icon">👑</div>
       <h3>Monthly Subscription</h3>
-      <p>Full autonomous play access plus entry to PingHub tournaments. (Booking still required).</p>
-      <div class="pill" style="color: var(--pink); box-shadow: 0 0 10px rgba(255,0,127,0.3);">€60 / month</div>
+      <p>Includes unlimited play (advance booking required) and full access to official tournaments.</p>
+      <div class="pill pill-sub">€60 / month</div>
     </div>
     <div class="h-card">
       <div class="card-icon">🎯</div>
@@ -857,9 +864,9 @@
           Get unlimited autonomous court access and free entry into all official PingHub tournaments!
         </p>
         <div class="sub-points">
-          <div class="sub-point">✔ Monthly autonomous facility access</div>
-          <div class="sub-point">✔ Free registration to all monthly tournaments</div>
-          <div class="sub-point">✔ Court reservations still required to hold tables</div>
+          <div class="sub-point">✔ Unlimited autonomous court play</div>
+          <div class="sub-point">✔ Free access to all monthly tournaments</div>
+          <div class="sub-point">✔ Booking is still required to secure table slots</div>
           <div class="sub-point">✔ Equipment (rackets & balls) always ready</div>
         </div>
       </div>
@@ -878,7 +885,7 @@
         <div class="btn-change-slot">Select on Calendar 🏓</div>
       </div>
 
-      <!-- Coach Selection Panel with Dedicated Coach Options -->
+      <!-- Coach Selection Panel -->
       <div class="coach-panel" id="coachPanel">
         <label style="font-size: 0.82rem; font-weight:700; color:var(--cyan); text-transform:uppercase; display:block;">Select Your Pro Coach / Sparring Partner:</label>
         
@@ -1133,7 +1140,7 @@
           priceEl.textContent = "€13";
         }
       } else if (activeType === 'subscription') {
-        titleEl.textContent = "Monthly Club Membership (Play Access + Tournaments)";
+        titleEl.textContent = "Monthly Club Subscription (Unlimited Play + Tournaments)";
         priceEl.textContent = "€60";
       } else if (activeType === 'coaching') {
         titleEl.textContent = `Private Training Session with ${selectedCoach}`;
