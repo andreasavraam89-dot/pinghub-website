@@ -1,1146 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PINGHUB | 24/7 Neon Ping Pong Club &bull; Engomi</title>
+  <meta charset="UTF-8">
+  <title>PingHub Realistic Neon Emblem</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Cyber / Street / Neon Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Tilt+Neon&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <!-- QR generator library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-  <style>
-    :root {
-      --bg: #07090e;
-      --surface: #0f141c;
-      --surface-elevated: #161d28;
-      --border: #232d3d;
-      
-      /* Neon Glow Palette */
-      --neon-cyan: #00f0ff;
-      --neon-pink: #ff2a85;
-      --neon-amber: #ffb800;
-      --neon-green: #05ffa1;
-      
-      --glow-cyan: 0 0 12px rgba(0, 240, 255, 0.65), 0 0 28px rgba(0, 240, 255, 0.25);
-      --glow-pink: 0 0 12px rgba(255, 42, 133, 0.65), 0 0 28px rgba(255, 42, 133, 0.25);
-      --glow-amber: 0 0 12px rgba(255, 184, 0, 0.65), 0 0 28px rgba(255, 184, 0, 0.25);
-      
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Space Grotesk', -apple-system, sans-serif;
-      background-color: var(--bg);
-      background-image: 
-        radial-gradient(circle at 15% 20%, rgba(255, 42, 133, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 60%, rgba(0, 240, 255, 0.08) 0%, transparent 45%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .neon-text {
-      font-family: 'Tilt Neon', cursive, sans-serif;
-      text-shadow: var(--glow-cyan);
-      color: #fff;
-    }
-    .neon-pink {
-      font-family: 'Tilt Neon', cursive, sans-serif;
-      text-shadow: var(--glow-pink);
-      color: #fff;
-    }
-
-    /* HEADER & NAV */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(7, 9, 14, 0.92);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.9rem 1.5rem;
-    }
-    .logo {
-      font-size: 1.4rem;
-      font-weight: 700;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      letter-spacing: 1px;
-    }
-    .logo-racket {
-      font-size: 1.3rem;
-      filter: drop-shadow(0 0 6px var(--neon-pink));
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.4rem;
-    }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: all 0.2s;
-    }
-    .nav-links a:hover {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 8px var(--neon-cyan);
-    }
-    .btn-nav-book {
-      background: transparent;
-      border: 1px solid var(--neon-cyan);
-      color: var(--neon-cyan);
-      box-shadow: inset 0 0 8px rgba(0, 240, 255, 0.2), 0 0 8px rgba(0, 240, 255, 0.3);
-      padding: 0.45rem 1rem;
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-nav-book:hover {
-      background: var(--neon-cyan);
-      color: #000;
-      box-shadow: var(--glow-cyan);
-    }
-
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-    }
-
-    /* HERO */
-    .hero {
-      max-width: 1150px;
-      margin: 3rem auto 4rem;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-      gap: 3rem;
-    }
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; margin-top: 1.5rem; }
-    }
-    .badge-bar {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.35rem 0.9rem;
-      border-radius: 999px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      font-size: 0.8rem;
-      margin-bottom: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-    .badge-rackets {
-      color: var(--neon-pink);
-    }
-    .hero h1 {
-      font-size: clamp(2.3rem, 4.5vw, 3.5rem);
-      line-height: 1.1;
-      margin-bottom: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .hero-p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 1.8rem;
-    }
-    .hero-btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .btn-neon {
-      background: var(--neon-pink);
-      color: #fff;
-      font-weight: 700;
-      padding: 0.85rem 1.6rem;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      box-shadow: var(--glow-pink);
-      border: none;
-      cursor: pointer;
-      display: inline-block;
-      transition: transform 0.15s;
-    }
-    .btn-neon:hover { transform: translateY(-2px); }
-
-    /* HARDWARE BOX */
-    .hero-hardware-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.8rem;
-      position: relative;
-      box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.04);
-    }
-    .hero-hardware-box::before {
-      content: "🏓 ⚡ 🏓";
-      position: absolute;
-      top: -12px;
-      right: 20px;
-      background: var(--surface-elevated);
-      padding: 0.1rem 0.6rem;
-      font-size: 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-    }
-    .step-list { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 1rem; }
-    .step-item { display: flex; gap: 0.9rem; align-items: flex-start; }
-    .step-bubble {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--surface-elevated);
-      border: 1px solid var(--neon-cyan);
-      color: var(--neon-cyan);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      flex-shrink: 0;
-      box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
-    }
-
-    /* SECTIONS COMMON */
-    section {
-      max-width: 1150px;
-      margin: 0 auto 5rem;
-      padding: 0 1.5rem;
-    }
-    .sec-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--neon-cyan);
-      margin-bottom: 0.3rem;
-    }
-    .sec-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-    }
-    .sec-desc {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      max-width: 650px;
-    }
-
-    /* EQUIPMENT GRID */
-    .equip-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-    .equip-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.6rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .equip-card:hover {
-      border-color: var(--neon-cyan);
-      box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.08);
-    }
-    .equip-icon {
-      font-size: 2.2rem;
-      margin-bottom: 0.8rem;
-      display: block;
-    }
-    .equip-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; color: #fff; }
-    .equip-card p { font-size: 0.85rem; color: var(--muted); }
-
-    /* PRICING GRID */
-    .rates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem;
-    }
-    .rate-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.6rem;
-      position: relative;
-    }
-    .rate-card.glow-card {
-      border-color: var(--neon-pink);
-      box-shadow: 0 0 15px rgba(255, 42, 133, 0.15);
-    }
-    .rate-card.glow-gold {
-      border-color: var(--neon-amber);
-      box-shadow: 0 0 15px rgba(255, 184, 0, 0.15);
-    }
-    .rate-pill {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--neon-cyan);
-      margin-bottom: 0.6rem;
-    }
-    .rate-card.glow-card .rate-pill { color: var(--neon-pink); }
-    .rate-card.glow-gold .rate-pill { color: var(--neon-amber); }
-    .rate-num {
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.4rem;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    .rate-num span { font-size: 0.9rem; color: var(--muted); font-weight: 400; }
-    .rate-card p { font-size: 0.84rem; color: var(--muted); }
-
-    /* WHO WE ARE & LOCATION SECTION */
-    .split-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-    @media (max-width: 768px) { .split-grid { grid-template-columns: 1fr; } }
-    .info-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.8rem;
-    }
-    .info-box h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    /* COACH PICKER ROW */
-    .pro-selector-group {
-      display: none;
-      background: var(--surface-elevated);
-      border: 1px solid var(--neon-pink);
-      border-radius: var(--radius-sm);
-      padding: 1.2rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 0 12px rgba(255, 42, 133, 0.15);
-    }
-    .pro-selector-group.active { display: block; }
-    .coach-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-      margin-top: 0.8rem;
-    }
-    .coach-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 0.9rem;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      transition: all 0.2s;
-    }
-    .coach-card:hover { border-color: var(--neon-pink); }
-    .coach-card.selected {
-      border-color: var(--neon-pink);
-      background: rgba(255, 42, 133, 0.12);
-      box-shadow: 0 0 8px rgba(255, 42, 133, 0.3);
-    }
-    .coach-avatar {
-      font-size: 1.5rem;
-    }
-    .coach-info strong { display: block; font-size: 0.9rem; color: #fff; }
-    .coach-info span { font-size: 0.75rem; color: var(--muted); }
-
-    /* BOOKING WORKFLOW */
-    .booking-wrapper {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 2.2rem;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    }
-    .mode-tabs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.7rem;
-      margin-bottom: 1.8rem;
-    }
-    @media (max-width: 768px) { .mode-tabs { grid-template-columns: 1fr 1fr; } }
-    .tab-btn {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 0.85rem 0.5rem;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-align: center;
-      transition: all 0.2s;
-    }
-    .tab-btn span { display: block; font-size: 0.75rem; margin-top: 0.2rem; }
-    .tab-btn.active {
-      background: rgba(0, 240, 255, 0.12);
-      border-color: var(--neon-cyan);
-      color: #fff;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-    }
-    .tab-btn.active-pro {
-      background: rgba(255, 42, 133, 0.15);
-      border-color: var(--neon-pink);
-      color: #fff;
-      box-shadow: 0 0 10px rgba(255, 42, 133, 0.25);
-    }
-    .tab-btn.active-gold {
-      background: rgba(255, 184, 0, 0.15);
-      border-color: var(--neon-amber);
-      color: #fff;
-      box-shadow: 0 0 10px rgba(255, 184, 0, 0.25);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-      margin-bottom: 1.4rem;
-    }
-    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
-    .input-field label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-    .input-field input {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: #fff;
-      padding: 0.75rem 0.9rem;
-      border-radius: var(--radius-sm);
-      font-family: inherit;
-      font-size: 0.9rem;
-      outline: none;
-    }
-    .input-field input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 6px rgba(0, 240, 255, 0.3); }
-
-    /* TIME SLOTS */
-    .time-slot-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
-      gap: 0.5rem;
-      margin: 0.5rem 0 1.5rem;
-    }
-    .time-chip {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 0.55rem 0.2rem;
-      font-size: 0.8rem;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.15s;
-    }
-    .time-chip:hover { border-color: var(--muted); }
-    .time-chip.active {
-      background: var(--neon-cyan);
-      color: #000;
-      font-weight: 700;
-      border-color: var(--neon-cyan);
-      box-shadow: 0 0 8px var(--neon-cyan);
-    }
-
-    /* SUMMARY BAR */
-    .checkout-summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 1.4rem;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      margin-bottom: 1.4rem;
-    }
-    .checkout-total {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--neon-cyan);
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .btn-pay-stripe {
-      width: 100%;
-      background: #635bff;
-      border: none;
-      color: #fff;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.95rem;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      transition: background 0.2s;
-    }
-    .btn-pay-stripe:hover { background: #5348e2; }
-
-    /* STRIPE MODAL */
-    .modal-backdrop {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(6px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-      padding: 1.2rem;
-    }
-    .modal-backdrop.active { display: flex; }
-    .stripe-card-modal {
-      background: #111722;
-      border: 1px solid #2e384d;
-      border-radius: var(--radius-lg);
-      max-width: 440px;
-      width: 100%;
-      padding: 2rem;
-      position: relative;
-    }
-    .stripe-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .stripe-badge {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #635bff;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .close-modal-btn {
-      background: transparent;
-      border: none;
-      color: var(--muted);
-      font-size: 1.3rem;
-      cursor: pointer;
-    }
-    .stripe-input-box {
-      border: 1px solid #334155;
-      border-radius: var(--radius-sm);
-      background: #090d14;
-      padding: 0.6rem 0.8rem;
-      margin-bottom: 1rem;
-    }
-    .stripe-input-box label {
-      display: block;
-      font-size: 0.7rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.2rem;
-    }
-    .stripe-input-box input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.95rem;
-      outline: none;
-    }
-    .stripe-sub-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-    }
-
-    /* PASS QR DISPLAY */
-    .qr-container {
-      background: #fff;
-      padding: 1.2rem;
-      border-radius: var(--radius-sm);
-      width: fit-content;
-      margin: 1.4rem auto;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background: #06090e; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0;">
 
-  <!-- NAVIGATION -->
-  <header>
-    <div class="nav-container">
-      <a href="#" class="logo neon-text">
-        <span class="logo-racket">🏓</span> PING<span style="color:var(--neon-pink);">HUB</span>
-      </a>
-      <nav class="nav-links">
-        <a href="#pricing">Pricing</a>
-        <a href="#equipment">Equipment</a>
-        <a href="#monthly">Monthly Pass</a>
-        <a href="#about">Who We Are</a>
-        <a href="#location">Location</a>
-        <a href="#contact">Contact</a>
-        <a href="#booking" class="btn-nav-book">Reserve Court</a>
-      </nav>
-    </div>
-  </header>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 170" width="540" height="170" style="background: transparent;">
+    <defs>
+      <!-- Deep Electric Cyan Neon Glow -->
+      <filter id="glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="1.5" result="core" />
+        <feGaussianBlur stdDeviation="5" result="medium" />
+        <feGaussianBlur stdDeviation="12" result="outer" />
+        <feMerge>
+          <feMergeNode in="outer" />
+          <feMergeNode in="medium" />
+          <feMergeNode in="core" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <div class="badge-bar">
-        <span class="badge-rackets">🏓 ⚡ 🏓</span> Engomi, Nicosia &bull; Unmanned Self-Access
-      </div>
-      <h1 class="neon-text">
-        HIT FAST.<br>PLAY ANYTIME.
-      </h1>
-      <p class="hero-p">
-        Autonomous competition-grade table tennis tables open daily 07:00 – 23:00. Book on-demand, take private 1-on-1 sessions with national-tier pros, or subscribe for unlimited monthly sessions.
-      </p>
+      <!-- Warm Amber/Gold Glow for HUB -->
+      <filter id="glow-amber" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="1.5" result="core" />
+        <feGaussianBlur stdDeviation="5" result="medium" />
+        <feGaussianBlur stdDeviation="10" result="outer" />
+        <feMerge>
+          <feMergeNode in="outer" />
+          <feMergeNode in="medium" />
+          <feMergeNode in="core" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
 
-      <div class="hero-btns">
-        <a href="#booking" class="btn-neon">Book A Session</a>
-        <a href="#equipment" style="color:var(--text); text-decoration:none; font-weight:600; padding: 0.85rem 1rem;">View Tables & Rackets &rarr;</a>
-      </div>
-    </div>
+    <g transform="translate(20, 15)">
+      <!-- REALISTIC TABLE TENNIS RACKET -->
+      <g id="pro-racket" transform="rotate(-28 75 75)">
+        
+        <!-- Authentic ITTF Blade / Rubber Contour -->
+        <!-- Shape features the true wide sweet spot and curved transition toward the neck -->
+        <path d="M 42,48 
+                 C 34,18 70,8 86,8 
+                 C 102,8 138,18 130,48 
+                 C 126,64 122,86 104,95 
+                 C 98,98 94,98 92,100 
+                 L 80,100 
+                 C 78,98 74,98 68,95 
+                 C 50,86 46,64 42,48 Z" 
+              fill="none" 
+              stroke="#00f0ff" 
+              stroke-width="3.5" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"
+              filter="url(#glow-cyan)" />
 
-    <!-- HARDWARE QR BOX -->
-    <div class="hero-hardware-box">
-      <h3 style="color:#fff; font-size: 1.15rem; margin-bottom: 0.4rem;">🔑 Instant Smart Terminal Entry</h3>
-      <p style="font-size: 0.82rem; color: var(--muted);">Direct contactless access synced to Hikvision optical turnstiles.</p>
+        <!-- Rubber Base Cutout Arc (Shows exposed wooden shoulder) -->
+        <path d="M 64,93 C 74,86 98,86 108,93" 
+              fill="none" 
+              stroke="#00f0ff" 
+              stroke-width="2.2" 
+              opacity="0.8" 
+              filter="url(#glow-cyan)" />
+
+        <!-- Authentic Flared (FL) Ergonomic Grip Handle -->
+        <path d="M 80,100 
+                 L 82,128 
+                 C 82,136 86,146 88,148 
+                 C 87,150 83,151 76,151 
+                 C 69,151 65,150 64,148 
+                 C 66,146 70,136 70,128 
+                 L 72,100 Z" 
+              fill="none" 
+              stroke="#e2e8f0" 
+              stroke-width="3" 
+              stroke-linejoin="round" 
+              stroke-linecap="round"
+              filter="url(#glow-cyan)" />
+
+        <!-- Flared Handle Grip Core Line -->
+        <line x1="76" y1="108" x2="76" y2="142" stroke="#00f0ff" stroke-width="1.8" opacity="0.65" filter="url(#glow-cyan)" />
+      </g>
+
+      <!-- SEAMLESS ABS 40+ BALL (White Core with Cyan Aura) -->
+      <circle cx="150" cy="40" r="8.5" fill="#ffffff" stroke="#00f0ff" stroke-width="2.5" filter="url(#glow-cyan)" />
       
-      <div class="step-list">
-        <div class="step-item">
-          <div class="step-bubble">1</div>
-          <div><strong style="color:#fff; font-size:0.88rem;">Pick Slot & Pro:</strong> <span style="color:var(--muted); font-size:0.85rem;">Select your court hour or train with Andreas or Georgia Avraam.</span></div>
-        </div>
-        <div class="step-item">
-          <div class="step-bubble">2</div>
-          <div><strong style="color:#fff; font-size:0.88rem;">Stripe Checkout:</strong> <span style="color:var(--muted); font-size:0.85rem;">Complete instantaneous verified payment.</span></div>
-        </div>
-        <div class="step-item">
-          <div class="step-bubble">3</div>
-          <div><strong style="color:#fff; font-size:0.88rem;">Instant QR Unlock:</strong> <span style="color:var(--muted); font-size:0.85rem;">Valid optical QR badge activates 15 minutes before play time.</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- Ball Spin / Trajectory Streak -->
+      <path d="M 166,42 Q 186,47 200,56" fill="none" stroke="#00f0ff" stroke-width="2" stroke-dasharray="4,5" opacity="0.75" filter="url(#glow-cyan)" />
 
-  <!-- PRICING SECTION -->
-  <section id="pricing">
-    <div class="sec-tag">Club Rates</div>
-    <h2 class="sec-title">Transparent Court & Coaching Fees</h2>
-    <p class="sec-desc">No hidden charges. Equipment is included with every booking.</p>
+      <!-- TYPOGRAPHY -->
+      <!-- "PING" in Crisp Laser White / Ice Cyan -->
+      <text x="205" y="98" 
+            font-family="'Space Grotesk', sans-serif" 
+            font-size="62" 
+            font-weight="800" 
+            letter-spacing="2" 
+            fill="#ffffff" 
+            stroke="#00f0ff" 
+            stroke-width="1.5" 
+            filter="url(#glow-cyan)">PING</text>
 
-    <div class="rates-grid">
-      <div class="rate-card">
-        <div class="rate-pill">Off-Peak Hours</div>
-        <div class="rate-num">€10 <span>/ hour</span></div>
-        <p>Daily from <strong>07:00 – 15:00</strong>. Ideal for practice routines and sparring.</p>
-      </div>
+      <!-- "HUB" in Clean Neon Amber / Gold (Replaced the Pink) -->
+      <text x="368" y="98" 
+            font-family="'Space Grotesk', sans-serif" 
+            font-size="62" 
+            font-weight="800" 
+            letter-spacing="2" 
+            fill="#ffb800" 
+            stroke="#ffb800" 
+            stroke-width="1.5" 
+            filter="url(#glow-amber)">HUB</text>
 
-      <div class="rate-card">
-        <div class="rate-pill">Peak Hours</div>
-        <div class="rate-num">€13 <span>/ hour</span></div>
-        <p>Daily from <strong>15:00 – 23:00</strong>. Prime afternoon and night singles / doubles.</p>
-      </div>
+      <!-- Subtitle Badge -->
+      <text x="208" y="124" 
+            font-family="'JetBrains Mono', monospace" 
+            font-size="11.5" 
+            font-weight="700" 
+            letter-spacing="5" 
+            fill="#94a3b8" 
+            opacity="0.9">AUTONOMOUS CLUB &bull; 24/7</text>
+    </g>
+  </svg>
 
-      <div class="rate-card glow-card">
-        <div class="rate-pill" style="color:var(--neon-pink)">Pro Coaching</div>
-        <div class="rate-num">€25 <span>/ hour</span></div>
-        <p>1-on-1 private session with a pro (Andreas Avraam or Georgia Avraam).</p>
-      </div>
-
-      <div class="rate-card glow-gold" id="monthly">
-        <div class="rate-pill" style="color:var(--neon-amber)">Monthly Pass</div>
-        <div class="rate-num">€60 <span>/ month</span></div>
-        <p>Unlimited 1-hour sessions booked anytime at €0 + free official tournament entry.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EQUIPMENT SECTION -->
-  <section id="equipment">
-    <div class="sec-tag">Top-Tier Hardware</div>
-    <h2 class="sec-title neon-text">Equipment & Gear Included</h2>
-    <p class="sec-desc">You do not need to bring anything unless you want to. Premium gear is unlocked and waiting at the court.</p>
-
-    <div class="equip-grid">
-      <div class="equip-card">
-        <span class="equip-icon">🏓</span>
-        <h3>ITTF Competition Tables</h3>
-        <p>Equipped with official 25mm high-density competition tabletops providing tournament-grade, true-friction ball bounce and glare-free surface.</p>
-      </div>
-
-      <div class="equip-card">
-        <span class="equip-icon">⚡</span>
-        <h3>High-Quality Rackets Included</h3>
-        <p>Pre-cleaned, ITTF-approved competition rubbers (tacky topsheet, high-elastic sponge) ready at your table at no additional charge.</p>
-      </div>
-
-      <div class="equip-card">
-        <span class="equip-icon">⚪</span>
-        <h3>3-Star 40+ ABS Balls</h3>
-        <p>Caddies stocked with seamless 3-star tournament poly-balls for crisp sound, maximum spin tolerance, and consistent trajectory.</p>
-      </div>
-
-      <div class="equip-card">
-        <span class="equip-icon">👟</span>
-        <h3>Athletic Flooring & Multiball Nets</h3>
-        <p>Point-elastic sports flooring for joint impact protection, plus retractable collection nets for rapid multiball drill sessions.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO WE ARE & LOCATION -->
-  <section id="about">
-    <div class="sec-tag">The Story & Venue</div>
-    <h2 class="sec-title">Who We Are & Where To Find Us</h2>
-    
-    <div class="split-grid" style="margin-top: 1.5rem;">
-      <div class="info-box">
-        <h3>🏓 Who We Are</h3>
-        <p style="color:var(--muted); font-size: 0.92rem; margin-bottom: 1rem;">
-          PingHub was founded in Nicosia to break table tennis out of dusty basements. We built Cyprus’s first 24/7 autonomous ping pong lounge—fusing high-level tournament infrastructure with street culture, neon aesthetics, and instant smartphone access.
-        </p>
-        <p style="color:var(--muted); font-size: 0.92rem;">
-          Whether you want a casual midnight match with friends or professional drill masterclasses from top players <strong>Andreas Avraam</strong> and <strong>Georgia Avraam</strong>, PingHub is built for you.
-        </p>
-      </div>
-
-      <div class="info-box" id="location">
-        <h3>📍 Location & Facility</h3>
-        <p style="color:var(--muted); font-size: 0.92rem; margin-bottom: 0.8rem;">
-          <strong style="color:#fff;">Address:</strong> Engomi Sports District, 2414 Nicosia, Cyprus.
-        </p>
-        <p style="color:var(--muted); font-size: 0.92rem; margin-bottom: 0.8rem;">
-          <strong style="color:#fff;">Hours:</strong> Open 7 Days a Week &bull; 07:00 – 23:00
-        </p>
-        <p style="color:var(--muted); font-size: 0.92rem;">
-          <strong style="color:#fff;">Access:</strong> Fully autonomous via optical QR door terminal. Dedicated parking spaces available in front of the club.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- INTERACTIVE BOOKING WORKFLOW -->
-  <section id="booking">
-    <div class="sec-tag">Live Reservation Engine</div>
-    <h2 class="sec-title neon-pink">Book Your Table / Pro</h2>
-    
-    <div class="booking-wrapper">
-      
-      <!-- MODE TABS -->
-      <div class="mode-tabs">
-        <button class="tab-btn active" onclick="setMode('court')">
-          Standard Court
-          <span>€10 Off / €13 Peak</span>
-        </button>
-        <button class="tab-btn" onclick="setMode('pro')">
-          Private with a Pro
-          <span style="color:var(--neon-pink);">€25 / Hour</span>
-        </button>
-        <button class="tab-btn" onclick="setMode('monthly')">
-          Monthly Pass
-          <span style="color:var(--neon-amber);">€60 / Month</span>
-        </button>
-        <button class="tab-btn" onclick="setMode('social')">
-          Social Play Night
-          <span>€10 / Tue & Thu</span>
-        </button>
-      </div>
-
-      <!-- PRO COACH SELECTOR (Only shown in 'pro' mode) -->
-      <div class="pro-selector-group" id="proSelector">
-        <strong style="font-size: 0.9rem; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;">Select Your Professional Coach:</strong>
-        <div class="coach-options">
-          <div class="coach-card selected" id="coach-andreas" onclick="selectCoach('Andreas Avraam')">
-            <span class="coach-avatar">🏓</span>
-            <div class="coach-info">
-              <strong>Andreas Avraam</strong>
-              <span>National League Pro &bull; Aggressive Topspin Sparring</span>
-            </div>
-          </div>
-          <div class="coach-card" id="coach-georgia" onclick="selectCoach('Georgia Avraam')">
-            <span class="coach-avatar">⚡</span>
-            <div class="coach-info">
-              <strong>Georgia Avraam</strong>
-              <span>Elite Tournament Competitor &bull; Footwork & Control</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- INPUT FIELDS -->
-      <div class="form-row" id="dateNameRow">
-        <div class="input-field">
-          <label>Select Date</label>
-          <input type="date" id="bookDate" onchange="updateSummary()" />
-        </div>
-        <div class="input-field">
-          <label>Your Full Name</label>
-          <input type="text" id="custName" placeholder="e.g. Marios Ioannou" value="Marios Ioannou" />
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="input-field">
-          <label>Email (QR Code Delivered Here)</label>
-          <input type="email" id="custEmail" placeholder="marios@domain.com" value="marios@example.com" />
-        </div>
-        <div class="input-field">
-          <label>Phone Number</label>
-          <input type="tel" id="custPhone" placeholder="+357 99 000000" value="+357 99 234567" />
-        </div>
-      </div>
-
-      <!-- TIME SLOTS -->
-      <div id="timeSlotsBlock">
-        <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--muted); letter-spacing:0.8px;">
-          Choose 1-Hour Session Slot:
-        </label>
-        <div class="time-slot-grid">
-          <!-- Off Peak -->
-          <div class="time-chip" onclick="selectSlot(this, '07:00 - 08:00', 'offpeak')">07:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '08:00 - 09:00', 'offpeak')">08:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '09:00 - 10:00', 'offpeak')">09:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '10:00 - 11:00', 'offpeak')">10:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '11:00 - 12:00', 'offpeak')">11:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '12:00 - 13:00', 'offpeak')">12:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '13:00 - 14:00', 'offpeak')">13:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '14:00 - 15:00', 'offpeak')">14:00</div>
-          <!-- Peak -->
-          <div class="time-chip" onclick="selectSlot(this, '15:00 - 16:00', 'peak')">15:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '16:00 - 17:00', 'peak')">16:00</div>
-          <div class="time-chip active" onclick="selectSlot(this, '17:00 - 18:00', 'peak')">17:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '18:00 - 19:00', 'peak')">18:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '19:00 - 20:00', 'peak')">19:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '20:00 - 21:00', 'peak')">20:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '21:00 - 22:00', 'peak')">21:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '22:00 - 23:00', 'peak')">22:00</div>
-        </div>
-      </div>
-
-      <!-- SUMMARY -->
-      <div class="checkout-summary">
-        <div>
-          <div style="font-weight:700; color:#fff;" id="sumLabel">Peak Standard Court</div>
-          <div style="font-size:0.8rem; color:var(--muted);" id="sumMeta">17:00 - 18:00 &bull; Rackets & Balls Included</div>
-        </div>
-        <div class="checkout-total" id="sumPrice">€13</div>
-      </div>
-
-      <!-- TRIGGER STRIPE PAYMENT -->
-      <button class="btn-pay-stripe" onclick="openStripeModal()">
-        <span>🔒 Pay with Stripe & Confirm Reservation</span>
-      </button>
-
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact">
-    <div class="sec-tag">Direct Support</div>
-    <h2 class="sec-title">Contact & Helpdesk</h2>
-    <p class="sec-desc">Need assistance or hosting a private corporate ping pong tournament? Reach out directly.</p>
-
-    <div class="split-grid">
-      <div class="info-box">
-        <h4 style="color:#fff; margin-bottom: 0.5rem;">📞 Member & WhatsApp Hotline</h4>
-        <p style="color:var(--muted); font-size: 0.9rem;">+357 99 123 456 (Available 07:00 – 23:00)</p>
-      </div>
-      <div class="info-box">
-        <h4 style="color:#fff; margin-bottom: 0.5rem;">✉️ Direct Inquiries</h4>
-        <p style="color:var(--muted); font-size: 0.9rem;">hello@pinghub.cy &bull; Engomi, Nicosia</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- STRIPE PAYMENT MODAL -->
-  <div class="modal-backdrop" id="stripeModal">
-    <div class="stripe-card-modal">
-      <div class="stripe-header">
-        <div class="stripe-badge">
-          <svg width="34" height="15" viewBox="0 0 60 25" fill="#635bff"><path d="M59.64 14.28c0-4.48-2.17-8-6.44-8s-7 3.52-7 8c0 5.34 3.32 7.94 7.69 7.94a12.56 12.56 0 0 0 5.67-1.32v-3.7a10.82 10.82 0 0 1-4.7 1.07c-1.87 0-3.37-.62-3.64-2.61h8.37c.05-.44.05-1.04.05-1.38zm-8.4-1.57c0-1.78 1.1-2.51 2-2.51s1.95.73 1.95 2.51zm-8.87-6.43h-4.83l-.08 1.64c-1.09-1.21-2.66-1.92-4.57-1.92-4.14 0-7.39 3.57-7.39 8s3.15 8 7.39 8c1.95 0 3.5-.73 4.57-1.94v1.64h4.91zm-4.78 7.72c0 2.22-1.4 3.73-3.13 3.73s-3.15-1.51-3.15-3.73 1.42-3.73 3.15-3.73 3.13 1.51 3.13 3.73zm-17-7.72h-4.8v15.7h4.8zm-2.4-2.88a2.8 2.8 0 0 0 2.85-2.77A2.83 2.83 0 0 0 18.19.63a2.8 2.8 0 0 0-2.85 2.76 2.83 2.83 0 0 0 2.85 2.77zm-9.08 6.78c-.89-.48-2.13-.88-3.41-.88-1.52 0-2.35.63-2.35 1.54 0 1 .91 1.44 2.85 1.93 2.68.68 4.7 1.66 4.7 4.54 0 3.39-2.78 5.4-6.84 5.4a15.7 15.7 0 0 1-5.75-1.12v-4.1a13.3 13.3 0 0 0 5 1.18c1.55 0 2.5-.66 2.5-1.63 0-.94-.85-1.38-2.6-1.84-2.69-.71-4.95-1.69-4.95-4.59 0-3.32 2.68-5.26 6.55-5.26a14.1 14.1 0 0 1 4.7.83z"/></svg>
-          <span>SECURE CHECKOUT</span>
-        </div>
-        <button class="close-modal-btn" onclick="closeStripeModal()">&times;</button>
-      </div>
-
-      <div style="margin-bottom: 1.2rem;">
-        <span style="font-size: 0.8rem; color: var(--muted);" id="stripeOrderDesc">Peak Court Session</span>
-        <div style="font-size: 1.8rem; font-weight:700; color:#fff;" id="stripeAmount">€13.00</div>
-      </div>
-
-      <div class="stripe-input-box">
-        <label>Card Number</label>
-        <input type="text" id="cardNum" placeholder="4242 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4242" maxlength="19" value="4242 4242 4242 4242" />
-      </div>
-
-      <div class="stripe-sub-row">
-        <div class="stripe-input-box">
-          <label>Expires</label>
-          <input type="text" id="cardExp" placeholder="MM/YY" maxlength="5" value="12/28" />
-        </div>
-        <div class="stripe-input-box">
-          <label>CVC</label>
-          <input type="text" id="cardCvc" placeholder="CVC" maxlength="3" value="888" />
-        </div>
-      </div>
-
-      <button class="btn-pay-stripe" style="margin-top: 0.5rem;" onclick="processPaymentAndConfirm()">
-        Authorize & Get Entrance Pass
-      </button>
-      <div style="text-align:center; font-size: 0.72rem; color:var(--muted); margin-top: 0.8rem;">
-        🔒 Encrypted 256-Bit SSL connection to Stripe
-      </div>
-    </div>
-  </div>
-
-  <!-- QR ACCESS PASS MODAL -->
-  <div class="modal-backdrop" id="passModal">
-    <div class="stripe-card-modal" style="text-align: center; max-width: 420px;">
-      <button class="close-modal-btn" style="position: absolute; top:1rem; right:1.2rem;" onclick="closePassModal()">&times;</button>
-      
-      <div style="color:var(--neon-green); font-size:0.8rem; font-weight:700; letter-spacing:1px; margin-bottom:0.3rem;">
-        ✔ PAYMENT SUCCESSFUL &bull; RESERVATION CONFIRMED
-      </div>
-      <h3 class="neon-text" style="font-size: 1.35rem; margin-bottom: 0.3rem;">Autonomous Entry Pass</h3>
-      <p style="font-size: 0.8rem; color: var(--muted);">Hold this QR code against the entrance terminal upon arrival.</p>
-
-      <div class="qr-container" id="qrTarget"></div>
-
-      <div style="background:var(--surface-elevated); padding:0.9rem; border-radius:var(--radius-sm); font-size:0.82rem; text-align:left; border:1px solid var(--border);">
-        <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
-          <span style="color:var(--muted);">Player:</span>
-          <strong id="passPlayer" style="color:#fff;">Marios Ioannou</strong>
-        </div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
-          <span style="color:var(--muted);">Type:</span>
-          <strong id="passType" style="color:#fff;">Standard Court</strong>
-        </div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
-          <span style="color:var(--muted);">Pro Sparring:</span>
-          <strong id="passCoach" style="color:var(--neon-pink);">None</strong>
-        </div>
-        <div style="display:flex; justify-content:space-between;">
-          <span style="color:var(--muted);">Slot:</span>
-          <strong id="passSlot" style="color:var(--neon-cyan);">17:00 - 18:00</strong>
-        </div>
-      </div>
-
-      <p style="font-size: 0.72rem; color: var(--muted); margin-top: 1rem;">
-        Activation window: <strong style="color:#fff;">15 minutes before booking time</strong>. Receipt sent to your email.
-      </p>
-    </div>
-  </div>
-
-  <footer>
-    &copy; 2026 PingHub Cyprus &bull; Autonomous Table Tennis Club &bull; Engomi, Nicosia &bull; ITTF Competition Tables &bull; Pro Training
-  </footer>
-
-  <script>
-    let mode = 'court'; // 'court' | 'pro' | 'monthly' | 'social'
-    let selectedCoach = 'Andreas Avraam';
-    let selectedSlotLabel = '17:00 - 18:00';
-    let selectedTier = 'peak'; // 'offpeak' | 'peak'
-
-    // Init Date to Today
-    const dateField = document.getElementById('bookDate');
-    const today = new Date();
-    dateField.value = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
-
-    function setMode(newMode) {
-      mode = newMode;
-      const tabs = document.querySelectorAll('.tab-btn');
-      tabs.forEach(t => t.className = 'tab-btn');
-
-      const proSelector = document.getElementById('proSelector');
-      const timeSlotsBlock = document.getElementById('timeSlotsBlock');
-      const dateNameRow = document.getElementById('dateNameRow');
-
-      proSelector.classList.remove('active');
-      timeSlotsBlock.style.display = 'block';
-      dateNameRow.style.display = 'grid';
-
-      if (mode === 'court') {
-        tabs[0].classList.add('active');
-      } else if (mode === 'pro') {
-        tabs[1].classList.add('active-pro');
-        proSelector.classList.add('active');
-      } else if (mode === 'monthly') {
-        tabs[2].classList.add('active-gold');
-        timeSlotsBlock.style.display = 'none';
-        dateNameRow.style.display = 'none';
-      } else if (mode === 'social') {
-        tabs[3].classList.add('active');
-        selectedSlotLabel = '17:00 - 19:00 (Tue/Thu)';
-      }
-
-      updateSummary();
-    }
-
-    function selectCoach(name) {
-      selectedCoach = name;
-      document.getElementById('coach-andreas').classList.toggle('selected', name === 'Andreas Avraam');
-      document.getElementById('coach-georgia').classList.toggle('selected', name === 'Georgia Avraam');
-      updateSummary();
-    }
-
-    function selectSlot(element, slot, tier) {
-      document.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
-      element.classList.add('active');
-      selectedSlotLabel = slot;
-      selectedTier = tier;
-      updateSummary();
-    }
-
-    function updateSummary() {
-      const sumLabel = document.getElementById('sumLabel');
-      const sumMeta = document.getElementById('sumMeta');
-      const sumPrice = document.getElementById('sumPrice');
-      const dateVal = dateField.value;
-
-      if (mode === 'pro') {
-        sumLabel.textContent = `Private Session with Pro (${selectedCoach})`;
-        sumMeta.textContent = `${dateVal} • ${selectedSlotLabel} • Rackets & Pro Multiball Included`;
-        sumPrice.textContent = '€25';
-      } else if (mode === 'monthly') {
-        sumLabel.textContent = 'PingHub Monthly Unlimited Membership';
-        sumMeta.textContent = '30 Days Unlimited 1-Hr Sessions + Free Tournament Entries';
-        sumPrice.textContent = '€60';
-      } else if (mode === 'social') {
-        sumLabel.textContent = 'Social Matchmaking Night';
-        sumMeta.textContent = 'Tuesday / Thursday 17:00–19:00 • House paddles available';
-        sumPrice.textContent = '€10';
-      } else {
-        if (selectedTier === 'offpeak') {
-          sumLabel.textContent = 'Off-Peak Standard Court (07:00 – 15:00)';
-          sumPrice.textContent = '€10';
-        } else {
-          sumLabel.textContent = 'Peak Standard Court (15:00 – 23:00)';
-          sumPrice.textContent = '€13';
-        }
-        sumMeta.textContent = `${dateVal} • ${selectedSlotLabel} • Rackets & Balls Included`;
-      }
-    }
-
-    function openStripeModal() {
-      const priceText = document.getElementById('sumPrice').textContent;
-      const labelText = document.getElementById('sumLabel').textContent;
-      
-      document.getElementById('stripeAmount').textContent = `${priceText}.00`;
-      document.getElementById('stripeOrderDesc').textContent = labelText;
-      document.getElementById('stripeModal').classList.add('active');
-    }
-
-    function closeStripeModal() {
-      document.getElementById('stripeModal').classList.remove('active');
-    }
-
-    function processPaymentAndConfirm() {
-      const cardNum = document.getElementById('cardNum').value.trim();
-      const cardExp = document.getElementById('cardExp').value.trim();
-      const cardCvc = document.getElementById('cardCvc').value.trim();
-
-      if (!cardNum || !cardExp || !cardCvc) {
-        alert("Please enter full card information to process with Stripe.");
-        return;
-      }
-
-      // Close Stripe modal and display QR pass
-      closeStripeModal();
-
-      const name = document.getElementById('custName').value || 'Marios Ioannou';
-      const dateVal = dateField.value;
-
-      document.getElementById('passPlayer').textContent = name;
-      document.getElementById('passType').textContent = (mode === 'pro') ? 'Private Pro Session' : (mode === 'monthly' ? 'Monthly Pass' : 'Standard Court');
-      document.getElementById('passCoach').textContent = (mode === 'pro') ? selectedCoach : 'Self Play';
-      document.getElementById('passSlot').textContent = (mode === 'monthly') ? '30 Days Access' : `${dateVal} (${selectedSlotLabel})`;
-
-      // Create payload for Hikvision reader
-      const payload = JSON.stringify({
-        hub: "PINGHUB_ENGOMI",
-        scanner: "HIK_DS_K1T502",
-        user: name,
-        coach: (mode === 'pro') ? selectedCoach : null,
-        tier: mode,
-        slot: selectedSlotLabel,
-        date: dateVal,
-        valid_offset_min: -15,
-        auth_token: "STRIPE_" + Math.random().toString(36).substring(2, 9).toUpperCase()
-      });
-
-      const qrTarget = document.getElementById('qrTarget');
-      qrTarget.innerHTML = '';
-      new QRCode(qrTarget, {
-        text: payload,
-        width: 150,
-        height: 150,
-        colorDark: "#07090e",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-      });
-
-      document.getElementById('passModal').classList.add('active');
-    }
-
-    function closePassModal() {
-      document.getElementById('passModal').classList.remove('active');
-    }
-
-    // Initialize labels
-    updateSummary();
-  </script>
 </body>
 </html>
