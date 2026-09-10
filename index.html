@@ -3,95 +3,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PingHub | Autonomous Table Tennis Club &bull; Engomi, Nicosia</title>
+  <title>PINGHUB | 24/7 Neon Ping Pong Club &bull; Engomi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- QR generator library for live scan testing -->
+  <!-- Cyber / Street / Neon Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Tilt+Neon&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <!-- QR generator library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface-elevated: #1f242c;
-      --border: #30363d;
-      --border-focus: #10b981;
-      --primary: #10b981;
-      --primary-hover: #059669;
-      --primary-subtle: rgba(16, 185, 129, 0.1);
-      --text: #f0f6fc;
-      --muted: #8b949e;
-      --accent: #38bdf8;
-      --gold: #f59e0b;
-      --gold-subtle: rgba(245, 158, 11, 0.12);
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
+      --bg: #07090e;
+      --surface: #0f141c;
+      --surface-elevated: #161d28;
+      --border: #232d3d;
+      
+      /* Neon Glow Palette */
+      --neon-cyan: #00f0ff;
+      --neon-pink: #ff2a85;
+      --neon-amber: #ffb800;
+      --neon-green: #05ffa1;
+      
+      --glow-cyan: 0 0 12px rgba(0, 240, 255, 0.65), 0 0 28px rgba(0, 240, 255, 0.25);
+      --glow-pink: 0 0 12px rgba(255, 42, 133, 0.65), 0 0 28px rgba(255, 42, 133, 0.25);
+      --glow-amber: 0 0 12px rgba(255, 184, 0, 0.65), 0 0 28px rgba(255, 184, 0, 0.25);
+      
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
       background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(255, 42, 133, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(0, 240, 255, 0.08) 0%, transparent 45%);
       color: var(--text);
       line-height: 1.6;
     }
 
-    h1, h2, h3, h4, .brand-font {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+    .neon-text {
+      font-family: 'Tilt Neon', cursive, sans-serif;
+      text-shadow: var(--glow-cyan);
+      color: #fff;
+    }
+    .neon-pink {
+      font-family: 'Tilt Neon', cursive, sans-serif;
+      text-shadow: var(--glow-pink);
+      color: #fff;
     }
 
-    /* HEADER */
+    /* HEADER & NAV */
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(13, 17, 23, 0.9);
+      backdrop-filter: blur(14px);
+      background: rgba(7, 9, 14, 0.92);
       border-bottom: 1px solid var(--border);
     }
     .nav-container {
-      max-width: 1150px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 0.9rem 1.5rem;
     }
     .logo {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      text-decoration: none;
+      gap: 0.5rem;
+      letter-spacing: 1px;
     }
-    .logo span { color: var(--primary); }
+    .logo-racket {
+      font-size: 1.3rem;
+      filter: drop-shadow(0 0 6px var(--neon-pink));
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-left: 1.8rem;
-      transition: color 0.15s;
-    }
-    .nav-links a:hover { color: #fff; }
-    .btn-header-cta {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      text-decoration: none;
-      margin-left: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       transition: all 0.2s;
     }
-    .btn-header-cta:hover {
-      border-color: var(--primary);
-      color: var(--primary);
+    .nav-links a:hover {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 8px var(--neon-cyan);
+    }
+    .btn-nav-book {
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      box-shadow: inset 0 0 8px rgba(0, 240, 255, 0.2), 0 0 8px rgba(0, 240, 255, 0.3);
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-nav-book:hover {
+      background: var(--neon-cyan);
+      color: #000;
+      box-shadow: var(--glow-cyan);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
     }
 
     /* HERO */
@@ -105,158 +138,151 @@
       gap: 3rem;
     }
     @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; margin-top: 2rem; }
+      .hero { grid-template-columns: 1fr; margin-top: 1.5rem; }
     }
-    .location-badge {
+    .badge-bar {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.85rem;
+      gap: 0.6rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 999px;
       background: var(--surface-elevated);
       border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 0.82rem;
-      font-weight: 600;
+      font-size: 0.8rem;
       margin-bottom: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
-    .badge-dot {
-      width: 7px; height: 7px; background: var(--primary); border-radius: 50%;
+    .badge-rackets {
+      color: var(--neon-pink);
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      line-height: 1.18;
-      margin-bottom: 1rem;
-      color: #fff;
-      font-weight: 800;
+      font-size: clamp(2.3rem, 4.5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.1rem;
+      font-weight: 700;
       letter-spacing: -0.02em;
     }
-    .hero-text {
-      font-size: 1.05rem;
+    .hero-p {
       color: var(--muted);
-      margin-bottom: 1.6rem;
-      line-height: 1.65;
+      font-size: 1.05rem;
+      margin-bottom: 1.8rem;
     }
-    .hero-actions {
+    .hero-btns {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
-      align-items: center;
-      margin-bottom: 2rem;
+      gap: 1rem;
     }
-    .btn-primary {
-      background: var(--primary);
-      color: #0d1117;
+    .btn-neon {
+      background: var(--neon-pink);
+      color: #fff;
       font-weight: 700;
       padding: 0.85rem 1.6rem;
       border-radius: var(--radius-sm);
       text-decoration: none;
+      box-shadow: var(--glow-pink);
+      border: none;
+      cursor: pointer;
       display: inline-block;
-      transition: background 0.2s;
+      transition: transform 0.15s;
     }
-    .btn-primary:hover { background: var(--primary-hover); }
-    .btn-secondary {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      font-weight: 600;
-      padding: 0.85rem 1.5rem;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-secondary:hover { border-color: var(--muted); }
+    .btn-neon:hover { transform: translateY(-2px); }
 
-    /* HARDWARE INFO CARD */
-    .hero-hardware-card {
+    /* HARDWARE BOX */
+    .hero-hardware-box {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 1.8rem;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.04);
     }
-    .hero-hardware-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .hero-hardware-box::before {
+      content: "🏓 ⚡ 🏓";
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--surface-elevated);
+      padding: 0.1rem 0.6rem;
+      font-size: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
     }
-    .access-step-item {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .step-num {
+    .step-list { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .step-item { display: flex; gap: 0.9rem; align-items: flex-start; }
+    .step-bubble {
       width: 28px;
       height: 28px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
       border-radius: 50%;
+      background: var(--surface-elevated);
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
       font-size: 0.8rem;
+      font-weight: 700;
       flex-shrink: 0;
-      color: var(--primary);
-    }
-    .access-step-item p {
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-    .access-step-item strong { color: var(--text); }
-
-    /* VENUE SPECS */
-    .specs-strip {
-      max-width: 1150px;
-      margin: 0 auto 4rem;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem;
-    }
-    .spec-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.4rem;
-    }
-    .spec-card h4 {
-      font-size: 1rem;
-      color: #fff;
-      margin-bottom: 0.35rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .spec-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.5;
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
     }
 
-    /* RATES OVERVIEW */
-    .rates-section {
+    /* SECTIONS COMMON */
+    section {
       max-width: 1150px;
-      margin: 0 auto 4rem;
+      margin: 0 auto 5rem;
       padding: 0 1.5rem;
     }
-    .section-title {
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
+    .sec-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--neon-cyan);
+      margin-bottom: 0.3rem;
     }
-    .section-desc {
+    .sec-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .sec-desc {
       color: var(--muted);
       font-size: 0.95rem;
       margin-bottom: 2rem;
+      max-width: 650px;
     }
+
+    /* EQUIPMENT GRID */
+    .equip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .equip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .equip-card:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.08);
+    }
+    .equip-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .equip-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; color: #fff; }
+    .equip-card p { font-size: 0.85rem; color: var(--muted); }
+
+    /* PRICING GRID */
     .rates-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.2rem;
+      gap: 1.25rem;
     }
     .rate-card {
       background: var(--surface);
@@ -265,54 +291,115 @@
       padding: 1.6rem;
       position: relative;
     }
-    .rate-card.highlight-card {
-      border-color: var(--gold);
-      background: linear-gradient(180deg, var(--gold-subtle) 0%, var(--surface) 100%);
+    .rate-card.glow-card {
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 15px rgba(255, 42, 133, 0.15);
     }
-    .rate-tag {
-      font-size: 0.75rem;
+    .rate-card.glow-gold {
+      border-color: var(--neon-amber);
+      box-shadow: 0 0 15px rgba(255, 184, 0, 0.15);
+    }
+    .rate-pill {
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.6px;
+      color: var(--neon-cyan);
+      margin-bottom: 0.6rem;
     }
-    .rate-card.highlight-card .rate-tag {
-      color: var(--gold);
-    }
-    .rate-price {
-      font-size: 2rem;
-      font-weight: 800;
+    .rate-card.glow-card .rate-pill { color: var(--neon-pink); }
+    .rate-card.glow-gold .rate-pill { color: var(--neon-amber); }
+    .rate-num {
+      font-size: 2.1rem;
+      font-weight: 700;
       color: #fff;
       margin-bottom: 0.4rem;
+      font-family: 'Space Grotesk', sans-serif;
     }
-    .rate-price span { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
-    .rate-card p { font-size: 0.85rem; color: var(--muted); }
+    .rate-num span { font-size: 0.9rem; color: var(--muted); font-weight: 400; }
+    .rate-card p { font-size: 0.84rem; color: var(--muted); }
+
+    /* WHO WE ARE & LOCATION SECTION */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 768px) { .split-grid { grid-template-columns: 1fr; } }
+    .info-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+    }
+    .info-box h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* COACH PICKER ROW */
+    .pro-selector-group {
+      display: none;
+      background: var(--surface-elevated);
+      border: 1px solid var(--neon-pink);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 12px rgba(255, 42, 133, 0.15);
+    }
+    .pro-selector-group.active { display: block; }
+    .coach-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .coach-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.9rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      transition: all 0.2s;
+    }
+    .coach-card:hover { border-color: var(--neon-pink); }
+    .coach-card.selected {
+      border-color: var(--neon-pink);
+      background: rgba(255, 42, 133, 0.12);
+      box-shadow: 0 0 8px rgba(255, 42, 133, 0.3);
+    }
+    .coach-avatar {
+      font-size: 1.5rem;
+    }
+    .coach-info strong { display: block; font-size: 0.9rem; color: #fff; }
+    .coach-info span { font-size: 0.75rem; color: var(--muted); }
 
     /* BOOKING WORKFLOW */
-    .booking-section {
-      max-width: 900px;
-      margin: 0 auto 5rem;
-      padding: 0 1.5rem;
-    }
-    .booking-box {
+    .booking-wrapper {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 2.2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     }
-    .tabs {
+    .mode-tabs {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0.6rem;
+      gap: 0.7rem;
       margin-bottom: 1.8rem;
     }
-    @media (max-width: 768px) { .tabs { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .mode-tabs { grid-template-columns: 1fr 1fr; } }
     .tab-btn {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       color: var(--muted);
-      padding: 0.8rem 0.5rem;
+      padding: 0.85rem 0.5rem;
       border-radius: var(--radius-sm);
       cursor: pointer;
       font-family: inherit;
@@ -321,121 +408,43 @@
       text-align: center;
       transition: all 0.2s;
     }
-    .tab-btn span { display: block; font-size: 0.74rem; font-weight: 400; margin-top: 0.2rem; color: var(--muted); }
+    .tab-btn span { display: block; font-size: 0.75rem; margin-top: 0.2rem; }
     .tab-btn.active {
-      background: var(--primary-subtle);
-      border-color: var(--primary);
+      background: rgba(0, 240, 255, 0.12);
+      border-color: var(--neon-cyan);
       color: #fff;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
     }
-    .tab-btn.active span { color: var(--primary); }
+    .tab-btn.active-pro {
+      background: rgba(255, 42, 133, 0.15);
+      border-color: var(--neon-pink);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(255, 42, 133, 0.25);
+    }
     .tab-btn.active-gold {
-      background: var(--gold-subtle);
-      border-color: var(--gold);
+      background: rgba(255, 184, 0, 0.15);
+      border-color: var(--neon-amber);
       color: #fff;
-    }
-    .tab-btn.active-gold span { color: var(--gold); }
-
-    /* SUBSCRIBER QUICK TOGGLE */
-    .member-bypass-banner {
-      background: var(--surface-elevated);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius-sm);
-      padding: 0.9rem 1.1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    .member-bypass-text {
-      font-size: 0.85rem;
-      color: #cbd5e1;
-    }
-    .member-toggle-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--gold);
-      cursor: pointer;
-    }
-    .member-toggle-wrap input[type="checkbox"] {
-      width: 17px;
-      height: 17px;
-      accent-color: var(--gold);
-      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 184, 0, 0.25);
     }
 
-    /* SUBSCRIPTION DETAILS PANEL */
-    .sub-details-panel {
-      display: none;
-      background: var(--gold-subtle);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      border-radius: var(--radius-sm);
-      padding: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-    .sub-details-panel.visible { display: block; }
-    .sub-checklist {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.6rem;
-      margin-top: 0.8rem;
-      font-size: 0.82rem;
-      color: #fef3c7;
-    }
-
-    /* DRILL / TRAINING OPTIONS */
-    .drill-details-panel {
-      display: none;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-    .drill-details-panel.visible { display: block; }
-    .drill-checklist {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.6rem;
-      margin-top: 0.8rem;
-      font-size: 0.82rem;
-      color: #e2e8f0;
-    }
-
-    /* SOCIAL ALERT PANEL */
-    .social-info-panel {
-      display: none;
-      background: rgba(56, 189, 248, 0.08);
-      border-left: 3px solid var(--accent);
-      padding: 1rem 1.2rem;
-      border-radius: 4px;
-      font-size: 0.88rem;
-      margin-bottom: 1.5rem;
-      color: #bae6fd;
-    }
-    .social-info-panel.visible { display: block; }
-
-    /* FORM INPUTS */
-    .booking-grid-inputs {
+    .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.2rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
-    @media (max-width: 680px) { .booking-grid-inputs { grid-template-columns: 1fr; } }
-    
-    .input-block label {
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
+    .input-field label {
       display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
       color: var(--muted);
       margin-bottom: 0.4rem;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
     }
-    .form-control {
+    .input-field input {
       width: 100%;
       background: var(--bg);
       border: 1px solid var(--border);
@@ -446,24 +455,21 @@
       font-size: 0.9rem;
       outline: none;
     }
-    .form-control:focus { border-color: var(--border-focus); }
+    .input-field input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 6px rgba(0, 240, 255, 0.3); }
 
-    /* TIME PICKER CHIPS */
-    .time-chip-container {
-      margin-bottom: 1.5rem;
-    }
+    /* TIME SLOTS */
     .time-slot-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      gap: 0.45rem;
-      margin-top: 0.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+      gap: 0.5rem;
+      margin: 0.5rem 0 1.5rem;
     }
     .time-chip {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
-      color: #cbd5e1;
-      padding: 0.55rem 0.3rem;
-      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 0.55rem 0.2rem;
+      font-size: 0.8rem;
       border-radius: var(--radius-sm);
       cursor: pointer;
       text-align: center;
@@ -471,14 +477,15 @@
     }
     .time-chip:hover { border-color: var(--muted); }
     .time-chip.active {
-      background: var(--primary);
-      color: #0d1117;
+      background: var(--neon-cyan);
+      color: #000;
       font-weight: 700;
-      border-color: var(--primary);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 8px var(--neon-cyan);
     }
 
     /* SUMMARY BAR */
-    .summary-bar {
+    .checkout-summary {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -488,109 +495,115 @@
       border-radius: var(--radius-sm);
       margin-bottom: 1.4rem;
     }
-    .summary-title { font-size: 0.92rem; font-weight: 600; color: #fff; }
-    .summary-subtitle { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
-    .summary-price {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--primary);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    .summary-price.free-sub {
-      color: var(--gold);
+    .checkout-total {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      font-family: 'Space Grotesk', sans-serif;
     }
 
-    .btn-submit-booking {
+    .btn-pay-stripe {
       width: 100%;
-      background: var(--primary);
+      background: #635bff;
       border: none;
-      color: #0d1117;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
       font-size: 1rem;
       padding: 0.95rem;
       border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: background 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transition: background 0.2s;
     }
-    .btn-submit-booking:hover { background: var(--primary-hover); }
-    .btn-submit-booking.gold-btn {
-      background: var(--gold);
-      color: #0d1117;
-    }
-    .btn-submit-booking.gold-btn:hover {
-      background: #d97706;
-    }
+    .btn-pay-stripe:hover { background: #5348e2; }
 
-    /* MODAL */
+    /* STRIPE MODAL */
     .modal-backdrop {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 100;
-      padding: 1rem;
+      padding: 1.2rem;
     }
     .modal-backdrop.active { display: flex; }
-    .pass-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
+    .stripe-card-modal {
+      background: #111722;
+      border: 1px solid #2e384d;
       border-radius: var(--radius-lg);
       max-width: 440px;
       width: 100%;
       padding: 2rem;
       position: relative;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     }
-    .close-btn {
-      position: absolute;
-      top: 1rem; right: 1rem;
+    .stripe-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .stripe-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #635bff;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .close-modal-btn {
       background: transparent;
       border: none;
       color: var(--muted);
       font-size: 1.3rem;
       cursor: pointer;
     }
-    .pass-hardware-tag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--accent);
-      background: rgba(56, 189, 248, 0.1);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: 0.8rem;
+    .stripe-input-box {
+      border: 1px solid #334155;
+      border-radius: var(--radius-sm);
+      background: #090d14;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1rem;
     }
-    .qr-render-area {
+    .stripe-input-box label {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.2rem;
+    }
+    .stripe-input-box input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .stripe-sub-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    /* PASS QR DISPLAY */
+    .qr-container {
       background: #fff;
       padding: 1.2rem;
       border-radius: var(--radius-sm);
       width: fit-content;
-      margin: 1.2rem auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 1.4rem auto;
     }
-    .pass-details-list {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 0.8rem 1rem;
-      font-size: 0.82rem;
-      margin-top: 1rem;
-    }
-    .pass-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.3rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .pass-row:last-child { border-bottom: none; }
-    .pass-row span { color: var(--muted); }
-    .pass-row strong { color: #fff; }
 
     footer {
       border-top: 1px solid var(--border);
@@ -606,12 +619,17 @@
   <!-- NAVIGATION -->
   <header>
     <div class="nav-container">
-      <a href="#" class="logo">🏓 PING<span>HUB</span></a>
+      <a href="#" class="logo neon-text">
+        <span class="logo-racket">🏓</span> PING<span style="color:var(--neon-pink);">HUB</span>
+      </a>
       <nav class="nav-links">
-        <a href="#rates">Pricing</a>
-        <a href="#facility">Equipment</a>
-        <a href="#social">Social & Subscriptions</a>
-        <a href="#booking" class="btn-header-cta">Book Session</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#equipment">Equipment</a>
+        <a href="#monthly">Monthly Pass</a>
+        <a href="#about">Who We Are</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+        <a href="#booking" class="btn-nav-book">Reserve Court</a>
       </nav>
     </div>
   </header>
@@ -619,473 +637,510 @@
   <!-- HERO -->
   <section class="hero">
     <div>
-      <div class="location-badge">
-        <span class="badge-dot"></span> Autonomous Club &bull; Engomi, Nicosia
+      <div class="badge-bar">
+        <span class="badge-rackets">🏓 ⚡ 🏓</span> Engomi, Nicosia &bull; Unmanned Self-Access
       </div>
-      <h1>Direct court booking. Instant autonomous access.</h1>
-      <p class="hero-text">
-        High-grade competition tables open daily from 07:00 to 23:00. Book hourly slots on demand, or subscribe for €60/month to book 1-hour sessions anytime at €0 and compete in all club tournaments for free.
+      <h1 class="neon-text">
+        HIT FAST.<br>PLAY ANYTIME.
+      </h1>
+      <p class="hero-p">
+        Autonomous competition-grade table tennis tables open daily 07:00 – 23:00. Book on-demand, take private 1-on-1 sessions with national-tier pros, or subscribe for unlimited monthly sessions.
       </p>
 
-      <div class="hero-actions">
-        <a href="#booking" class="btn-primary">Reserve Court Slot</a>
-        <a href="#rates" class="btn-secondary">View Rates</a>
+      <div class="hero-btns">
+        <a href="#booking" class="btn-neon">Book A Session</a>
+        <a href="#equipment" style="color:var(--text); text-decoration:none; font-weight:600; padding: 0.85rem 1rem;">View Tables & Rackets &rarr;</a>
       </div>
     </div>
 
-    <!-- ACCESS WORKFLOW SUMMARY -->
-    <div class="hero-hardware-card">
-      <h3>🔐 Autonomous Access Flow</h3>
+    <!-- HARDWARE QR BOX -->
+    <div class="hero-hardware-box">
+      <h3 style="color:#fff; font-size: 1.15rem; margin-bottom: 0.4rem;">🔑 Instant Smart Terminal Entry</h3>
+      <p style="font-size: 0.82rem; color: var(--muted);">Direct contactless access synced to Hikvision optical turnstiles.</p>
       
-      <div class="access-step-item">
-        <div class="step-num">1</div>
-        <div>
-          <p><strong>Book Online:</strong> Choose your court or training format, pick an hourly slot, and confirm details.</p>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-bubble">1</div>
+          <div><strong style="color:#fff; font-size:0.88rem;">Pick Slot & Pro:</strong> <span style="color:var(--muted); font-size:0.85rem;">Select your court hour or train with Andreas or Georgia Avraam.</span></div>
         </div>
-      </div>
-
-      <div class="access-step-item">
-        <div class="step-num">2</div>
-        <div>
-          <p><strong>Receive QR Pass:</strong> An encrypted optical pass is issued to your email and phone immediately.</p>
+        <div class="step-item">
+          <div class="step-bubble">2</div>
+          <div><strong style="color:#fff; font-size:0.88rem;">Stripe Checkout:</strong> <span style="color:var(--muted); font-size:0.85rem;">Complete instantaneous verified payment.</span></div>
         </div>
-      </div>
-
-      <div class="access-step-item">
-        <div class="step-num">3</div>
-        <div>
-          <p><strong>Scan & Enter:</strong> Scans at the entrance Hikvision terminal. Activates <strong>15 minutes prior</strong> to your booking time.</p>
+        <div class="step-item">
+          <div class="step-bubble">3</div>
+          <div><strong style="color:#fff; font-size:0.88rem;">Instant QR Unlock:</strong> <span style="color:var(--muted); font-size:0.85rem;">Valid optical QR badge activates 15 minutes before play time.</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- VENUE & HARDWARE SPECIFICATIONS -->
-  <section class="specs-strip" id="facility">
-    <div class="spec-card">
-      <h4>🏆 Competition-Spec Equipment</h4>
-      <p>ITTF-approved competition tables, pro tension nets, and professional non-slip multi-layer athletic sports flooring.</p>
-    </div>
-    <div class="spec-card">
-      <h4>🎯 Multiball & Training Gear</h4>
-      <p>Continuous ball catch-nets, high-capacity ball caddies, and regulation training multiballs ready at court.</p>
-    </div>
-    <div class="spec-card">
-      <h4>🚪 Integrated Smart Entry</h4>
-      <p>Autonomous door management powered by Hikvision optical scanner terminals. No physical key handoffs.</p>
-    </div>
-    <div class="spec-card">
-      <h4>❄️ Climate Controlled</h4>
-      <p>Maintained indoor airflow and air conditioning tailored for competitive training and unhindered ball trajectories.</p>
-    </div>
-  </section>
-
-  <!-- PRICING TIERS -->
-  <section class="rates-section" id="rates">
-    <h2 class="section-title">Transparent Hourly & Monthly Rates</h2>
-    <p class="section-desc">Open daily 07:00 – 23:00. Pay-as-you-go or join the club membership.</p>
+  <!-- PRICING SECTION -->
+  <section id="pricing">
+    <div class="sec-tag">Club Rates</div>
+    <h2 class="sec-title">Transparent Court & Coaching Fees</h2>
+    <p class="sec-desc">No hidden charges. Equipment is included with every booking.</p>
 
     <div class="rates-grid">
       <div class="rate-card">
-        <div class="rate-tag">Off-Peak Hours</div>
-        <div class="rate-price">€10 <span>/ hour</span></div>
-        <p>Valid <strong>07:00 – 15:00</strong> daily. Ideal for focused drills and morning sparring.</p>
+        <div class="rate-pill">Off-Peak Hours</div>
+        <div class="rate-num">€10 <span>/ hour</span></div>
+        <p>Daily from <strong>07:00 – 15:00</strong>. Ideal for practice routines and sparring.</p>
       </div>
 
       <div class="rate-card">
-        <div class="rate-tag">Peak Hours</div>
-        <div class="rate-price">€13 <span>/ hour</span></div>
-        <p>Valid <strong>15:00 – 23:00</strong> daily. Prime evening singles, doubles, and match play.</p>
+        <div class="rate-pill">Peak Hours</div>
+        <div class="rate-num">€13 <span>/ hour</span></div>
+        <p>Daily from <strong>15:00 – 23:00</strong>. Prime afternoon and night singles / doubles.</p>
       </div>
 
-      <div class="rate-card highlight-card">
-        <div class="rate-tag">Monthly Club Pass</div>
-        <div class="rate-price">€60 <span>/ month</span></div>
-        <p>Includes <strong>unlimited 1-hour sessions</strong> (reserve anytime at €0) + <strong>free entry into all official tournaments</strong>.</p>
+      <div class="rate-card glow-card">
+        <div class="rate-pill" style="color:var(--neon-pink)">Pro Coaching</div>
+        <div class="rate-num">€25 <span>/ hour</span></div>
+        <p>1-on-1 private session with a pro (Andreas Avraam or Georgia Avraam).</p>
       </div>
 
-      <div class="rate-card">
-        <div class="rate-tag">Private Training</div>
-        <div class="rate-price">€18 <span>/ hour</span></div>
-        <p>Includes private partitioned court, multiball feeders, catch nets, and focused drill setup.</p>
+      <div class="rate-card glow-gold" id="monthly">
+        <div class="rate-pill" style="color:var(--neon-amber)">Monthly Pass</div>
+        <div class="rate-num">€60 <span>/ month</span></div>
+        <p>Unlimited 1-hour sessions booked anytime at €0 + free official tournament entry.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPMENT SECTION -->
+  <section id="equipment">
+    <div class="sec-tag">Top-Tier Hardware</div>
+    <h2 class="sec-title neon-text">Equipment & Gear Included</h2>
+    <p class="sec-desc">You do not need to bring anything unless you want to. Premium gear is unlocked and waiting at the court.</p>
+
+    <div class="equip-grid">
+      <div class="equip-card">
+        <span class="equip-icon">🏓</span>
+        <h3>ITTF Competition Tables</h3>
+        <p>Equipped with official 25mm high-density competition tabletops providing tournament-grade, true-friction ball bounce and glare-free surface.</p>
       </div>
 
-      <div class="rate-card" id="social">
-        <div class="rate-tag">Social Play Nights</div>
-        <div class="rate-price">€10 <span>/ person</span></div>
-        <p>Tuesdays & Thursdays (17:00 – 19:00). Drop in solo and rotate games (free for monthly subscribers).</p>
+      <div class="equip-card">
+        <span class="equip-icon">⚡</span>
+        <h3>High-Quality Rackets Included</h3>
+        <p>Pre-cleaned, ITTF-approved competition rubbers (tacky topsheet, high-elastic sponge) ready at your table at no additional charge.</p>
+      </div>
+
+      <div class="equip-card">
+        <span class="equip-icon">⚪</span>
+        <h3>3-Star 40+ ABS Balls</h3>
+        <p>Caddies stocked with seamless 3-star tournament poly-balls for crisp sound, maximum spin tolerance, and consistent trajectory.</p>
+      </div>
+
+      <div class="equip-card">
+        <span class="equip-icon">👟</span>
+        <h3>Athletic Flooring & Multiball Nets</h3>
+        <p>Point-elastic sports flooring for joint impact protection, plus retractable collection nets for rapid multiball drill sessions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE & LOCATION -->
+  <section id="about">
+    <div class="sec-tag">The Story & Venue</div>
+    <h2 class="sec-title">Who We Are & Where To Find Us</h2>
+    
+    <div class="split-grid" style="margin-top: 1.5rem;">
+      <div class="info-box">
+        <h3>🏓 Who We Are</h3>
+        <p style="color:var(--muted); font-size: 0.92rem; margin-bottom: 1rem;">
+          PingHub was founded in Nicosia to break table tennis out of dusty basements. We built Cyprus’s first 24/7 autonomous ping pong lounge—fusing high-level tournament infrastructure with street culture, neon aesthetics, and instant smartphone access.
+        </p>
+        <p style="color:var(--muted); font-size: 0.92rem;">
+          Whether you want a casual midnight match with friends or professional drill masterclasses from top players <strong>Andreas Avraam</strong> and <strong>Georgia Avraam</strong>, PingHub is built for you.
+        </p>
+      </div>
+
+      <div class="info-box" id="location">
+        <h3>📍 Location & Facility</h3>
+        <p style="color:var(--muted); font-size: 0.92rem; margin-bottom: 0.8rem;">
+          <strong style="color:#fff;">Address:</strong> Engomi Sports District, 2414 Nicosia, Cyprus.
+        </p>
+        <p style="color:var(--muted); font-size: 0.92rem; margin-bottom: 0.8rem;">
+          <strong style="color:#fff;">Hours:</strong> Open 7 Days a Week &bull; 07:00 – 23:00
+        </p>
+        <p style="color:var(--muted); font-size: 0.92rem;">
+          <strong style="color:#fff;">Access:</strong> Fully autonomous via optical QR door terminal. Dedicated parking spaces available in front of the club.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- INTERACTIVE BOOKING WORKFLOW -->
-  <section class="booking-section" id="booking">
-    <div class="booking-box">
-      <h2 style="font-size: 1.5rem; color: #fff; margin-bottom: 0.3rem;">Court Reservation & Access</h2>
-      <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem;">Select your session format and reservation time.</p>
-
-      <!-- MEMBER QUICK TOGGLE -->
-      <div class="member-bypass-banner" id="memberBypassBanner">
-        <div class="member-bypass-text">
-          Have an active <strong>€60 Monthly Subscription</strong>?
-        </div>
-        <label class="member-toggle-wrap">
-          <input type="checkbox" id="memberCheckbox" onchange="toggleMemberStatus(this.checked)">
-          Apply Member Benefits (€0 Booking)
-        </label>
-      </div>
-
-      <!-- TYPE TABS -->
-      <div class="tabs">
-        <button class="tab-btn active" onclick="selectSessionMode('court')">
+  <section id="booking">
+    <div class="sec-tag">Live Reservation Engine</div>
+    <h2 class="sec-title neon-pink">Book Your Table / Pro</h2>
+    
+    <div class="booking-wrapper">
+      
+      <!-- MODE TABS -->
+      <div class="mode-tabs">
+        <button class="tab-btn active" onclick="setMode('court')">
           Standard Court
           <span>€10 Off / €13 Peak</span>
         </button>
-        <button class="tab-btn" onclick="selectSessionMode('training')">
-          Private Training
-          <span>Drills & Multiballs</span>
+        <button class="tab-btn" onclick="setMode('pro')">
+          Private with a Pro
+          <span style="color:var(--neon-pink);">€25 / Hour</span>
         </button>
-        <button class="tab-btn" onclick="selectSessionMode('social')">
-          Social Play
-          <span>Tue & Thu (17:00)</span>
-        </button>
-        <button class="tab-btn" onclick="selectSessionMode('monthly')">
+        <button class="tab-btn" onclick="setMode('monthly')">
           Monthly Pass
-          <span>€60 / Month</span>
+          <span style="color:var(--neon-amber);">€60 / Month</span>
+        </button>
+        <button class="tab-btn" onclick="setMode('social')">
+          Social Play Night
+          <span>€10 / Tue & Thu</span>
         </button>
       </div>
 
-      <!-- MONTHLY PASS SUBSCRIPTION PURCHASE PANEL (Conditional) -->
-      <div class="sub-details-panel" id="subPanel">
-        <strong style="font-size: 0.95rem; color: #fef3c7;">👑 PingHub Club Monthly Membership — €60 / month</strong>
-        <p style="font-size: 0.82rem; color: #fde68a; margin-top: 0.3rem;">
-          Subscribe once and play whenever you want. Your membership unlocks 1-hour bookings completely free of charge.
-        </p>
-        <div class="sub-checklist">
-          <div>✔ 1-Hour court bookings at <strong>€0</strong> anytime</div>
-          <div>✔ 100% Free entry to official tournaments</div>
-          <div>✔ Full access to Tue/Thu Social Play nights</div>
-          <div>✔ Digital Member Key active on your account</div>
+      <!-- PRO COACH SELECTOR (Only shown in 'pro' mode) -->
+      <div class="pro-selector-group" id="proSelector">
+        <strong style="font-size: 0.9rem; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;">Select Your Professional Coach:</strong>
+        <div class="coach-options">
+          <div class="coach-card selected" id="coach-andreas" onclick="selectCoach('Andreas Avraam')">
+            <span class="coach-avatar">🏓</span>
+            <div class="coach-info">
+              <strong>Andreas Avraam</strong>
+              <span>National League Pro &bull; Aggressive Topspin Sparring</span>
+            </div>
+          </div>
+          <div class="coach-card" id="coach-georgia" onclick="selectCoach('Georgia Avraam')">
+            <span class="coach-avatar">⚡</span>
+            <div class="coach-info">
+              <strong>Georgia Avraam</strong>
+              <span>Elite Tournament Competitor &bull; Footwork & Control</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- PRIVATE TRAINING DETAILS (Conditional) -->
-      <div class="drill-details-panel" id="trainingPanel">
-        <strong style="font-size: 0.88rem; color: #fff;">Private Training Setup Details:</strong>
-        <p style="font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem;">
-          Designed for structured technical repetitions and competitive match preparation.
-        </p>
-        <div class="drill-checklist">
-          <div>✔ 100+ Multiball practice set</div>
-          <div>✔ Dedicated ball collection caddy</div>
-          <div>✔ Retractable floor catch netting</div>
-          <div>✔ Private partitioned table space</div>
-        </div>
-      </div>
-
-      <!-- SOCIAL PLAY NOTICE (Conditional) -->
-      <div class="social-info-panel" id="socialAlert">
-        <strong>Tuesday & Thursday Matchmaking:</strong> Social Play takes place exclusively between <strong>17:00 and 19:00</strong>. Bring your paddle or use house equipment; games rotate continuously.
-      </div>
-
-      <!-- FORM & CALENDAR INPUTS -->
-      <div class="booking-grid-inputs" id="dateTimeRow">
-        <div class="input-block">
+      <!-- INPUT FIELDS -->
+      <div class="form-row" id="dateNameRow">
+        <div class="input-field">
           <label>Select Date</label>
-          <input type="date" id="bookingDate" class="form-control" onchange="onDateChange()" />
+          <input type="date" id="bookDate" onchange="updateSummary()" />
         </div>
-
-        <div class="input-block">
-          <label id="memberIdLabel">Your Full Name</label>
-          <input type="text" id="custName" class="form-control" placeholder="e.g. Andreas Savva" value="Andreas Savva" />
+        <div class="input-field">
+          <label>Your Full Name</label>
+          <input type="text" id="custName" placeholder="e.g. Marios Ioannou" value="Marios Ioannou" />
         </div>
       </div>
 
-      <div class="booking-grid-inputs" style="margin-top: -0.5rem;">
-        <div class="input-block">
-          <label>Email Address (For Pass / Receipt)</label>
-          <input type="email" id="custEmail" class="form-control" placeholder="name@domain.com" value="andreas@example.com" />
+      <div class="form-row">
+        <div class="input-field">
+          <label>Email (QR Code Delivered Here)</label>
+          <input type="email" id="custEmail" placeholder="marios@domain.com" value="marios@example.com" />
         </div>
-        <div class="input-block">
+        <div class="input-field">
           <label>Phone Number</label>
-          <input type="tel" id="custPhone" class="form-control" placeholder="+357 99 000000" value="+357 99 123456" />
+          <input type="tel" id="custPhone" placeholder="+357 99 000000" value="+357 99 234567" />
         </div>
       </div>
 
       <!-- TIME SLOTS -->
-      <div class="time-chip-container" id="timeSlotsSection">
-        <label style="display:block; font-size:0.8rem; font-weight:600; color:var(--muted); text-transform:uppercase; margin-bottom:0.4rem;">
-          Select 1-Hour Time Window:
+      <div id="timeSlotsBlock">
+        <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--muted); letter-spacing:0.8px;">
+          Choose 1-Hour Session Slot:
         </label>
-        <div class="time-slot-grid" id="slotsContainer">
-          <!-- Off-Peak (07:00 - 15:00) -->
-          <div class="time-chip" data-hour="7" onclick="pickTime(this, '07:00 - 08:00', 'offpeak')">07:00</div>
-          <div class="time-chip" data-hour="8" onclick="pickTime(this, '08:00 - 09:00', 'offpeak')">08:00</div>
-          <div class="time-chip" data-hour="9" onclick="pickTime(this, '09:00 - 10:00', 'offpeak')">09:00</div>
-          <div class="time-chip" data-hour="10" onclick="pickTime(this, '10:00 - 11:00', 'offpeak')">10:00</div>
-          <div class="time-chip" data-hour="11" onclick="pickTime(this, '11:00 - 12:00', 'offpeak')">11:00</div>
-          <div class="time-chip" data-hour="12" onclick="pickTime(this, '12:00 - 13:00', 'offpeak')">12:00</div>
-          <div class="time-chip" data-hour="13" onclick="pickTime(this, '13:00 - 14:00', 'offpeak')">13:00</div>
-          <div class="time-chip" data-hour="14" onclick="pickTime(this, '14:00 - 15:00', 'offpeak')">14:00</div>
-
-          <!-- Peak (15:00 - 23:00) -->
-          <div class="time-chip" data-hour="15" onclick="pickTime(this, '15:00 - 16:00', 'peak')">15:00</div>
-          <div class="time-chip" data-hour="16" onclick="pickTime(this, '16:00 - 17:00', 'peak')">16:00</div>
-          <div class="time-chip active" data-hour="17" onclick="pickTime(this, '17:00 - 18:00', 'peak')">17:00</div>
-          <div class="time-chip" data-hour="18" onclick="pickTime(this, '18:00 - 19:00', 'peak')">18:00</div>
-          <div class="time-chip" data-hour="19" onclick="pickTime(this, '19:00 - 20:00', 'peak')">19:00</div>
-          <div class="time-chip" data-hour="20" onclick="pickTime(this, '20:00 - 21:00', 'peak')">20:00</div>
-          <div class="time-chip" data-hour="21" onclick="pickTime(this, '21:00 - 22:00', 'peak')">21:00</div>
-          <div class="time-chip" data-hour="22" onclick="pickTime(this, '22:00 - 23:00', 'peak')">22:00</div>
+        <div class="time-slot-grid">
+          <!-- Off Peak -->
+          <div class="time-chip" onclick="selectSlot(this, '07:00 - 08:00', 'offpeak')">07:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '08:00 - 09:00', 'offpeak')">08:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '09:00 - 10:00', 'offpeak')">09:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '10:00 - 11:00', 'offpeak')">10:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '11:00 - 12:00', 'offpeak')">11:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '12:00 - 13:00', 'offpeak')">12:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '13:00 - 14:00', 'offpeak')">13:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '14:00 - 15:00', 'offpeak')">14:00</div>
+          <!-- Peak -->
+          <div class="time-chip" onclick="selectSlot(this, '15:00 - 16:00', 'peak')">15:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '16:00 - 17:00', 'peak')">16:00</div>
+          <div class="time-chip active" onclick="selectSlot(this, '17:00 - 18:00', 'peak')">17:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '18:00 - 19:00', 'peak')">18:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '19:00 - 20:00', 'peak')">19:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '20:00 - 21:00', 'peak')">20:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '21:00 - 22:00', 'peak')">21:00</div>
+          <div class="time-chip" onclick="selectSlot(this, '22:00 - 23:00', 'peak')">22:00</div>
         </div>
       </div>
 
-      <!-- SUMMARY & CHECKOUT -->
-      <div class="summary-bar">
+      <!-- SUMMARY -->
+      <div class="checkout-summary">
         <div>
-          <div class="summary-title" id="summarySessionType">Peak Court Rental (15:00 – 23:00)</div>
-          <div class="summary-subtitle" id="summarySessionTime">Selected Time &bull; 17:00 - 18:00</div>
+          <div style="font-weight:700; color:#fff;" id="sumLabel">Peak Standard Court</div>
+          <div style="font-size:0.8rem; color:var(--muted);" id="sumMeta">17:00 - 18:00 &bull; Rackets & Balls Included</div>
         </div>
-        <div class="summary-price" id="summaryTotal">€13</div>
+        <div class="checkout-total" id="sumPrice">€13</div>
       </div>
 
-      <button class="btn-submit-booking" id="mainSubmitBtn" onclick="handleFormSubmission()">
-        Confirm Booking & Generate QR Pass
+      <!-- TRIGGER STRIPE PAYMENT -->
+      <button class="btn-pay-stripe" onclick="openStripeModal()">
+        <span>🔒 Pay with Stripe & Confirm Reservation</span>
       </button>
+
     </div>
   </section>
 
-  <!-- HIKVISION ENTRY PASS MODAL -->
-  <div class="modal-backdrop" id="passModal">
-    <div class="pass-card">
-      <button class="close-btn" onclick="closeModal()">&times;</button>
-      
-      <span class="pass-hardware-tag">HIKVISION DS-K1T502 COMPATIBLE PASS</span>
-      <h3 style="font-size: 1.25rem; color:#fff; margin-bottom: 0.2rem;" id="modalHeading">Access Pass Granted</h3>
-      <p style="font-size: 0.82rem; color: var(--muted);" id="modalSubHeading">Present this QR code to the entrance scanner upon arrival.</p>
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="sec-tag">Direct Support</div>
+    <h2 class="sec-title">Contact & Helpdesk</h2>
+    <p class="sec-desc">Need assistance or hosting a private corporate ping pong tournament? Reach out directly.</p>
 
-      <!-- Generated QR Output Container -->
-      <div class="qr-render-area" id="qrcode"></div>
+    <div class="split-grid">
+      <div class="info-box">
+        <h4 style="color:#fff; margin-bottom: 0.5rem;">📞 Member & WhatsApp Hotline</h4>
+        <p style="color:var(--muted); font-size: 0.9rem;">+357 99 123 456 (Available 07:00 – 23:00)</p>
+      </div>
+      <div class="info-box">
+        <h4 style="color:#fff; margin-bottom: 0.5rem;">✉️ Direct Inquiries</h4>
+        <p style="color:var(--muted); font-size: 0.9rem;">hello@pinghub.cy &bull; Engomi, Nicosia</p>
+      </div>
+    </div>
+  </section>
 
-      <div class="pass-details-list">
-        <div class="pass-row">
-          <span>Venue:</span>
-          <strong>PingHub &bull; Engomi</strong>
+  <!-- STRIPE PAYMENT MODAL -->
+  <div class="modal-backdrop" id="stripeModal">
+    <div class="stripe-card-modal">
+      <div class="stripe-header">
+        <div class="stripe-badge">
+          <svg width="34" height="15" viewBox="0 0 60 25" fill="#635bff"><path d="M59.64 14.28c0-4.48-2.17-8-6.44-8s-7 3.52-7 8c0 5.34 3.32 7.94 7.69 7.94a12.56 12.56 0 0 0 5.67-1.32v-3.7a10.82 10.82 0 0 1-4.7 1.07c-1.87 0-3.37-.62-3.64-2.61h8.37c.05-.44.05-1.04.05-1.38zm-8.4-1.57c0-1.78 1.1-2.51 2-2.51s1.95.73 1.95 2.51zm-8.87-6.43h-4.83l-.08 1.64c-1.09-1.21-2.66-1.92-4.57-1.92-4.14 0-7.39 3.57-7.39 8s3.15 8 7.39 8c1.95 0 3.5-.73 4.57-1.94v1.64h4.91zm-4.78 7.72c0 2.22-1.4 3.73-3.13 3.73s-3.15-1.51-3.15-3.73 1.42-3.73 3.15-3.73 3.13 1.51 3.13 3.73zm-17-7.72h-4.8v15.7h4.8zm-2.4-2.88a2.8 2.8 0 0 0 2.85-2.77A2.83 2.83 0 0 0 18.19.63a2.8 2.8 0 0 0-2.85 2.76 2.83 2.83 0 0 0 2.85 2.77zm-9.08 6.78c-.89-.48-2.13-.88-3.41-.88-1.52 0-2.35.63-2.35 1.54 0 1 .91 1.44 2.85 1.93 2.68.68 4.7 1.66 4.7 4.54 0 3.39-2.78 5.4-6.84 5.4a15.7 15.7 0 0 1-5.75-1.12v-4.1a13.3 13.3 0 0 0 5 1.18c1.55 0 2.5-.66 2.5-1.63 0-.94-.85-1.38-2.6-1.84-2.69-.71-4.95-1.69-4.95-4.59 0-3.32 2.68-5.26 6.55-5.26a14.1 14.1 0 0 1 4.7.83z"/></svg>
+          <span>SECURE CHECKOUT</span>
         </div>
-        <div class="pass-row">
-          <span>Holder:</span>
-          <strong id="passHolderName">Andreas Savva</strong>
+        <button class="close-modal-btn" onclick="closeStripeModal()">&times;</button>
+      </div>
+
+      <div style="margin-bottom: 1.2rem;">
+        <span style="font-size: 0.8rem; color: var(--muted);" id="stripeOrderDesc">Peak Court Session</span>
+        <div style="font-size: 1.8rem; font-weight:700; color:#fff;" id="stripeAmount">€13.00</div>
+      </div>
+
+      <div class="stripe-input-box">
+        <label>Card Number</label>
+        <input type="text" id="cardNum" placeholder="4242 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4242" maxlength="19" value="4242 4242 4242 4242" />
+      </div>
+
+      <div class="stripe-sub-row">
+        <div class="stripe-input-box">
+          <label>Expires</label>
+          <input type="text" id="cardExp" placeholder="MM/YY" maxlength="5" value="12/28" />
         </div>
-        <div class="pass-row">
-          <span>Type:</span>
-          <strong id="passSessionLabel">Standard Court</strong>
-        </div>
-        <div class="pass-row">
-          <span>Validity Window:</span>
-          <strong id="passTimeWindow">17:00 - 18:00</strong>
-        </div>
-        <div class="pass-row">
-          <span>Hardware Activation:</span>
-          <strong style="color: var(--primary);">Active 15 min prior</strong>
+        <div class="stripe-input-box">
+          <label>CVC</label>
+          <input type="text" id="cardCvc" placeholder="CVC" maxlength="3" value="888" />
         </div>
       </div>
 
-      <p style="font-size: 0.74rem; color: var(--muted); margin-top: 1rem; text-align: center;">
-        A copy of this digital credential has been recorded and dispatched to your email.
+      <button class="btn-pay-stripe" style="margin-top: 0.5rem;" onclick="processPaymentAndConfirm()">
+        Authorize & Get Entrance Pass
+      </button>
+      <div style="text-align:center; font-size: 0.72rem; color:var(--muted); margin-top: 0.8rem;">
+        🔒 Encrypted 256-Bit SSL connection to Stripe
+      </div>
+    </div>
+  </div>
+
+  <!-- QR ACCESS PASS MODAL -->
+  <div class="modal-backdrop" id="passModal">
+    <div class="stripe-card-modal" style="text-align: center; max-width: 420px;">
+      <button class="close-modal-btn" style="position: absolute; top:1rem; right:1.2rem;" onclick="closePassModal()">&times;</button>
+      
+      <div style="color:var(--neon-green); font-size:0.8rem; font-weight:700; letter-spacing:1px; margin-bottom:0.3rem;">
+        ✔ PAYMENT SUCCESSFUL &bull; RESERVATION CONFIRMED
+      </div>
+      <h3 class="neon-text" style="font-size: 1.35rem; margin-bottom: 0.3rem;">Autonomous Entry Pass</h3>
+      <p style="font-size: 0.8rem; color: var(--muted);">Hold this QR code against the entrance terminal upon arrival.</p>
+
+      <div class="qr-container" id="qrTarget"></div>
+
+      <div style="background:var(--surface-elevated); padding:0.9rem; border-radius:var(--radius-sm); font-size:0.82rem; text-align:left; border:1px solid var(--border);">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+          <span style="color:var(--muted);">Player:</span>
+          <strong id="passPlayer" style="color:#fff;">Marios Ioannou</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+          <span style="color:var(--muted);">Type:</span>
+          <strong id="passType" style="color:#fff;">Standard Court</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+          <span style="color:var(--muted);">Pro Sparring:</span>
+          <strong id="passCoach" style="color:var(--neon-pink);">None</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between;">
+          <span style="color:var(--muted);">Slot:</span>
+          <strong id="passSlot" style="color:var(--neon-cyan);">17:00 - 18:00</strong>
+        </div>
+      </div>
+
+      <p style="font-size: 0.72rem; color: var(--muted); margin-top: 1rem;">
+        Activation window: <strong style="color:#fff;">15 minutes before booking time</strong>. Receipt sent to your email.
       </p>
     </div>
   </div>
 
   <footer>
-    &copy; 2026 PingHub. Autonomous Table Tennis Club &bull; Engomi, Nicosia, Cyprus &bull; Operating Hours: 07:00 – 23:00
+    &copy; 2026 PingHub Cyprus &bull; Autonomous Table Tennis Club &bull; Engomi, Nicosia &bull; ITTF Competition Tables &bull; Pro Training
   </footer>
 
   <script>
-    let currentMode = 'court'; // court | training | social | monthly
-    let selectedTimeLabel = '17:00 - 18:00';
-    let selectedTier = 'peak'; // offpeak | peak
-    let isSubscriber = false;
+    let mode = 'court'; // 'court' | 'pro' | 'monthly' | 'social'
+    let selectedCoach = 'Andreas Avraam';
+    let selectedSlotLabel = '17:00 - 18:00';
+    let selectedTier = 'peak'; // 'offpeak' | 'peak'
 
-    // Set initial date to today
-    const dateInput = document.getElementById('bookingDate');
+    // Init Date to Today
+    const dateField = document.getElementById('bookDate');
     const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const dd = String(today.getDate()).padStart(2, '0');
-    dateInput.value = `${yyyy}-${mm}-${dd}`;
+    dateField.value = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
 
-    function selectSessionMode(mode) {
-      currentMode = mode;
-      
+    function setMode(newMode) {
+      mode = newMode;
       const tabs = document.querySelectorAll('.tab-btn');
       tabs.forEach(t => t.className = 'tab-btn');
 
-      const trainingPanel = document.getElementById('trainingPanel');
-      const socialAlert = document.getElementById('socialAlert');
-      const subPanel = document.getElementById('subPanel');
-      const timeSlotsSection = document.getElementById('timeSlotsSection');
-      const memberBypassBanner = document.getElementById('memberBypassBanner');
-      const dateTimeRow = document.getElementById('dateTimeRow');
+      const proSelector = document.getElementById('proSelector');
+      const timeSlotsBlock = document.getElementById('timeSlotsBlock');
+      const dateNameRow = document.getElementById('dateNameRow');
 
-      trainingPanel.classList.remove('visible');
-      socialAlert.classList.remove('visible');
-      subPanel.classList.remove('visible');
-      timeSlotsSection.style.display = 'block';
-      memberBypassBanner.style.display = 'flex';
-      dateTimeRow.style.display = 'grid';
+      proSelector.classList.remove('active');
+      timeSlotsBlock.style.display = 'block';
+      dateNameRow.style.display = 'grid';
 
       if (mode === 'court') {
         tabs[0].classList.add('active');
-      } else if (mode === 'training') {
-        tabs[1].classList.add('active');
-        trainingPanel.classList.add('visible');
-      } else if (mode === 'social') {
-        tabs[2].classList.add('active');
-        socialAlert.classList.add('visible');
-        selectedTimeLabel = '17:00 - 19:00';
+      } else if (mode === 'pro') {
+        tabs[1].classList.add('active-pro');
+        proSelector.classList.add('active');
       } else if (mode === 'monthly') {
-        tabs[3].classList.add('active-gold');
-        subPanel.classList.add('visible');
-        timeSlotsSection.style.display = 'none';
-        memberBypassBanner.style.display = 'none';
-        dateTimeRow.style.display = 'none'; // subscriptions start immediately
+        tabs[2].classList.add('active-gold');
+        timeSlotsBlock.style.display = 'none';
+        dateNameRow.style.display = 'none';
+      } else if (mode === 'social') {
+        tabs[3].classList.add('active');
+        selectedSlotLabel = '17:00 - 19:00 (Tue/Thu)';
       }
 
-      refreshPriceAndSummary();
+      updateSummary();
     }
 
-    function toggleMemberStatus(active) {
-      isSubscriber = active;
-      refreshPriceAndSummary();
+    function selectCoach(name) {
+      selectedCoach = name;
+      document.getElementById('coach-andreas').classList.toggle('selected', name === 'Andreas Avraam');
+      document.getElementById('coach-georgia').classList.toggle('selected', name === 'Georgia Avraam');
+      updateSummary();
     }
 
-    function pickTime(element, label, tier) {
-      const chips = document.querySelectorAll('.time-chip');
-      chips.forEach(c => c.classList.remove('active'));
+    function selectSlot(element, slot, tier) {
+      document.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
       element.classList.add('active');
-      
-      selectedTimeLabel = label;
+      selectedSlotLabel = slot;
       selectedTier = tier;
-      refreshPriceAndSummary();
+      updateSummary();
     }
 
-    function onDateChange() {
-      refreshPriceAndSummary();
-    }
+    function updateSummary() {
+      const sumLabel = document.getElementById('sumLabel');
+      const sumMeta = document.getElementById('sumMeta');
+      const sumPrice = document.getElementById('sumPrice');
+      const dateVal = dateField.value;
 
-    function refreshPriceAndSummary() {
-      const titleEl = document.getElementById('summarySessionType');
-      const timeEl = document.getElementById('summarySessionTime');
-      const priceEl = document.getElementById('summaryTotal');
-      const submitBtn = document.getElementById('mainSubmitBtn');
-      const dateVal = dateInput.value;
-
-      priceEl.classList.remove('free-sub');
-      submitBtn.classList.remove('gold-btn');
-      timeEl.textContent = `${dateVal} • ${selectedTimeLabel}`;
-
-      if (currentMode === 'monthly') {
-        titleEl.textContent = "Monthly Club Membership (Unlimited 1-hr Play + Tournaments)";
-        timeEl.textContent = "Active 30 days from purchase date";
-        priceEl.textContent = "€60";
-        submitBtn.textContent = "Purchase Monthly Pass (€60)";
-        submitBtn.classList.add('gold-btn');
-        return;
-      }
-
-      // If user has subscription enabled: 1-hour sessions & social are €0
-      if (isSubscriber) {
-        priceEl.classList.add('free-sub');
-        submitBtn.textContent = "Reserve Table with Member Pass (€0)";
-        
-        if (currentMode === 'court') {
-          titleEl.textContent = "Court Session (Active Monthly Pass Applied)";
-          priceEl.textContent = "€0";
-        } else if (currentMode === 'social') {
-          titleEl.textContent = "Social Match Session (Member Free Entry)";
-          priceEl.textContent = "€0";
-        } else if (currentMode === 'training') {
-          titleEl.textContent = "Private Training Session (Member Equipment Surcharge)";
-          priceEl.textContent = "€5";
-        }
-        return;
-      }
-
-      // Standard Non-subscriber pricing
-      submitBtn.textContent = "Confirm Booking & Generate QR Pass";
-      if (currentMode === 'court') {
-        if (selectedTier === 'offpeak') {
-          titleEl.textContent = "Off-Peak Court (07:00 – 15:00)";
-          priceEl.textContent = "€10";
-        } else {
-          titleEl.textContent = "Peak Court (15:00 – 23:00)";
-          priceEl.textContent = "€13";
-        }
-      } else if (currentMode === 'training') {
-        titleEl.textContent = "Private Training Session (Multiballs & Drills)";
-        priceEl.textContent = "€18";
-      } else if (currentMode === 'social') {
-        titleEl.textContent = "Social Match Session (Tue & Thu 17:00–19:00)";
-        priceEl.textContent = "€10";
-      }
-    }
-
-    function handleFormSubmission() {
-      const name = document.getElementById('custName').value || 'Customer';
-      const dateVal = dateInput.value;
-      const passModal = document.getElementById('passModal');
-      const qrContainer = document.getElementById('qrcode');
-
-      let sessionTitle = document.getElementById('summarySessionType').textContent;
-      let validityWindow = `${dateVal} (${selectedTimeLabel})`;
-      let isMonthlyPurchase = (currentMode === 'monthly');
-
-      if (isMonthlyPurchase) {
-        document.getElementById('modalHeading').textContent = "Membership Activated";
-        document.getElementById('modalSubHeading').textContent = "Your digital monthly pass is active. Use your Member QR to unlock the facility.";
-        validityWindow = "30 Days Unlimited Access";
-        sessionTitle = "Monthly Club Member (All Tournaments Free)";
+      if (mode === 'pro') {
+        sumLabel.textContent = `Private Session with Pro (${selectedCoach})`;
+        sumMeta.textContent = `${dateVal} • ${selectedSlotLabel} • Rackets & Pro Multiball Included`;
+        sumPrice.textContent = '€25';
+      } else if (mode === 'monthly') {
+        sumLabel.textContent = 'PingHub Monthly Unlimited Membership';
+        sumMeta.textContent = '30 Days Unlimited 1-Hr Sessions + Free Tournament Entries';
+        sumPrice.textContent = '€60';
+      } else if (mode === 'social') {
+        sumLabel.textContent = 'Social Matchmaking Night';
+        sumMeta.textContent = 'Tuesday / Thursday 17:00–19:00 • House paddles available';
+        sumPrice.textContent = '€10';
       } else {
-        document.getElementById('modalHeading').textContent = "Access Pass Granted";
-        document.getElementById('modalSubHeading').textContent = "Present this QR code to the entrance scanner upon arrival.";
+        if (selectedTier === 'offpeak') {
+          sumLabel.textContent = 'Off-Peak Standard Court (07:00 – 15:00)';
+          sumPrice.textContent = '€10';
+        } else {
+          sumLabel.textContent = 'Peak Standard Court (15:00 – 23:00)';
+          sumPrice.textContent = '€13';
+        }
+        sumMeta.textContent = `${dateVal} • ${selectedSlotLabel} • Rackets & Balls Included`;
       }
-
-      document.getElementById('passHolderName').textContent = name;
-      document.getElementById('passSessionLabel').textContent = sessionTitle;
-      document.getElementById('passTimeWindow').textContent = validityWindow;
-
-      // Generate structured payload for Hikvision reader
-      const accessPayload = JSON.stringify({
-        org: "PINGHUB-CY",
-        terminal: "DS-K1T502DBWX-CQR",
-        user: name,
-        membership: isSubscriber || isMonthlyPurchase ? "ACTIVE_MONTHLY" : "HOURLY_PASS",
-        date: isMonthlyPurchase ? "ALL_30_DAYS" : dateVal,
-        slot: isMonthlyPurchase ? "ANY_1_HOUR" : selectedTimeLabel,
-        valid_from_offset_min: -15,
-        token: "AUTH-" + Math.floor(100000 + Math.random() * 900000)
-      });
-
-      // Clear & redraw QR
-      qrContainer.innerHTML = "";
-      new QRCode(qrContainer, {
-        text: accessPayload,
-        width: 140,
-        height: 140,
-        colorDark : "#0d1117",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.M
-      });
-
-      passModal.classList.add('active');
     }
 
-    function closeModal() {
+    function openStripeModal() {
+      const priceText = document.getElementById('sumPrice').textContent;
+      const labelText = document.getElementById('sumLabel').textContent;
+      
+      document.getElementById('stripeAmount').textContent = `${priceText}.00`;
+      document.getElementById('stripeOrderDesc').textContent = labelText;
+      document.getElementById('stripeModal').classList.add('active');
+    }
+
+    function closeStripeModal() {
+      document.getElementById('stripeModal').classList.remove('active');
+    }
+
+    function processPaymentAndConfirm() {
+      const cardNum = document.getElementById('cardNum').value.trim();
+      const cardExp = document.getElementById('cardExp').value.trim();
+      const cardCvc = document.getElementById('cardCvc').value.trim();
+
+      if (!cardNum || !cardExp || !cardCvc) {
+        alert("Please enter full card information to process with Stripe.");
+        return;
+      }
+
+      // Close Stripe modal and display QR pass
+      closeStripeModal();
+
+      const name = document.getElementById('custName').value || 'Marios Ioannou';
+      const dateVal = dateField.value;
+
+      document.getElementById('passPlayer').textContent = name;
+      document.getElementById('passType').textContent = (mode === 'pro') ? 'Private Pro Session' : (mode === 'monthly' ? 'Monthly Pass' : 'Standard Court');
+      document.getElementById('passCoach').textContent = (mode === 'pro') ? selectedCoach : 'Self Play';
+      document.getElementById('passSlot').textContent = (mode === 'monthly') ? '30 Days Access' : `${dateVal} (${selectedSlotLabel})`;
+
+      // Create payload for Hikvision reader
+      const payload = JSON.stringify({
+        hub: "PINGHUB_ENGOMI",
+        scanner: "HIK_DS_K1T502",
+        user: name,
+        coach: (mode === 'pro') ? selectedCoach : null,
+        tier: mode,
+        slot: selectedSlotLabel,
+        date: dateVal,
+        valid_offset_min: -15,
+        auth_token: "STRIPE_" + Math.random().toString(36).substring(2, 9).toUpperCase()
+      });
+
+      const qrTarget = document.getElementById('qrTarget');
+      qrTarget.innerHTML = '';
+      new QRCode(qrTarget, {
+        text: payload,
+        width: 150,
+        height: 150,
+        colorDark: "#07090e",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      document.getElementById('passModal').classList.add('active');
+    }
+
+    function closePassModal() {
       document.getElementById('passModal').classList.remove('active');
     }
 
-    // Run on startup
-    refreshPriceAndSummary();
+    // Initialize labels
+    updateSummary();
   </script>
 </body>
 </html>
