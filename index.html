@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>PINGHUB | 24/7 Neon Ping Pong Club • Engomi</title>
+  <title>PINGHUB | 24/7 Autonomous Table Tennis Club • Engomi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Tilt+Neon&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Tilt+Neon&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
@@ -19,9 +19,9 @@
       --neon-pink: #ff2a85;
       --neon-amber: #ffb800;
       --neon-green: #05ffa1;
-      --glow-cyan: 0 0 12px rgba(0, 240, 255, 0.65);
-      --glow-pink: 0 0 12px rgba(255, 42, 133, 0.65);
-      --text: #f1f5f9;
+      --glow-cyan: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 24px rgba(0, 240, 255, 0.35);
+      --glow-pink: 0 0 10px rgba(255, 42, 133, 0.7), 0 0 24px rgba(255, 42, 133, 0.35);
+      --text: #f8fafc;
       --muted: #94a3b8;
       --radius-sm: 8px;
       --radius-md: 12px;
@@ -33,22 +33,50 @@
       font-family: 'Space Grotesk', -apple-system, sans-serif;
       background-color: var(--bg);
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(255, 42, 133, 0.08) 0%, transparent 35%),
-        radial-gradient(circle at 90% 40%, rgba(0, 240, 255, 0.08) 0%, transparent 40%);
+        radial-gradient(circle at 10% 10%, rgba(255, 42, 133, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 40%, rgba(0, 240, 255, 0.1) 0%, transparent 45%);
       color: var(--text);
       line-height: 1.5;
       padding-bottom: 90px;
     }
 
-    .neon-text { font-family: 'Tilt Neon', sans-serif; text-shadow: var(--glow-cyan); color: #fff; }
-    .neon-pink { font-family: 'Tilt Neon', sans-serif; text-shadow: var(--glow-pink); color: #fff; }
+    /* HIGH-CONTRAST LOGO & BRAND READABILITY */
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 1.55rem;
+      color: #ffffff;
+      text-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+    }
+    .brand-hub {
+      color: var(--neon-pink);
+      text-shadow: 0 0 16px rgba(255, 42, 133, 0.6);
+    }
+    .neon-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      text-shadow: var(--glow-cyan);
+      color: #fff;
+    }
+    .neon-pink {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      text-shadow: var(--glow-pink);
+      color: #fff;
+    }
 
     header {
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(7, 9, 14, 0.94);
+      background: rgba(7, 9, 14, 0.96);
       border-bottom: 1px solid var(--border);
     }
     .nav-container {
@@ -57,15 +85,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.8rem 1rem;
-    }
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
+      padding: 0.85rem 1rem;
     }
     .nav-links { display: flex; align-items: center; gap: 1rem; }
     .nav-links a { display: none; }
@@ -94,14 +114,14 @@
     }
     .sec-tag {
       font-size: 0.72rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--neon-cyan);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
-    .sec-title { font-size: 1.65rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .sec-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .sec-title { font-size: 1.65rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .sec-desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.5rem; }
 
     /* HERO */
     .hero {
@@ -142,12 +162,14 @@
       font-size: 0.75rem;
       margin-bottom: 0.8rem;
       text-transform: uppercase;
+      font-weight: 700;
     }
     .hero h1 {
-      font-size: clamp(2rem, 8vw, 3.2rem);
+      font-size: clamp(2.1rem, 8vw, 3.4rem);
       line-height: 1.1;
       margin-bottom: 0.8rem;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
     .hero-p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.4rem; }
     .hero-btns { display: flex; flex-direction: column; gap: 0.8rem; }
@@ -347,27 +369,66 @@
       border-color: var(--neon-pink);
     }
 
-    /* INLINE CALENDAR */
-    .calendar-container {
+    /* DATE PICKER BUTTON TRIGGER */
+    .date-picker-trigger {
+      width: 100%;
+      height: 48px;
       background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1rem;
-      margin-bottom: 1.4rem;
+      color: #fff;
+      padding: 0 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
     }
-    .cal-header {
+    .date-picker-trigger:hover, .date-picker-trigger:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
+    }
+
+    /* FULLSCREEN/CENTERED POPUP CALENDAR MODAL */
+    .cal-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 120;
+      padding: 1rem;
+    }
+    .cal-modal-backdrop.open { display: flex; }
+    .cal-modal-box {
+      background: #0d121a;
+      border: 1px solid var(--neon-cyan);
+      border-radius: var(--radius-md);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 240, 255, 0.25);
+      width: 100%;
+      max-width: 360px;
+      padding: 1.4rem;
+    }
+    .cal-modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem;
     }
-    .cal-month-title { font-weight: 700; font-size: 0.95rem; color: #fff; }
+    .cal-month-title { font-weight: 800; font-size: 1rem; color: #fff; }
     .cal-nav-btn {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       color: #fff;
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: var(--radius-sm);
       cursor: pointer;
       display: flex;
@@ -379,41 +440,41 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       text-align: center;
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 0.75rem;
+      font-weight: 800;
       color: var(--muted);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       text-transform: uppercase;
     }
     .cal-grid-dates {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
+      gap: 6px;
     }
     .cal-day-cell {
-      height: 42px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: var(--radius-sm);
-      font-size: 0.88rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 700;
       color: var(--text);
       cursor: pointer;
       background: var(--surface);
       border: 1px solid transparent;
       user-select: none;
-      transition: all 0.15s ease-in-out;
+      transition: all 0.15s;
     }
     .cal-day-cell:hover:not(.past):not(.empty) {
       border-color: var(--neon-cyan);
     }
     .cal-day-cell.empty { background: transparent; cursor: default; }
-    .cal-day-cell.past { opacity: 0.25; pointer-events: none; }
+    .cal-day-cell.past { opacity: 0.2; pointer-events: none; }
     .cal-day-cell.active {
       background: var(--neon-cyan) !important;
       color: #000 !important;
-      font-weight: 700;
+      font-weight: 800;
       box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
     }
 
@@ -427,7 +488,7 @@
     .input-field label {
       display: block;
       font-size: 0.75rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: var(--muted);
@@ -446,7 +507,7 @@
     }
     .input-field input:focus { border-color: var(--neon-cyan); }
 
-    /* DYNAMIC TIME SLOTS & DISABLED STATE */
+    /* TIME SLOTS */
     .time-slot-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
@@ -541,6 +602,7 @@
     }
     @media (min-width: 860px) { .mobile-bottom-dock { display: none; } }
 
+    /* STRIPE & PASS MODALS */
     .modal-backdrop {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -549,7 +611,7 @@
       display: none;
       justify-content: center;
       align-items: center;
-      z-index: 100;
+      z-index: 130;
       padding: 1rem;
     }
     .modal-backdrop.active { display: flex; }
@@ -611,7 +673,9 @@
 
   <header>
     <div class="nav-container">
-      <a href="#" class="logo neon-text">🏓 PING<span style="color:var(--neon-pink);">HUB</span></a>
+      <a href="#" class="brand-title">
+        <span>🏓 PING<span class="brand-hub">HUB</span></span>
+      </a>
       <nav class="nav-links">
         <a href="#equipment">Gear</a>
         <a href="#booking">Reserve</a>
@@ -628,7 +692,7 @@
         <div class="hero-banner-overlay"></div>
       </div>
       <div class="badge-bar">
-        <span>🏓 ⚡ 🏓</span> Engomi, Nicosia • Self-Access
+        <span>🏓 ⚡ 🏓</span> Engomi, Nicosia • 24/7 Self-Access
       </div>
       <h1 class="neon-text">BOOK ONLINE.<br>PLAY ANYTIME.</h1>
       <p class="hero-p">Autonomous competition-grade tables open daily 07:00 – 23:00. Instant contactless QR door entry, tournament equipment, and on-demand sparring coaches.</p>
@@ -760,43 +824,42 @@
         </div>
       </div>
 
-      <!-- CALENDAR -->
-      <div id="calendarBlock">
-        <div class="calendar-container">
-          <div class="cal-header">
-            <span class="cal-month-title" id="calMonthTitle"></span>
-            <div style="display:flex; gap:0.4rem;">
-              <button type="button" class="cal-nav-btn" onclick="changeMonth(-1)">&lsaquo;</button>
-              <button type="button" class="cal-nav-btn" onclick="changeMonth(1)">&rsaquo;</button>
-            </div>
+      <!-- DATE TRIGGER & USER DETAILS -->
+      <div class="form-row" id="dateNameRow">
+        <div class="input-field">
+          <label>Select Date (Tap to Choose)</label>
+          <div class="date-picker-trigger" id="dateTriggerBtn" onclick="openCalendarModal()">
+            <span id="dateDisplayText" style="font-weight:700;">Loading...</span>
+            <span style="color:var(--neon-cyan); font-size:1.2rem;">📅</span>
           </div>
-          <div class="cal-grid-days">
-            <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
-          </div>
-          <div class="cal-grid-dates" id="calGridDates"></div>
+        </div>
+
+        <div class="input-field">
+          <label>Full Name</label>
+          <input type="text" id="custName" placeholder="Marios Ioannou" value="Marios Ioannou"/>
         </div>
       </div>
 
       <div class="form-row">
         <div class="input-field">
-          <label>Full Name</label>
-          <input type="text" id="custName" placeholder="Marios Ioannou" value="Marios Ioannou"/>
-        </div>
-        <div class="input-field">
           <label>Email (Pass Delivery)</label>
           <input type="email" id="custEmail" placeholder="marios@domain.com" value="marios@example.com"/>
+        </div>
+        <div class="input-field">
+          <label>Phone Number</label>
+          <input type="tel" id="custPhone" placeholder="+357 99 000000" value="+357 99 234567"/>
         </div>
       </div>
 
       <!-- DYNAMIC TIME SLOTS CONTAINER -->
       <div id="timeSlotsBlock">
-        <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--muted);">Choose 1-Hour Time Slot:</label>
+        <label style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--muted);">Choose 1-Hour Time Slot:</label>
         <div class="time-slot-grid" id="timeSlotContainer"></div>
       </div>
 
       <div class="checkout-summary">
         <div>
-          <div style="font-weight:700; color:#fff; font-size:0.95rem;" id="sumLabel">Peak Standard Court</div>
+          <div style="font-weight:800; color:#fff; font-size:0.95rem;" id="sumLabel">Peak Standard Court</div>
           <div style="font-size:0.75rem; color:var(--muted);" id="sumMeta">Loading...</div>
         </div>
         <div class="checkout-total" id="sumPrice">€13</div>
@@ -808,13 +871,31 @@
     </div>
   </section>
 
-  <!-- MOBILE DOCK -->
+  <!-- MOBILE STICKY DOCK -->
   <div class="mobile-bottom-dock">
     <div>
       <div style="font-size:0.72rem; color:var(--muted);" id="dockLabel">Peak Court</div>
       <div style="font-size:1.4rem; font-weight:700; color:var(--neon-cyan);" id="dockPrice">€13</div>
     </div>
     <button class="mobile-dock-btn" onclick="openStripeModal()">🔒 Instant Checkout</button>
+  </div>
+
+  <!-- CENTERED POPUP CALENDAR MODAL -->
+  <div class="cal-modal-backdrop" id="calendarModal" onclick="closeCalendarModalOnBg(event)">
+    <div class="cal-modal-box">
+      <div class="cal-modal-header">
+        <span class="cal-month-title" id="calMonthTitle">September 2026</span>
+        <div style="display:flex; gap:0.4rem; align-items:center;">
+          <button type="button" class="cal-nav-btn" onclick="changeMonth(-1)">&lsaquo;</button>
+          <button type="button" class="cal-nav-btn" onclick="changeMonth(1)">&rsaquo;</button>
+          <button type="button" class="close-modal-btn" style="margin-left:0.4rem;" onclick="closeCalendarModal()">&times;</button>
+        </div>
+      </div>
+      <div class="cal-grid-days">
+        <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+      </div>
+      <div class="cal-grid-dates" id="calGridDates"></div>
+    </div>
   </div>
 
   <!-- STRIPE MODAL -->
@@ -891,8 +972,8 @@
     let selectedDay = currentCalDate.getDate();
 
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-    // Definition of operating slots (07:00 - 23:00)
     const ALL_HOURLY_SLOTS = [
       { start: '07:00', label: '07:00 - 08:00', tier: 'offpeak' },
       { start: '08:00', label: '08:00 - 09:00', tier: 'offpeak' },
@@ -912,7 +993,6 @@
       { start: '22:00', label: '22:00 - 23:00', tier: 'peak' }
     ];
 
-    // Seed data: reserved start times (replace with API/database in production)
     const BOOKED_REGISTRY = {
       '2026-09-18': ['17:00', '18:00', '20:00'],
       '2026-09-19': ['10:00', '11:00', '19:00', '21:00'],
@@ -925,10 +1005,86 @@
       return `${selectedYear}-${mm}-${dd}`;
     }
 
+    function getFormattedDisplayDate() {
+      const d = new Date(selectedYear, selectedMonth, selectedDay);
+      const dayName = dayNames[d.getDay()];
+      const monthShort = monthNames[selectedMonth].substring(0, 3);
+      return `${dayName}, ${monthShort} ${selectedDay}, ${selectedYear}`;
+    }
+
+    // Modal Calendar Controls
+    function openCalendarModal() {
+      currentCalDate = new Date(selectedYear, selectedMonth, 1);
+      renderCalendar();
+      document.getElementById('calendarModal').classList.add('open');
+    }
+
+    function closeCalendarModal() {
+      document.getElementById('calendarModal').classList.remove('open');
+    }
+
+    function closeCalendarModalOnBg(e) {
+      if (e.target.id === 'calendarModal') {
+        closeCalendarModal();
+      }
+    }
+
+    function renderCalendar() {
+      const year = currentCalDate.getFullYear();
+      const month = currentCalDate.getMonth();
+      document.getElementById('calMonthTitle').textContent = `${monthNames[month]} ${year}`;
+
+      const grid = document.getElementById('calGridDates');
+      grid.innerHTML = '';
+
+      const firstDayOfWeek = (new Date(year, month, 1).getDay() + 6) % 7; // Monday = 0
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < firstDayOfWeek; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-day-cell empty';
+        grid.appendChild(emptyCell);
+      }
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const cell = document.createElement('div');
+        cell.className = 'cal-day-cell';
+        cell.textContent = d;
+
+        const cellDate = new Date(year, month, d);
+        cellDate.setHours(0, 0, 0, 0);
+
+        if (cellDate < today) {
+          cell.classList.add('past');
+        } else {
+          if (year === selectedYear && month === selectedMonth && d === selectedDay) {
+            cell.classList.add('active');
+          }
+
+          cell.onclick = function() {
+            selectedYear = year;
+            selectedMonth = month;
+            selectedDay = d;
+
+            closeCalendarModal();
+            renderTimeSlots();
+            updateSummary();
+          };
+        }
+
+        grid.appendChild(cell);
+      }
+    }
+
+    function changeMonth(delta) {
+      currentCalDate.setMonth(currentCalDate.getMonth() + delta);
+      renderCalendar();
+    }
+
     async function fetchBookedSlots(dateStr) {
-      // Plug in live endpoint when ready:
-      // const res = await fetch(`/api/slots?date=${dateStr}&mode=${mode}`);
-      // return await res.json();
       return BOOKED_REGISTRY[dateStr] || [];
     }
 
@@ -971,7 +1127,6 @@
         container.appendChild(chip);
       });
 
-      // If previously selected slot became unavailable, shift to next open slot
       if (!activeAssigned) {
         const firstFree = container.querySelector('.time-chip:not(.disabled)');
         if (firstFree) {
@@ -989,60 +1144,6 @@
       updateSummary();
     }
 
-    function renderCalendar() {
-      const year = currentCalDate.getFullYear();
-      const month = currentCalDate.getMonth();
-      document.getElementById('calMonthTitle').textContent = `${monthNames[month]} ${year}`;
-
-      const grid = document.getElementById('calGridDates');
-      grid.innerHTML = '';
-
-      const firstDayOfWeek = (new Date(year, month, 1).getDay() + 6) % 7; // Monday = 0
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-      for (let i = 0; i < firstDayOfWeek; i++) {
-        const emptyCell = document.createElement('div');
-        emptyCell.className = 'cal-day-cell empty';
-        grid.appendChild(emptyCell);
-      }
-
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      for (let d = 1; d <= daysInMonth; d++) {
-        const cell = document.createElement('div');
-        cell.className = 'cal-day-cell';
-        cell.textContent = d;
-
-        const cellDate = new Date(year, month, d);
-        cellDate.setHours(0, 0, 0, 0);
-
-        if (cellDate < today) {
-          cell.classList.add('past');
-        } else {
-          if (year === selectedYear && month === selectedMonth && d === selectedDay) {
-            cell.classList.add('active');
-          }
-
-          cell.addEventListener('click', function(e) {
-            e.stopPropagation();
-            selectedYear = year;
-            selectedMonth = month;
-            selectedDay = d;
-            renderCalendar();
-            renderTimeSlots();
-          });
-        }
-
-        grid.appendChild(cell);
-      }
-    }
-
-    function changeMonth(delta) {
-      currentCalDate.setMonth(currentCalDate.getMonth() + delta);
-      renderCalendar();
-    }
-
     function setMode(newMode) {
       mode = newMode;
       const tabs = document.querySelectorAll('.tab-btn');
@@ -1050,11 +1151,11 @@
 
       const proSelector = document.getElementById('proSelector');
       const timeSlotsBlock = document.getElementById('timeSlotsBlock');
-      const calendarBlock = document.getElementById('calendarBlock');
+      const dateNameRow = document.getElementById('dateNameRow');
 
       proSelector.classList.remove('active');
       timeSlotsBlock.style.display = 'block';
-      calendarBlock.style.display = 'block';
+      dateNameRow.style.display = 'grid';
 
       if (mode === 'court') {
         tabs[0].classList.add('active');
@@ -1064,7 +1165,7 @@
       } else if (mode === 'monthly') {
         tabs[2].classList.add('active-gold');
         timeSlotsBlock.style.display = 'none';
-        calendarBlock.style.display = 'none';
+        dateNameRow.style.display = 'none';
       } else if (mode === 'social') {
         tabs[3].classList.add('active');
         selectedSlotLabel = '17:00 - 19:00';
@@ -1085,16 +1186,22 @@
       const sumPrice = document.getElementById('sumPrice');
       const dockLabel = document.getElementById('dockLabel');
       const dockPrice = document.getElementById('dockPrice');
-      const dateStr = getSelectedDateString();
+      const dateDisplayText = document.getElementById('dateDisplayText');
+      
+      const formattedDate = getFormattedDisplayDate();
+
+      if (dateDisplayText) {
+        dateDisplayText.textContent = formattedDate;
+      }
 
       let price = '€13';
       let title = 'Peak Court';
-      let meta = `${dateStr} • ${selectedSlotLabel} • Gear Included`;
+      let meta = `${formattedDate} • ${selectedSlotLabel} • Gear Included`;
 
       if (mode === 'pro') {
         title = `Pro Sparring (${selectedCoach.split(' ')[0]})`;
         price = '€25';
-        meta = `${dateStr} • ${selectedSlotLabel} • Gear Included`;
+        meta = `${formattedDate} • ${selectedSlotLabel} • Gear Included`;
       } else if (mode === 'monthly') {
         title = 'Monthly Unlimited Pass';
         price = '€60';
@@ -1102,7 +1209,7 @@
       } else if (mode === 'social') {
         title = 'Social Play Night';
         price = '€10';
-        meta = `${dateStr} • 17:00 - 19:00`;
+        meta = `${formattedDate} • 17:00 - 19:00`;
       } else {
         if (selectedTier === 'offpeak') {
           title = 'Off-Peak Court';
@@ -1148,7 +1255,7 @@
 
     function closePassModal() { document.getElementById('passModal').classList.remove('active'); }
 
-    // Initialize application state
+    // Init
     renderCalendar();
     renderTimeSlots();
   </script>
