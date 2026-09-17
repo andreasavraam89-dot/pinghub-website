@@ -43,7 +43,6 @@
     .neon-text { font-family: 'Tilt Neon', sans-serif; text-shadow: var(--glow-cyan); color: #fff; }
     .neon-pink { font-family: 'Tilt Neon', sans-serif; text-shadow: var(--glow-pink); color: #fff; }
 
-    /* HEADER */
     header {
       position: sticky;
       top: 0;
@@ -88,7 +87,6 @@
       .nav-links a:hover { color: var(--neon-cyan); }
     }
 
-    /* SECTIONS COMMON */
     section {
       max-width: 1150px;
       margin: 0 auto 3.5rem;
@@ -171,7 +169,6 @@
       .hero-btns { flex-direction: row; align-items: center; }
     }
 
-    /* HARDWARE BOX */
     .hero-hardware-box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -189,7 +186,7 @@
       font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
     }
 
-    /* EQUIPMENT CARDS */
+    /* EQUIPMENT */
     .equip-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -273,7 +270,6 @@
     }
     @media (min-width: 768px) { .booking-wrapper { padding: 2rem; } }
 
-    /* MODE TABS */
     .mode-tabs {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -310,7 +306,6 @@
       color: #fff;
     }
 
-    /* COACH PICKER ROW */
     .pro-selector-group {
       display: none;
       background: var(--surface-elevated);
@@ -348,7 +343,7 @@
       border-color: var(--neon-pink);
     }
 
-    /* INLINE CALENDAR */
+    /* CALENDAR */
     .calendar-container {
       background: var(--bg);
       border: 1px solid var(--border);
@@ -414,7 +409,6 @@
       box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
     }
 
-    /* INPUT FIELDS */
     .form-row {
       display: grid;
       grid-template-columns: 1fr;
@@ -444,7 +438,6 @@
     }
     .input-field input:focus { border-color: var(--neon-cyan); }
 
-    /* TIME SLOTS */
     .time-slot-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
@@ -471,7 +464,6 @@
       border-color: var(--neon-cyan);
     }
 
-    /* SUMMARY BAR */
     .checkout-summary {
       display: flex;
       justify-content: space-between;
@@ -500,7 +492,6 @@
       gap: 0.5rem;
     }
 
-    /* MOBILE STICKY DOCK */
     .mobile-bottom-dock {
       position: fixed;
       bottom: 0;
@@ -529,7 +520,6 @@
     }
     @media (min-width: 860px) { .mobile-bottom-dock { display: none; } }
 
-    /* MODALS */
     .modal-backdrop {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -598,7 +588,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <div class="nav-container">
       <a href="#" class="logo neon-text">🏓 PING<span style="color:var(--neon-pink);">HUB</span></a>
@@ -614,7 +603,7 @@
   <section class="hero">
     <div>
       <div class="hero-banner">
-        <img src="public/images/hero-arena.webp" alt="PingHub Neon Arena" loading="eager">
+        <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=1200&q=80" alt="PingHub Neon Arena" loading="eager">
         <div class="hero-banner-overlay"></div>
       </div>
       <div class="badge-bar">
@@ -647,7 +636,7 @@
     </div>
   </section>
 
-  <!-- EQUIPMENT SECTION -->
+  <!-- EQUIPMENT -->
   <section id="equipment">
     <div class="sec-tag">Top-Tier Hardware</div>
     <h2 class="sec-title neon-text">Equipment & Gear Ready On Court</h2>
@@ -656,7 +645,7 @@
     <div class="equip-grid">
       <div class="equip-card">
         <div class="equip-thumb">
-          <img src="public/images/equip-table.webp" alt="ITTF Competition Table" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=700&q=80" alt="ITTF Competition Table" loading="lazy">
         </div>
         <div class="equip-content">
           <h3>ITTF Competition Tables</h3>
@@ -666,7 +655,7 @@
 
       <div class="equip-card">
         <div class="equip-thumb">
-          <img src="public/images/equip-racket.webp" alt="ITTF Approved Competition Racket" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?auto=format&fit=crop&w=700&q=80" alt="Professional Table Tennis Racket" loading="lazy">
         </div>
         <div class="equip-content">
           <h3>Pro Rackets Unlocked</h3>
@@ -676,7 +665,7 @@
 
       <div class="equip-card">
         <div class="equip-thumb">
-          <img src="public/images/equip-balls.webp" alt="Tournament 3-Star 40mm Balls" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?auto=format&fit=crop&w=700&q=80" alt="Seamless 40mm Table Tennis Balls" loading="lazy">
         </div>
         <div class="equip-content">
           <h3>Seamless 40+ 3-Star Balls</h3>
@@ -694,23 +683,22 @@
 
     <div class="venue-showcase">
       <div class="venue-photo-box">
-        <img src="public/images/venue-court.webp" alt="Court Zone" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80" alt="Court Zone" loading="lazy">
         <div class="venue-photo-tag">Court Zone • Professional Flooring</div>
       </div>
       <div class="venue-photo-box">
-        <img src="public/images/venue-lounge.webp" alt="Lounge Area" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=800&q=80" alt="Lounge Area" loading="lazy">
         <div class="venue-photo-tag">Lounge & Refreshment Hub</div>
       </div>
     </div>
   </section>
 
-  <!-- BOOKING ENGINE -->
+  <!-- BOOKING SECTION -->
   <section id="booking">
     <div class="sec-tag">Live Reservation Engine</div>
     <h2 class="sec-title neon-pink">Book Your Session</h2>
 
     <div class="booking-wrapper">
-      <!-- MODE TABS -->
       <div class="mode-tabs">
         <button class="tab-btn active" onclick="setMode('court')">
           Standard Court
@@ -735,14 +723,14 @@
         <strong style="font-size:0.82rem; color:#fff; text-transform:uppercase;">Select Pro Sparring Coach:</strong>
         <div class="coach-options">
           <div class="coach-card selected" id="coach-andreas" onclick="selectCoach('Andreas Avraam')">
-            <img class="coach-avatar-img" src="public/images/coach-andreas.webp" alt="Coach Andreas Avraam">
+            <img class="coach-avatar-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Coach Andreas Avraam">
             <div>
               <strong style="display:block; font-size:0.88rem; color:#fff;">Andreas Avraam</strong>
               <span style="font-size:0.72rem; color:var(--muted);">National League • Aggressive Topspin Sparring</span>
             </div>
           </div>
           <div class="coach-card" id="coach-georgia" onclick="selectCoach('Georgia Avraam')">
-            <img class="coach-avatar-img" src="public/images/coach-georgia.webp" alt="Coach Georgia Avraam">
+            <img class="coach-avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Coach Georgia Avraam">
             <div>
               <strong style="display:block; font-size:0.88rem; color:#fff;">Georgia Avraam</strong>
               <span style="font-size:0.72rem; color:var(--muted);">Tournament Pro • Footwork & Ball Control</span>
@@ -751,7 +739,7 @@
         </div>
       </div>
 
-      <!-- INLINE CALENDAR -->
+      <!-- CALENDAR -->
       <div id="calendarBlock">
         <div class="calendar-container">
           <div class="cal-header">
@@ -768,7 +756,6 @@
         </div>
       </div>
 
-      <!-- USER DETAILS -->
       <div class="form-row">
         <div class="input-field">
           <label>Full Name</label>
@@ -780,7 +767,6 @@
         </div>
       </div>
 
-      <!-- TIME SLOTS -->
       <div id="timeSlotsBlock">
         <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--muted);">Choose 1-Hour Time Slot:</label>
         <div class="time-slot-grid">
@@ -803,7 +789,6 @@
         </div>
       </div>
 
-      <!-- DESKTOP SUMMARY BAR -->
       <div class="checkout-summary">
         <div>
           <div style="font-weight:700; color:#fff; font-size:0.95rem;" id="sumLabel">Peak Standard Court</div>
@@ -818,7 +803,7 @@
     </div>
   </section>
 
-  <!-- MOBILE STICKY DOCK -->
+  <!-- MOBILE DOCK -->
   <div class="mobile-bottom-dock">
     <div>
       <div style="font-size:0.72rem; color:var(--muted);" id="dockLabel">Peak Court</div>
@@ -861,7 +846,7 @@
     </div>
   </div>
 
-  <!-- QR PASS MODAL -->
+  <!-- PASS MODAL -->
   <div class="modal-backdrop" id="passModal">
     <div class="stripe-card-modal" style="text-align: center;">
       <button class="close-modal-btn" style="position: absolute; top:1rem; right:1rem;" onclick="closePassModal()">&times;</button>
@@ -894,7 +879,6 @@
     let selectedSlotLabel = '17:00 - 18:00';
     let selectedTier = 'peak';
 
-    // Calendar logic
     let currentCalDate = new Date();
     let selectedDate = new Date();
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -1061,7 +1045,6 @@
 
     function closePassModal() { document.getElementById('passModal').classList.remove('active'); }
 
-    // Init
     renderCalendar();
     updateSummary();
   </script>
