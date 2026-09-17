@@ -104,13 +104,26 @@
       align-items: center;
       padding: 0.75rem 1rem;
     }
-    .nav-links { display: flex; align-items: center; gap: 1rem; }
-    .nav-links a { display: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a {
+      display: none;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      transition: color 0.2s, text-shadow 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 8px var(--neon-cyan);
+    }
     .btn-nav-book {
       display: inline-block !important;
       background: transparent;
       border: 1px solid var(--neon-cyan);
-      color: var(--neon-cyan);
+      color: var(--neon-cyan) !important;
       padding: 0.5rem 0.95rem;
       border-radius: var(--radius-sm);
       font-weight: 800;
@@ -121,8 +134,7 @@
 
     @media (min-width: 860px) {
       body { padding-bottom: 0; }
-      .nav-links a { display: inline-block; color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; }
-      .nav-links a:hover { color: var(--neon-cyan); }
+      .nav-links a { display: inline-block; }
     }
 
     section {
@@ -150,25 +162,25 @@
     }
     .hero-banner {
       width: 100%;
-      height: 260px;
+      height: 280px;
       border-radius: var(--radius-lg);
       border: 1px solid var(--neon-pink);
       position: relative;
       overflow: hidden;
       margin-bottom: 1.2rem;
       background: #111722;
-      box-shadow: 0 0 20px rgba(255, 42, 133, 0.25);
+      box-shadow: 0 0 25px rgba(255, 42, 133, 0.3);
     }
     .hero-banner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.85) contrast(1.1);
+      filter: brightness(0.9) contrast(1.08);
     }
     .hero-banner-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(7, 9, 14, 0.95) 100%);
+      background: linear-gradient(180deg, transparent 55%, rgba(7, 9, 14, 0.95) 100%);
     }
     .badge-bar {
       display: inline-flex;
@@ -207,7 +219,7 @@
 
     @media (min-width: 860px) {
       .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; margin: 3rem auto 4.5rem; }
-      .hero-banner { height: 320px; }
+      .hero-banner { height: 340px; }
       .hero-btns { flex-direction: row; align-items: center; }
     }
 
@@ -247,7 +259,7 @@
     }
     .equip-thumb {
       width: 100%;
-      height: 170px;
+      height: 180px;
       position: relative;
       overflow: hidden;
       background: #090d14;
@@ -267,6 +279,61 @@
     }
     .equip-content h3 { font-size: 1.05rem; margin-bottom: 0.35rem; color: #fff; }
     .equip-content p { font-size: 0.82rem; color: var(--muted); }
+
+    /* GALLERY SECTION */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    @media (min-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .gallery-item {
+      position: relative;
+      height: 220px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s, filter 0.3s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(1.08);
+    }
+    .gallery-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(7, 9, 14, 0.85);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ABOUT US SECTION */
+    .about-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 860px) {
+      .about-box { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
+    }
 
     /* BOOKING WORKFLOW */
     .booking-wrapper {
@@ -643,6 +710,7 @@
 </head>
 <body>
 
+  <!-- HEADER NAVIGATION WITH UPDATED TABS -->
   <header>
     <div class="nav-container">
       <a href="#" class="brand-logo">
@@ -650,22 +718,24 @@
         <span class="brand-name">PING<span class="brand-hub-accent">HUB</span></span>
       </a>
       <nav class="nav-links">
+        <a href="#booking">Book</a>
         <a href="#equipment">Gear</a>
-        <a href="#booking">Reserve</a>
-        <a href="#booking" class="btn-nav-book">Book Court</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About Us</a>
+        <a href="#booking" class="btn-nav-book">Reserve Table</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO SECTION WITH YOUR SPECIFIC CHATGPT IMAGE -->
   <section class="hero">
     <div>
       <div class="hero-banner">
         <img 
           src="https://chatgpt.com/backend-api/estuary/content?id=file_0000000040108210964c608905dbb24f&ts=497133&p=fs&cid=1&sig=15082f9072babfde11134be1a5efaa0ff7352daaf9bee6983e8e5b6dcc0c6aae&v=0" 
-          alt="PingHub Club Visual" 
+          alt="PingHub Cyber Club Arena" 
           loading="eager"
-          onerror="this.src='https://images.pexels.com/photos/976873/pexels-photo-976873.jpeg?auto=compress&cs=tinysrgb&w=1200'"
+          onerror="this.src='https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=1200&q=80'"
         >
         <div class="hero-banner-overlay"></div>
       </div>
@@ -699,26 +769,26 @@
     </div>
   </section>
 
-  <!-- EQUIPMENT -->
+  <!-- GEAR / EQUIPMENT SECTION -->
   <section id="equipment">
     <div class="sec-tag">Top-Tier Hardware</div>
     <h2 class="sec-title neon-text">Equipment & Gear Ready On Court</h2>
-    <p class="sec-desc">Zero preparation required. Competition-approved hardware is ready when the door unlocks.</p>
+    <p class="sec-desc">Zero preparation required. Tournament-approved hardware is ready when the door unlocks.</p>
 
     <div class="equip-grid">
       <div class="equip-card">
         <div class="equip-thumb">
-          <img src="https://images.pexels.com/photos/1076081/pexels-photo-1076081.jpeg?auto=compress&cs=tinysrgb&w=700" alt="ITTF Competition Table" loading="lazy" onerror="this.src='https://placehold.co/700x400/0f141c/00f0ff?text=ITTF+Tables'">
+          <img src="https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=700&q=80" alt="Official ITTF Ping Pong Table" loading="lazy">
         </div>
         <div class="equip-content">
           <h3>ITTF Competition Tables</h3>
-          <p>High-density anti-glare tops with tournament-standard friction and true consistent bounce across all zones.</p>
+          <p>Official 25mm high-density competition tops delivering true tournament friction and consistent bounce.</p>
         </div>
       </div>
 
       <div class="equip-card">
         <div class="equip-thumb">
-          <img src="https://images.pexels.com/photos/6840707/pexels-photo-6840707.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Professional Table Tennis Racket" loading="lazy" onerror="this.src='https://placehold.co/700x400/0f141c/ff2a85?text=Pro+Rackets'">
+          <img src="https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?auto=format&fit=crop&w=700&q=80" alt="Competition Table Tennis Blades and Rubbers" loading="lazy">
         </div>
         <div class="equip-content">
           <h3>Pro Rackets Unlocked</h3>
@@ -728,12 +798,56 @@
 
       <div class="equip-card">
         <div class="equip-thumb">
-          <img src="https://images.pexels.com/photos/976872/pexels-photo-976872.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Seamless 40mm Balls" loading="lazy" onerror="this.src='https://placehold.co/700x400/0f141c/ffb800?text=3-Star+Balls'">
+          <img src="https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?auto=format&fit=crop&w=700&q=80" alt="Seamless 40+ 3-Star Table Tennis Balls" loading="lazy">
         </div>
         <div class="equip-content">
           <h3>Seamless 40+ 3-Star Balls</h3>
           <p>Court caddies stocked with official tournament poly balls for maximum spin tolerance and accurate trajectory.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section id="gallery">
+    <div class="sec-tag">Club Atmosphere</div>
+    <h2 class="sec-title">The Arena Experience</h2>
+    <p class="sec-desc">A snapshot of the action, tournament infrastructure, and late-night lounge culture at PingHub.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=800&q=80" alt="Neon Lit Table Tennis Arena" loading="lazy">
+        <div class="gallery-badge">Match Arena • Court 1</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=800&q=80" alt="Club Lounge and Social Space" loading="lazy">
+        <div class="gallery-badge">Player Lounge & Bar</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80" alt="Tournament Pro Drills" loading="lazy">
+        <div class="gallery-badge">Pro Sparring & Drills</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT US SECTION -->
+  <section id="about">
+    <div class="sec-tag">Who We Are</div>
+    <h2 class="sec-title">About PingHub</h2>
+    <div class="about-box">
+      <div>
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem; color:#fff;">Nicosia's First Autonomous Ping Pong Lounge</h3>
+        <p style="color:var(--muted); font-size: 0.92rem; margin-bottom: 1rem;">
+          PingHub was built in Engomi to pull table tennis out of basements and integrate it with street culture, neon aesthetics, and effortless smartphone booking.
+        </p>
+        <p style="color:var(--muted); font-size: 0.92rem;">
+          Whether you want an impromptu late-night rally with friends or focused multi-ball training with a national-tier competitor, PingHub offers 24/7 access with verified contactless smart entry.
+        </p>
+      </div>
+      <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.2rem;">
+        <div style="font-size:0.85rem; margin-bottom:0.6rem;"><strong style="color:#fff;">📍 Location:</strong> Engomi Sports District, 2414 Nicosia</div>
+        <div style="font-size:0.85rem; margin-bottom:0.6rem;"><strong style="color:#fff;">⏰ Hours:</strong> 7 Days a Week • 07:00 – 23:00</div>
+        <div style="font-size:0.85rem;"><strong style="color:#fff;">🚗 Parking:</strong> Free dedicated player spots out front</div>
       </div>
     </div>
   </section>
@@ -1226,7 +1340,7 @@
 
     function closePassModal() { document.getElementById('passModal').classList.remove('active'); }
 
-    // Init on page load
+    // Init on load
     renderCalendar();
     renderTimeSlots();
   </script>
