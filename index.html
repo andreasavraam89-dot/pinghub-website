@@ -40,7 +40,7 @@
       padding-bottom: 90px;
     }
 
-    /* HIGH-CONTRAST NEON BADGE LOGO */
+    /* HIGH-CONTRAST LOGO BADGE */
     .brand-logo {
       display: inline-flex;
       align-items: center;
@@ -104,37 +104,24 @@
       align-items: center;
       padding: 0.75rem 1rem;
     }
-    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 1.8rem; }
     .nav-links a {
-      display: none;
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       transition: color 0.2s, text-shadow 0.2s;
     }
-    .nav-links a:hover {
+    .nav-links a:hover, .nav-links a.active-link {
       color: var(--neon-cyan);
       text-shadow: 0 0 8px var(--neon-cyan);
     }
-    .btn-nav-book {
-      display: inline-block !important;
-      background: transparent;
-      border: 1px solid var(--neon-cyan);
-      color: var(--neon-cyan) !important;
-      padding: 0.5rem 0.95rem;
-      border-radius: var(--radius-sm);
-      font-weight: 800;
-      font-size: 0.8rem;
-      text-decoration: none;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-    }
 
-    @media (min-width: 860px) {
-      body { padding-bottom: 0; }
-      .nav-links a { display: inline-block; }
+    @media (max-width: 640px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.78rem; }
     }
 
     section {
@@ -153,34 +140,13 @@
     .sec-title { font-size: 1.65rem; font-weight: 800; margin-bottom: 0.5rem; }
     .sec-desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.5rem; }
 
-    /* HERO */
-    .hero {
-      margin: 1.5rem auto 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
+    /* HERO + DIRECT BOOKING COMBO */
+    .hero-booking-section {
+      margin: 1.5rem auto 3.5rem;
     }
-    .hero-banner {
-      width: 100%;
-      height: 280px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--neon-pink);
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 1.2rem;
-      background: #111722;
-      box-shadow: 0 0 25px rgba(255, 42, 133, 0.3);
-    }
-    .hero-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.9) contrast(1.08);
-    }
-    .hero-banner-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 55%, rgba(7, 9, 14, 0.95) 100%);
+    .hero-intro {
+      max-width: 720px;
+      margin-bottom: 1.8rem;
     }
     .badge-bar {
       display: inline-flex;
@@ -195,155 +161,27 @@
       text-transform: uppercase;
       font-weight: 700;
     }
-    .hero h1 {
-      font-size: clamp(2.2rem, 8vw, 3.5rem);
+    .hero-intro h1 {
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
       line-height: 1.05;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
       font-weight: 900;
       letter-spacing: -0.5px;
     }
-    .hero-p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.4rem; }
-    .hero-btns { display: flex; flex-direction: column; gap: 0.8rem; }
-    .btn-neon {
-      background: var(--neon-pink);
-      color: #fff;
-      font-weight: 700;
-      padding: 0.95rem 1.4rem;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      text-align: center;
-      box-shadow: var(--glow-pink);
-      border: none;
+    .hero-intro p {
+      color: var(--muted);
       font-size: 1rem;
     }
 
-    @media (min-width: 860px) {
-      .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; margin: 3rem auto 4.5rem; }
-      .hero-banner { height: 340px; }
-      .hero-btns { flex-direction: row; align-items: center; }
-    }
-
-    .hero-hardware-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.4rem;
-    }
-    .step-list { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem; }
-    .step-item { display: flex; gap: 0.8rem; align-items: flex-start; }
-    .step-bubble {
-      width: 26px; height: 26px; border-radius: 50%;
-      background: var(--surface-elevated);
-      border: 1px solid var(--neon-cyan);
-      color: var(--neon-cyan);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
-    }
-
-    /* EQUIPMENT CARDS */
-    .equip-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
-    }
-    @media (min-width: 768px) {
-      .equip-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    .equip-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .equip-thumb {
-      width: 100%;
-      height: 180px;
-      position: relative;
-      overflow: hidden;
-      background: #090d14;
-    }
-    .equip-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .equip-card:hover .equip-thumb img {
-      transform: scale(1.05);
-    }
-    .equip-content {
-      padding: 1.2rem;
-      flex: 1;
-    }
-    .equip-content h3 { font-size: 1.05rem; margin-bottom: 0.35rem; color: #fff; }
-    .equip-content p { font-size: 0.82rem; color: var(--muted); }
-
-    /* GALLERY SECTION */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
-    }
-    @media (min-width: 768px) {
-      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    .gallery-item {
-      position: relative;
-      height: 220px;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--surface);
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s, filter 0.3s;
-    }
-    .gallery-item:hover img {
-      transform: scale(1.04);
-      filter: brightness(1.08);
-    }
-    .gallery-badge {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      background: rgba(7, 9, 14, 0.85);
-      border: 1px solid var(--border);
-      padding: 0.3rem 0.65rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #fff;
-      backdrop-filter: blur(4px);
-    }
-
-    /* ABOUT US SECTION */
-    .about-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.8rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    @media (min-width: 860px) {
-      .about-box { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
-    }
-
-    /* BOOKING WORKFLOW */
+    /* CALENDAR + BOOKING ENGINE */
     .booking-wrapper {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 1.2rem;
-      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
-    @media (min-width: 768px) { .booking-wrapper { padding: 2rem; } }
+    @media (min-width: 768px) { .booking-wrapper { padding: 1.8rem; } }
 
     .mode-tabs {
       display: grid;
@@ -381,6 +219,78 @@
       color: #fff;
     }
 
+    /* INLINE PROMINENT CALENDAR */
+    .calendar-card {
+      background: var(--bg);
+      border: 1px solid var(--neon-cyan);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.15);
+    }
+    .cal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .cal-month-title { font-weight: 800; font-size: 1rem; color: #fff; }
+    .cal-nav-btn {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .cal-grid-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    .cal-grid-dates {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+    .cal-day-cell {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      background: var(--surface);
+      border: 1px solid transparent;
+      user-select: none;
+      transition: all 0.15s;
+    }
+    .cal-day-cell:hover:not(.past):not(.empty) {
+      border-color: var(--neon-cyan);
+    }
+    .cal-day-cell.empty { background: transparent; cursor: default; }
+    .cal-day-cell.past { opacity: 0.22; pointer-events: none; }
+    .cal-day-cell.active {
+      background: var(--neon-cyan) !important;
+      color: #000 !important;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+    }
+
+    /* PRO SELECTOR */
     .pro-selector-group {
       display: none;
       background: var(--surface-elevated);
@@ -416,108 +326,7 @@
       background: #111722;
     }
 
-    /* DATE PICKER POPOVER & ANCHOR */
-    .date-input-wrap {
-      position: relative;
-    }
-    .date-picker-trigger {
-      width: 100%;
-      height: 48px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: #fff;
-      padding: 0 0.95rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.95rem;
-      font-family: inherit;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-      transition: all 0.2s;
-    }
-    .date-picker-trigger:hover, .date-picker-trigger.active {
-      border-color: var(--neon-cyan);
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
-    }
-
-    .cal-popover-box {
-      display: none;
-      position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      width: 100%;
-      max-width: 340px;
-      background: #0d121a;
-      border: 1px solid var(--neon-cyan);
-      border-radius: var(--radius-md);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 240, 255, 0.3);
-      padding: 1.1rem;
-      z-index: 100;
-    }
-    .cal-popover-box.open { display: block; }
-    .cal-popover-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-    }
-    .cal-month-title { font-weight: 800; font-size: 0.95rem; color: #fff; }
-    .cal-nav-btn {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      color: #fff;
-      width: 32px;
-      height: 32px;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-    .cal-grid-days {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      text-align: center;
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-      text-transform: uppercase;
-    }
-    .cal-grid-dates {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
-    }
-    .cal-day-cell {
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius-sm);
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text);
-      cursor: pointer;
-      background: var(--surface);
-      border: 1px solid transparent;
-      user-select: none;
-    }
-    .cal-day-cell:hover:not(.past):not(.empty) {
-      border-color: var(--neon-cyan);
-    }
-    .cal-day-cell.empty { background: transparent; cursor: default; }
-    .cal-day-cell.past { opacity: 0.22; pointer-events: none; }
-    .cal-day-cell.active {
-      background: var(--neon-cyan) !important;
-      color: #000 !important;
-      font-weight: 800;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
-    }
-
+    /* INPUT FIELDS */
     .form-row {
       display: grid;
       grid-template-columns: 1fr;
@@ -598,12 +407,12 @@
     .checkout-total { font-size: 1.7rem; font-weight: 700; color: var(--neon-cyan); }
     .btn-pay-stripe {
       width: 100%;
-      min-height: 50px;
+      min-height: 52px;
       background: #635bff;
       border: none;
       color: #fff;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1rem;
       padding: 0.85rem;
       border-radius: var(--radius-sm);
       cursor: pointer;
@@ -613,6 +422,124 @@
       gap: 0.5rem;
     }
 
+    /* VISUAL BANNER SHOWCASE */
+    .feature-showcase {
+      width: 100%;
+      height: 280px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--neon-pink);
+      position: relative;
+      overflow: hidden;
+      margin: 2rem 0 3.5rem;
+      background: #111722;
+      box-shadow: 0 0 25px rgba(255, 42, 133, 0.3);
+    }
+    .feature-showcase img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .feature-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(7, 9, 14, 0.95) 100%);
+    }
+
+    /* EQUIPMENT CARDS */
+    .equip-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    @media (min-width: 768px) {
+      .equip-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .equip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .equip-thumb {
+      width: 100%;
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+      background: #090d14;
+    }
+    .equip-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .equip-card:hover .equip-thumb img {
+      transform: scale(1.05);
+    }
+    .equip-content {
+      padding: 1.2rem;
+      flex: 1;
+    }
+    .equip-content h3 { font-size: 1.05rem; margin-bottom: 0.35rem; color: #fff; }
+    .equip-content p { font-size: 0.82rem; color: var(--muted); }
+
+    /* GALLERY SECTION */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    @media (min-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .gallery-item {
+      position: relative;
+      height: 220px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+    .gallery-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(7, 9, 14, 0.85);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ABOUT US SECTION */
+    .about-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 860px) {
+      .about-box { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
+    }
+
+    /* MOBILE BOTTOM DOCK */
     .mobile-bottom-dock {
       position: fixed;
       bottom: 0;
@@ -710,7 +637,7 @@
 </head>
 <body>
 
-  <!-- HEADER NAVIGATION WITH UPDATED TABS -->
+  <!-- HEADER -->
   <header>
     <div class="nav-container">
       <a href="#" class="brand-logo">
@@ -718,58 +645,127 @@
         <span class="brand-name">PING<span class="brand-hub-accent">HUB</span></span>
       </a>
       <nav class="nav-links">
-        <a href="#booking">Book</a>
+        <a href="#book" class="active-link">Book</a>
         <a href="#equipment">Gear</a>
         <a href="#gallery">Gallery</a>
         <a href="#about">About Us</a>
-        <a href="#booking" class="btn-nav-book">Reserve Table</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO SECTION WITH YOUR SPECIFIC CHATGPT IMAGE -->
-  <section class="hero">
-    <div>
-      <div class="hero-banner">
-        <img 
-          src="https://chatgpt.com/backend-api/estuary/content?id=file_0000000040108210964c608905dbb24f&ts=497133&p=fs&cid=1&sig=15082f9072babfde11134be1a5efaa0ff7352daaf9bee6983e8e5b6dcc0c6aae&v=0" 
-          alt="PingHub Cyber Club Arena" 
-          loading="eager"
-          onerror="this.src='https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=1200&q=80'"
-        >
-        <div class="hero-banner-overlay"></div>
-      </div>
+  <!-- HERO SECTION: CALENDAR & BOOKING FRONT AND CENTER -->
+  <section class="hero-booking-section" id="book">
+    <div class="hero-intro">
       <div class="badge-bar">
-        <span>🏓 ⚡ 🏓</span> Engomi, Nicosia • 24/7 Self-Access
+        <span>🏓 ⚡ 🏓</span> Engomi, Nicosia • 24/7 Smart Access
       </div>
       <h1 class="neon-text">BOOK ONLINE.<br>PLAY ANYTIME.</h1>
-      <p class="hero-p">Autonomous competition-grade tables open daily 07:00 – 23:00. Instant contactless QR door entry, tournament equipment, and on-demand sparring coaches.</p>
-      <div class="hero-btns">
-        <a href="#booking" class="btn-neon">Book A Session</a>
-      </div>
+      <p>Instant contactless QR door entry to tournament-grade ITTF tables. Select your date and court slot below to book.</p>
     </div>
 
-    <div class="hero-hardware-box">
-      <h3 style="color:#fff; font-size:1.1rem; margin-bottom:0.4rem;">🔑 Instant Smart Entry</h3>
-      <p style="font-size:0.8rem; color:var(--muted);">Direct contactless QR badge synced to our optical entrance turnstile.</p>
-      <div class="step-list">
-        <div class="step-item">
-          <div class="step-bubble">1</div>
-          <div style="font-size:0.82rem;"><strong style="color:#fff;">Pick Date & Slot:</strong> Book self-play, coaching sessions, or monthly passes.</div>
-        </div>
-        <div class="step-item">
-          <div class="step-bubble">2</div>
-          <div style="font-size:0.82rem;"><strong style="color:#fff;">Verified Checkout:</strong> Instant Stripe-protected card processing.</div>
-        </div>
-        <div class="step-item">
-          <div class="step-bubble">3</div>
-          <div style="font-size:0.82rem;"><strong style="color:#fff;">Scan & Play:</strong> Door QR terminal activates 15 minutes before court start time.</div>
+    <!-- DIRECT INLINE BOOKING ENGINE -->
+    <div class="booking-wrapper">
+      <div class="mode-tabs">
+        <button class="tab-btn active" onclick="setMode('court')">
+          Standard Court
+          <span>€10 Off / €13 Peak</span>
+        </button>
+        <button class="tab-btn" onclick="setMode('pro')">
+          Private with Pro
+          <span style="color:var(--neon-pink);">€25 / Hour</span>
+        </button>
+        <button class="tab-btn" onclick="setMode('monthly')">
+          Monthly Pass
+          <span style="color:var(--neon-amber);">€60 / Month</span>
+        </button>
+        <button class="tab-btn" onclick="setMode('social')">
+          Social Match
+          <span>€10 / Session</span>
+        </button>
+      </div>
+
+      <!-- PRO COACH SELECTOR -->
+      <div class="pro-selector-group" id="proSelector">
+        <strong style="font-size:0.82rem; color:#fff; text-transform:uppercase;">Select Pro Sparring Coach:</strong>
+        <div class="coach-options">
+          <div class="coach-card selected" id="coach-andreas" onclick="selectCoach('Andreas Avraam')">
+            <img class="coach-avatar-img" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Coach Andreas" onerror="this.src='https://placehold.co/100x100/0f141c/00f0ff?text=AA'">
+            <div>
+              <strong style="display:block; font-size:0.88rem; color:#fff;">Andreas Avraam</strong>
+              <span style="font-size:0.72rem; color:var(--muted);">National League • Aggressive Topspin Sparring</span>
+            </div>
+          </div>
+          <div class="coach-card" id="coach-georgia" onclick="selectCoach('Georgia Avraam')">
+            <img class="coach-avatar-img" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Coach Georgia" onerror="this.src='https://placehold.co/100x100/0f141c/ff2a85?text=GA'">
+            <div>
+              <strong style="display:block; font-size:0.88rem; color:#fff;">Georgia Avraam</strong>
+              <span style="font-size:0.72rem; color:var(--muted);">Tournament Pro • Footwork & Ball Control</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- INLINE CALENDAR (PROMINENT ON LOAD) -->
+      <div class="calendar-card" id="calendarCard">
+        <div class="cal-header">
+          <span class="cal-month-title" id="calMonthTitle">September 2026</span>
+          <div style="display:flex; gap:0.4rem;">
+            <button type="button" class="cal-nav-btn" onclick="changeMonth(-1)">&lsaquo;</button>
+            <button type="button" class="cal-nav-btn" onclick="changeMonth(1)">&rsaquo;</button>
+          </div>
+        </div>
+        <div class="cal-grid-days">
+          <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+        </div>
+        <div class="cal-grid-dates" id="calGridDates"></div>
+      </div>
+
+      <!-- DETAILS -->
+      <div class="form-row" id="playerDetailsRow">
+        <div class="input-field">
+          <label>Full Name</label>
+          <input type="text" id="custName" placeholder="Marios Ioannou" value="Marios Ioannou"/>
+        </div>
+        <div class="input-field">
+          <label>Email (Pass Delivery)</label>
+          <input type="email" id="custEmail" placeholder="marios@domain.com" value="marios@example.com"/>
+        </div>
+      </div>
+
+      <!-- TIME SLOTS -->
+      <div id="timeSlotsBlock">
+        <label style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--muted);">
+          Choose 1-Hour Time Slot (<span id="slotDateLabel" style="color:var(--neon-cyan);">Today</span>):
+        </label>
+        <div class="time-slot-grid" id="timeSlotContainer"></div>
+      </div>
+
+      <div class="checkout-summary">
+        <div>
+          <div style="font-weight:800; color:#fff; font-size:0.95rem;" id="sumLabel">Peak Standard Court</div>
+          <div style="font-size:0.75rem; color:var(--muted);" id="sumMeta">Loading...</div>
+        </div>
+        <div class="checkout-total" id="sumPrice">€13</div>
+      </div>
+
+      <button class="btn-pay-stripe" onclick="openStripeModal()">
+        <span>🔒 Pay with Stripe & Confirm Reservation</span>
+      </button>
+    </div>
+
+    <!-- FEATURE IMAGE SHOWCASE -->
+    <div class="feature-showcase">
+      <img 
+        src="https://chatgpt.com/backend-api/estuary/content?id=file_0000000040108210964c608905dbb24f&ts=497133&p=fs&cid=1&sig=15082f9072babfde11134be1a5efaa0ff7352daaf9bee6983e8e5b6dcc0c6aae&v=0" 
+        alt="PingHub Cyber Club Arena" 
+        loading="lazy"
+        onerror="this.src='https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=1200&q=80'"
+      >
+      <div class="feature-overlay"></div>
     </div>
   </section>
 
-  <!-- GEAR / EQUIPMENT SECTION -->
+  <!-- GEAR SECTION -->
   <section id="equipment">
     <div class="sec-tag">Top-Tier Hardware</div>
     <h2 class="sec-title neon-text">Equipment & Gear Ready On Court</h2>
@@ -852,115 +848,7 @@
     </div>
   </section>
 
-  <!-- BOOKING SECTION -->
-  <section id="booking">
-    <div class="sec-tag">Live Reservation Engine</div>
-    <h2 class="sec-title neon-pink">Book Your Session</h2>
-
-    <div class="booking-wrapper">
-      <div class="mode-tabs">
-        <button class="tab-btn active" onclick="setMode('court')">
-          Standard Court
-          <span>€10 Off / €13 Peak</span>
-        </button>
-        <button class="tab-btn" onclick="setMode('pro')">
-          Private with Pro
-          <span style="color:var(--neon-pink);">€25 / Hour</span>
-        </button>
-        <button class="tab-btn" onclick="setMode('monthly')">
-          Monthly Pass
-          <span style="color:var(--neon-amber);">€60 / Month</span>
-        </button>
-        <button class="tab-btn" onclick="setMode('social')">
-          Social Match
-          <span>€10 / Session</span>
-        </button>
-      </div>
-
-      <!-- PRO SELECTOR -->
-      <div class="pro-selector-group" id="proSelector">
-        <strong style="font-size:0.82rem; color:#fff; text-transform:uppercase;">Select Pro Sparring Coach:</strong>
-        <div class="coach-options">
-          <div class="coach-card selected" id="coach-andreas" onclick="selectCoach('Andreas Avraam')">
-            <img class="coach-avatar-img" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Coach Andreas" onerror="this.src='https://placehold.co/100x100/0f141c/00f0ff?text=AA'">
-            <div>
-              <strong style="display:block; font-size:0.88rem; color:#fff;">Andreas Avraam</strong>
-              <span style="font-size:0.72rem; color:var(--muted);">National League • Aggressive Topspin Sparring</span>
-            </div>
-          </div>
-          <div class="coach-card" id="coach-georgia" onclick="selectCoach('Georgia Avraam')">
-            <img class="coach-avatar-img" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Coach Georgia" onerror="this.src='https://placehold.co/100x100/0f141c/ff2a85?text=GA'">
-            <div>
-              <strong style="display:block; font-size:0.88rem; color:#fff;">Georgia Avraam</strong>
-              <span style="font-size:0.72rem; color:var(--muted);">Tournament Pro • Footwork & Ball Control</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DATE TRIGGER & USER DETAILS -->
-      <div class="form-row" id="dateNameRow">
-        <div class="input-field date-input-wrap" id="dateWrapper">
-          <label>Select Date</label>
-          <div class="date-picker-trigger" id="dateTriggerBtn" onclick="toggleCalendarPopover(event)">
-            <span id="dateDisplayText" style="font-weight:700;">Loading...</span>
-            <span style="color:var(--neon-cyan); font-size:1.15rem;">📅</span>
-          </div>
-
-          <!-- POPOVER CALENDAR -->
-          <div class="cal-popover-box" id="calPopover" onclick="event.stopPropagation()">
-            <div class="cal-popover-header">
-              <span class="cal-month-title" id="calMonthTitle">September 2026</span>
-              <div style="display:flex; gap:0.4rem;">
-                <button type="button" class="cal-nav-btn" onclick="changeMonth(-1)">&lsaquo;</button>
-                <button type="button" class="cal-nav-btn" onclick="changeMonth(1)">&rsaquo;</button>
-              </div>
-            </div>
-            <div class="cal-grid-days">
-              <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
-            </div>
-            <div class="cal-grid-dates" id="calGridDates"></div>
-          </div>
-        </div>
-
-        <div class="input-field">
-          <label>Full Name</label>
-          <input type="text" id="custName" placeholder="Marios Ioannou" value="Marios Ioannou"/>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="input-field">
-          <label>Email (Pass Delivery)</label>
-          <input type="email" id="custEmail" placeholder="marios@domain.com" value="marios@example.com"/>
-        </div>
-        <div class="input-field">
-          <label>Phone Number</label>
-          <input type="tel" id="custPhone" placeholder="+357 99 000000" value="+357 99 234567"/>
-        </div>
-      </div>
-
-      <!-- DYNAMIC TIME SLOTS CONTAINER -->
-      <div id="timeSlotsBlock">
-        <label style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--muted);">Choose 1-Hour Time Slot:</label>
-        <div class="time-slot-grid" id="timeSlotContainer"></div>
-      </div>
-
-      <div class="checkout-summary">
-        <div>
-          <div style="font-weight:800; color:#fff; font-size:0.95rem;" id="sumLabel">Peak Standard Court</div>
-          <div style="font-size:0.75rem; color:var(--muted);" id="sumMeta">Loading...</div>
-        </div>
-        <div class="checkout-total" id="sumPrice">€13</div>
-      </div>
-
-      <button class="btn-pay-stripe" onclick="openStripeModal()">
-        <span>🔒 Pay with Stripe & Reserve</span>
-      </button>
-    </div>
-  </section>
-
-  <!-- MOBILE DOCK -->
+  <!-- MOBILE STICKY CHECKOUT DOCK -->
   <div class="mobile-bottom-dock">
     <div>
       <div style="font-size:0.72rem; color:var(--muted);" id="dockLabel">Peak Court</div>
@@ -1003,7 +891,7 @@
     </div>
   </div>
 
-  <!-- PASS MODAL -->
+  <!-- ENTRY PASS MODAL -->
   <div class="modal-backdrop" id="passModal">
     <div class="stripe-card-modal" style="text-align: center;">
       <button class="close-modal-btn" style="position: absolute; top:1rem; right:1rem;" onclick="closePassModal()">&times;</button>
@@ -1036,7 +924,7 @@
     let selectedSlotLabel = '17:00 - 18:00';
     let selectedTier = 'peak';
 
-    // Calendar state (defaults to today)
+    // Calendar state
     let currentCalDate = new Date();
     let selectedYear = currentCalDate.getFullYear();
     let selectedMonth = currentCalDate.getMonth();
@@ -1083,34 +971,6 @@
       return `${dayName}, ${monthShort} ${selectedDay}, ${selectedYear}`;
     }
 
-    // Toggle Calendar Popover
-    function toggleCalendarPopover(e) {
-      if (e) e.stopPropagation();
-      const pop = document.getElementById('calPopover');
-      const trigger = document.getElementById('dateTriggerBtn');
-      const isOpen = pop.classList.contains('open');
-
-      if (isOpen) {
-        pop.classList.remove('open');
-        trigger.classList.remove('active');
-      } else {
-        currentCalDate = new Date(selectedYear, selectedMonth, 1);
-        renderCalendar();
-        pop.classList.add('open');
-        trigger.classList.add('active');
-      }
-    }
-
-    // Dismiss popover when clicking anywhere outside
-    document.addEventListener('click', function(e) {
-      const wrap = document.getElementById('dateWrapper');
-      const pop = document.getElementById('calPopover');
-      if (pop && wrap && !wrap.contains(e.target)) {
-        pop.classList.remove('open');
-        document.getElementById('dateTriggerBtn').classList.remove('active');
-      }
-    });
-
     function renderCalendar() {
       const year = currentCalDate.getFullYear();
       const month = currentCalDate.getMonth();
@@ -1146,15 +1006,12 @@
             cell.classList.add('active');
           }
 
-          cell.onclick = function(e) {
-            e.stopPropagation();
+          cell.onclick = function() {
             selectedYear = year;
             selectedMonth = month;
             selectedDay = d;
 
-            document.getElementById('calPopover').classList.remove('open');
-            document.getElementById('dateTriggerBtn').classList.remove('active');
-
+            renderCalendar();
             renderTimeSlots();
             updateSummary();
           };
@@ -1236,11 +1093,13 @@
 
       const proSelector = document.getElementById('proSelector');
       const timeSlotsBlock = document.getElementById('timeSlotsBlock');
-      const dateNameRow = document.getElementById('dateNameRow');
+      const calendarCard = document.getElementById('calendarCard');
+      const playerDetailsRow = document.getElementById('playerDetailsRow');
 
       proSelector.classList.remove('active');
       timeSlotsBlock.style.display = 'block';
-      dateNameRow.style.display = 'grid';
+      calendarCard.style.display = 'block';
+      playerDetailsRow.style.display = 'grid';
 
       if (mode === 'court') {
         tabs[0].classList.add('active');
@@ -1250,7 +1109,7 @@
       } else if (mode === 'monthly') {
         tabs[2].classList.add('active-gold');
         timeSlotsBlock.style.display = 'none';
-        dateNameRow.style.display = 'none';
+        calendarCard.style.display = 'none';
       } else if (mode === 'social') {
         tabs[3].classList.add('active');
         selectedSlotLabel = '17:00 - 19:00';
@@ -1271,12 +1130,12 @@
       const sumPrice = document.getElementById('sumPrice');
       const dockLabel = document.getElementById('dockLabel');
       const dockPrice = document.getElementById('dockPrice');
-      const dateDisplayText = document.getElementById('dateDisplayText');
+      const slotDateLabel = document.getElementById('slotDateLabel');
       
       const formattedDate = getFormattedDisplayDate();
 
-      if (dateDisplayText) {
-        dateDisplayText.textContent = formattedDate;
+      if (slotDateLabel) {
+        slotDateLabel.textContent = formattedDate;
       }
 
       let price = '€13';
@@ -1340,7 +1199,7 @@
 
     function closePassModal() { document.getElementById('passModal').classList.remove('active'); }
 
-    // Init on load
+    // Initialize state
     renderCalendar();
     renderTimeSlots();
   </script>
