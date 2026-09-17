@@ -118,12 +118,13 @@
       position: relative;
       overflow: hidden;
       margin-bottom: 1.2rem;
+      background: #111722;
     }
     .hero-banner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.65) contrast(1.15);
+      filter: brightness(0.7) contrast(1.1);
     }
     .hero-banner-overlay {
       position: absolute;
@@ -208,6 +209,7 @@
       height: 170px;
       position: relative;
       overflow: hidden;
+      background: #090d14;
     }
     .equip-thumb img {
       width: 100%;
@@ -241,6 +243,7 @@
       border: 1px solid var(--border);
       height: 200px;
       position: relative;
+      background: #111722;
     }
     .venue-photo-box img {
       width: 100%;
@@ -261,7 +264,7 @@
       color: #fff;
     }
 
-    /* BOOKING CONTAINER */
+    /* BOOKING WRAPPER */
     .booking-wrapper {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -338,12 +341,13 @@
       object-fit: cover;
       border: 2px solid var(--border);
       flex-shrink: 0;
+      background: #111722;
     }
     .coach-card.selected .coach-avatar-img {
       border-color: var(--neon-pink);
     }
 
-    /* CALENDAR */
+    /* INLINE CALENDAR */
     .calendar-container {
       background: var(--bg);
       border: 1px solid var(--border);
@@ -362,14 +366,14 @@
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       color: #fff;
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: var(--radius-sm);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
     }
     .cal-grid-days {
       display: grid;
@@ -399,14 +403,18 @@
       background: var(--surface);
       border: 1px solid transparent;
       user-select: none;
+      transition: all 0.15s ease-in-out;
+    }
+    .cal-day-cell:hover:not(.past):not(.empty) {
+      border-color: var(--neon-cyan);
     }
     .cal-day-cell.empty { background: transparent; cursor: default; }
     .cal-day-cell.past { opacity: 0.25; pointer-events: none; }
     .cal-day-cell.active {
-      background: var(--neon-cyan);
-      color: #000;
+      background: var(--neon-cyan) !important;
+      color: #000 !important;
       font-weight: 700;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
     }
 
     .form-row {
@@ -603,7 +611,7 @@
   <section class="hero">
     <div>
       <div class="hero-banner">
-        <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=1200&q=80" alt="PingHub Neon Arena" loading="eager">
+        <img src="https://images.pexels.com/photos/976873/pexels-photo-976873.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="PingHub Arena" loading="eager" onerror="this.src='https://placehold.co/1200x600/0f141c/00f0ff?text=PINGHUB+ARENA'">
         <div class="hero-banner-overlay"></div>
       </div>
       <div class="badge-bar">
@@ -645,7 +653,7 @@
     <div class="equip-grid">
       <div class="equip-card">
         <div class="equip-thumb">
-          <img src="https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=700&q=80" alt="ITTF Competition Table" loading="lazy">
+          <img src="https://images.pexels.com/photos/1076081/pexels-photo-1076081.jpeg?auto=compress&cs=tinysrgb&w=700" alt="ITTF Competition Table" loading="lazy" onerror="this.src='https://placehold.co/700x400/0f141c/00f0ff?text=ITTF+Tables'">
         </div>
         <div class="equip-content">
           <h3>ITTF Competition Tables</h3>
@@ -655,7 +663,7 @@
 
       <div class="equip-card">
         <div class="equip-thumb">
-          <img src="https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?auto=format&fit=crop&w=700&q=80" alt="Professional Table Tennis Racket" loading="lazy">
+          <img src="https://images.pexels.com/photos/6840707/pexels-photo-6840707.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Professional Table Tennis Racket" loading="lazy" onerror="this.src='https://placehold.co/700x400/0f141c/ff2a85?text=Pro+Rackets'">
         </div>
         <div class="equip-content">
           <h3>Pro Rackets Unlocked</h3>
@@ -665,7 +673,7 @@
 
       <div class="equip-card">
         <div class="equip-thumb">
-          <img src="https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?auto=format&fit=crop&w=700&q=80" alt="Seamless 40mm Table Tennis Balls" loading="lazy">
+          <img src="https://images.pexels.com/photos/976872/pexels-photo-976872.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Seamless 40mm Balls" loading="lazy" onerror="this.src='https://placehold.co/700x400/0f141c/ffb800?text=3-Star+Balls'">
         </div>
         <div class="equip-content">
           <h3>Seamless 40+ 3-Star Balls</h3>
@@ -683,11 +691,11 @@
 
     <div class="venue-showcase">
       <div class="venue-photo-box">
-        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80" alt="Court Zone" loading="lazy">
+        <img src="https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Court Zone" loading="lazy" onerror="this.src='https://placehold.co/800x400/0f141c/00f0ff?text=Court+Zone'">
         <div class="venue-photo-tag">Court Zone • Professional Flooring</div>
       </div>
       <div class="venue-photo-box">
-        <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=800&q=80" alt="Lounge Area" loading="lazy">
+        <img src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lounge Area" loading="lazy" onerror="this.src='https://placehold.co/800x400/0f141c/ff2a85?text=Lounge+Hub'">
         <div class="venue-photo-tag">Lounge & Refreshment Hub</div>
       </div>
     </div>
@@ -723,14 +731,14 @@
         <strong style="font-size:0.82rem; color:#fff; text-transform:uppercase;">Select Pro Sparring Coach:</strong>
         <div class="coach-options">
           <div class="coach-card selected" id="coach-andreas" onclick="selectCoach('Andreas Avraam')">
-            <img class="coach-avatar-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Coach Andreas Avraam">
+            <img class="coach-avatar-img" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Coach Andreas" onerror="this.src='https://placehold.co/100x100/0f141c/00f0ff?text=AA'">
             <div>
               <strong style="display:block; font-size:0.88rem; color:#fff;">Andreas Avraam</strong>
               <span style="font-size:0.72rem; color:var(--muted);">National League • Aggressive Topspin Sparring</span>
             </div>
           </div>
           <div class="coach-card" id="coach-georgia" onclick="selectCoach('Georgia Avraam')">
-            <img class="coach-avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Coach Georgia Avraam">
+            <img class="coach-avatar-img" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Coach Georgia" onerror="this.src='https://placehold.co/100x100/0f141c/ff2a85?text=GA'">
             <div>
               <strong style="display:block; font-size:0.88rem; color:#fff;">Georgia Avraam</strong>
               <span style="font-size:0.72rem; color:var(--muted);">Tournament Pro • Footwork & Ball Control</span>
@@ -743,10 +751,10 @@
       <div id="calendarBlock">
         <div class="calendar-container">
           <div class="cal-header">
-            <span class="cal-month-title" id="calMonthTitle">September 2026</span>
+            <span class="cal-month-title" id="calMonthTitle"></span>
             <div style="display:flex; gap:0.4rem;">
-              <button class="cal-nav-btn" onclick="changeMonth(-1)">&lsaquo;</button>
-              <button class="cal-nav-btn" onclick="changeMonth(1)">&rsaquo;</button>
+              <button type="button" class="cal-nav-btn" onclick="changeMonth(-1)">&lsaquo;</button>
+              <button type="button" class="cal-nav-btn" onclick="changeMonth(1)">&rsaquo;</button>
             </div>
           </div>
           <div class="cal-grid-days">
@@ -792,7 +800,7 @@
       <div class="checkout-summary">
         <div>
           <div style="font-weight:700; color:#fff; font-size:0.95rem;" id="sumLabel">Peak Standard Court</div>
-          <div style="font-size:0.75rem; color:var(--muted);" id="sumMeta">17:00 - 18:00 • Rackets & Balls Included</div>
+          <div style="font-size:0.75rem; color:var(--muted);" id="sumMeta">Loading...</div>
         </div>
         <div class="checkout-total" id="sumPrice">€13</div>
       </div>
@@ -879,9 +887,19 @@
     let selectedSlotLabel = '17:00 - 18:00';
     let selectedTier = 'peak';
 
+    // Calendar state (Explicit Day/Month/Year preservation)
     let currentCalDate = new Date();
-    let selectedDate = new Date();
+    let selectedYear = currentCalDate.getFullYear();
+    let selectedMonth = currentCalDate.getMonth();
+    let selectedDay = currentCalDate.getDate();
+
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    function getSelectedDateString() {
+      const mm = String(selectedMonth + 1).padStart(2, '0');
+      const dd = String(selectedDay).padStart(2, '0');
+      return `${selectedYear}-${mm}-${dd}`;
+    }
 
     function renderCalendar() {
       const year = currentCalDate.getFullYear();
@@ -891,17 +909,18 @@
       const grid = document.getElementById('calGridDates');
       grid.innerHTML = '';
 
-      const firstDayIndex = (new Date(year, month, 1).getDay() + 6) % 7;
+      const firstDayOfWeek = (new Date(year, month, 1).getDay() + 6) % 7; // Monday = 0
       const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-      for (let i = 0; i < firstDayIndex; i++) {
+      // Empty lead cells
+      for (let i = 0; i < firstDayOfWeek; i++) {
         const emptyCell = document.createElement('div');
         emptyCell.className = 'cal-day-cell empty';
         grid.appendChild(emptyCell);
       }
 
       const today = new Date();
-      today.setHours(0,0,0,0);
+      today.setHours(0, 0, 0, 0);
 
       for (let d = 1; d <= daysInMonth; d++) {
         const cell = document.createElement('div');
@@ -909,19 +928,24 @@
         cell.textContent = d;
 
         const cellDate = new Date(year, month, d);
+        cellDate.setHours(0, 0, 0, 0);
+
         if (cellDate < today) {
           cell.classList.add('past');
-        }
+        } else {
+          if (year === selectedYear && month === selectedMonth && d === selectedDay) {
+            cell.classList.add('active');
+          }
 
-        if (cellDate.toDateString() === selectedDate.toDateString()) {
-          cell.classList.add('active');
+          cell.addEventListener('click', function(e) {
+            e.stopPropagation();
+            selectedYear = year;
+            selectedMonth = month;
+            selectedDay = d;
+            renderCalendar();
+            updateSummary();
+          });
         }
-
-        cell.onclick = () => {
-          selectedDate = cellDate;
-          renderCalendar();
-          updateSummary();
-        };
 
         grid.appendChild(cell);
       }
@@ -982,11 +1006,11 @@
       const sumPrice = document.getElementById('sumPrice');
       const dockLabel = document.getElementById('dockLabel');
       const dockPrice = document.getElementById('dockPrice');
-      const dateStr = selectedDate.toISOString().split('T')[0];
+      const dateStr = getSelectedDateString();
 
       let price = '€13';
       let title = 'Peak Court';
-      let meta = `${dateStr} • ${selectedSlotLabel}`;
+      let meta = `${dateStr} • ${selectedSlotLabel} • Gear Included`;
 
       if (mode === 'pro') {
         title = `Pro Sparring (${selectedCoach.split(' ')[0]})`;
@@ -1027,7 +1051,7 @@
       const name = document.getElementById('custName').value || 'Marios Ioannou';
       document.getElementById('passPlayer').textContent = name;
       document.getElementById('passType').textContent = document.getElementById('sumLabel').textContent;
-      document.getElementById('passSlot').textContent = (mode === 'monthly') ? '30 Days Access' : `${selectedDate.toISOString().split('T')[0]} (${selectedSlotLabel})`;
+      document.getElementById('passSlot').textContent = (mode === 'monthly') ? '30 Days Access' : `${getSelectedDateString()} (${selectedSlotLabel})`;
 
       const qrTarget = document.getElementById('qrTarget');
       qrTarget.innerHTML = '';
@@ -1045,6 +1069,7 @@
 
     function closePassModal() { document.getElementById('passModal').classList.remove('active'); }
 
+    // Init
     renderCalendar();
     updateSummary();
   </script>
