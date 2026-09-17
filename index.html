@@ -187,7 +187,7 @@
       font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
     }
 
-    /* EQUIPMENT */
+    /* EQUIPMENT CARDS */
     .equip-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -264,7 +264,7 @@
       color: #fff;
     }
 
-    /* BOOKING WRAPPER */
+    /* BOOKING WORKFLOW */
     .booking-wrapper {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -446,6 +446,7 @@
     }
     .input-field input:focus { border-color: var(--neon-cyan); }
 
+    /* DYNAMIC TIME SLOTS & DISABLED STATE */
     .time-slot-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
@@ -464,12 +465,24 @@
       border-radius: var(--radius-sm);
       cursor: pointer;
       user-select: none;
+      transition: all 0.15s;
     }
     .time-chip.active {
       background: var(--neon-cyan);
       color: #000;
       font-weight: 700;
       border-color: var(--neon-cyan);
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+    }
+    .time-chip.disabled {
+      opacity: 0.28;
+      pointer-events: none;
+      cursor: not-allowed;
+      background: rgba(15, 20, 28, 0.4);
+      border-color: #1a2230;
+      color: #475569;
+      text-decoration: line-through;
+      box-shadow: none !important;
     }
 
     .checkout-summary {
@@ -775,26 +788,10 @@
         </div>
       </div>
 
+      <!-- DYNAMIC TIME SLOTS CONTAINER -->
       <div id="timeSlotsBlock">
         <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--muted);">Choose 1-Hour Time Slot:</label>
-        <div class="time-slot-grid">
-          <div class="time-chip" onclick="selectSlot(this, '07:00 - 08:00', 'offpeak')">07:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '08:00 - 09:00', 'offpeak')">08:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '09:00 - 10:00', 'offpeak')">09:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '10:00 - 11:00', 'offpeak')">10:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '11:00 - 12:00', 'offpeak')">11:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '12:00 - 13:00', 'offpeak')">12:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '13:00 - 14:00', 'offpeak')">13:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '14:00 - 15:00', 'offpeak')">14:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '15:00 - 16:00', 'peak')">15:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '16:00 - 17:00', 'peak')">16:00</div>
-          <div class="time-chip active" onclick="selectSlot(this, '17:00 - 18:00', 'peak')">17:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '18:00 - 19:00', 'peak')">18:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '19:00 - 20:00', 'peak')">19:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '20:00 - 21:00', 'peak')">20:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '21:00 - 22:00', 'peak')">21:00</div>
-          <div class="time-chip" onclick="selectSlot(this, '22:00 - 23:00', 'peak')">22:00</div>
-        </div>
+        <div class="time-slot-grid" id="timeSlotContainer"></div>
       </div>
 
       <div class="checkout-summary">
@@ -887,7 +884,7 @@
     let selectedSlotLabel = '17:00 - 18:00';
     let selectedTier = 'peak';
 
-    // Calendar state (Explicit Day/Month/Year preservation)
+    // Calendar state
     let currentCalDate = new Date();
     let selectedYear = currentCalDate.getFullYear();
     let selectedMonth = currentCalDate.getMonth();
@@ -895,10 +892,101 @@
 
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+    // Definition of operating slots (07:00 - 23:00)
+    const ALL_HOURLY_SLOTS = [
+      { start: '07:00', label: '07:00 - 08:00', tier: 'offpeak' },
+      { start: '08:00', label: '08:00 - 09:00', tier: 'offpeak' },
+      { start: '09:00', label: '09:00 - 10:00', tier: 'offpeak' },
+      { start: '10:00', label: '10:00 - 11:00', tier: 'offpeak' },
+      { start: '11:00', label: '11:00 - 12:00', tier: 'offpeak' },
+      { start: '12:00', label: '12:00 - 13:00', tier: 'offpeak' },
+      { start: '13:00', label: '13:00 - 14:00', tier: 'offpeak' },
+      { start: '14:00', label: '14:00 - 15:00', tier: 'offpeak' },
+      { start: '15:00', label: '15:00 - 16:00', tier: 'peak' },
+      { start: '16:00', label: '16:00 - 17:00', tier: 'peak' },
+      { start: '17:00', label: '17:00 - 18:00', tier: 'peak' },
+      { start: '18:00', label: '18:00 - 19:00', tier: 'peak' },
+      { start: '19:00', label: '19:00 - 20:00', tier: 'peak' },
+      { start: '20:00', label: '20:00 - 21:00', tier: 'peak' },
+      { start: '21:00', label: '21:00 - 22:00', tier: 'peak' },
+      { start: '22:00', label: '22:00 - 23:00', tier: 'peak' }
+    ];
+
+    // Seed data: reserved start times (replace with API/database in production)
+    const BOOKED_REGISTRY = {
+      '2026-09-18': ['17:00', '18:00', '20:00'],
+      '2026-09-19': ['10:00', '11:00', '19:00', '21:00'],
+      '2026-09-20': ['15:00', '16:00', '17:00']
+    };
+
     function getSelectedDateString() {
       const mm = String(selectedMonth + 1).padStart(2, '0');
       const dd = String(selectedDay).padStart(2, '0');
       return `${selectedYear}-${mm}-${dd}`;
+    }
+
+    async function fetchBookedSlots(dateStr) {
+      // Plug in live endpoint when ready:
+      // const res = await fetch(`/api/slots?date=${dateStr}&mode=${mode}`);
+      // return await res.json();
+      return BOOKED_REGISTRY[dateStr] || [];
+    }
+
+    async function renderTimeSlots() {
+      const container = document.getElementById('timeSlotContainer');
+      if (!container) return;
+
+      const dateStr = getSelectedDateString();
+      const bookedTimes = await fetchBookedSlots(dateStr);
+
+      container.innerHTML = '';
+      let activeAssigned = false;
+
+      ALL_HOURLY_SLOTS.forEach(slot => {
+        const isBooked = bookedTimes.includes(slot.start);
+        const chip = document.createElement('div');
+        chip.className = 'time-chip';
+        chip.textContent = slot.start;
+
+        if (isBooked) {
+          chip.classList.add('disabled');
+          chip.title = 'Slot reserved';
+        } else {
+          if (!activeAssigned && (slot.label === selectedSlotLabel || !selectedSlotLabel)) {
+            chip.classList.add('active');
+            selectedSlotLabel = slot.label;
+            selectedTier = slot.tier;
+            activeAssigned = true;
+          }
+
+          chip.onclick = () => {
+            document.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            selectedSlotLabel = slot.label;
+            selectedTier = slot.tier;
+            updateSummary();
+          };
+        }
+
+        container.appendChild(chip);
+      });
+
+      // If previously selected slot became unavailable, shift to next open slot
+      if (!activeAssigned) {
+        const firstFree = container.querySelector('.time-chip:not(.disabled)');
+        if (firstFree) {
+          firstFree.classList.add('active');
+          const freeSlotObj = ALL_HOURLY_SLOTS.find(s => s.start === firstFree.textContent);
+          if (freeSlotObj) {
+            selectedSlotLabel = freeSlotObj.label;
+            selectedTier = freeSlotObj.tier;
+          }
+        } else {
+          selectedSlotLabel = 'Fully Booked';
+        }
+      }
+
+      updateSummary();
     }
 
     function renderCalendar() {
@@ -912,7 +1000,6 @@
       const firstDayOfWeek = (new Date(year, month, 1).getDay() + 6) % 7; // Monday = 0
       const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-      // Empty lead cells
       for (let i = 0; i < firstDayOfWeek; i++) {
         const emptyCell = document.createElement('div');
         emptyCell.className = 'cal-day-cell empty';
@@ -943,7 +1030,7 @@
             selectedMonth = month;
             selectedDay = d;
             renderCalendar();
-            updateSummary();
+            renderTimeSlots();
           });
         }
 
@@ -982,21 +1069,13 @@
         tabs[3].classList.add('active');
         selectedSlotLabel = '17:00 - 19:00';
       }
-      updateSummary();
+      renderTimeSlots();
     }
 
     function selectCoach(name) {
       selectedCoach = name;
       document.getElementById('coach-andreas').classList.toggle('selected', name === 'Andreas Avraam');
       document.getElementById('coach-georgia').classList.toggle('selected', name === 'Georgia Avraam');
-      updateSummary();
-    }
-
-    function selectSlot(element, slot, tier) {
-      document.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
-      element.classList.add('active');
-      selectedSlotLabel = slot;
-      selectedTier = tier;
       updateSummary();
     }
 
@@ -1069,9 +1148,9 @@
 
     function closePassModal() { document.getElementById('passModal').classList.remove('active'); }
 
-    // Init
+    // Initialize application state
     renderCalendar();
-    updateSummary();
+    renderTimeSlots();
   </script>
 </body>
 </html>
