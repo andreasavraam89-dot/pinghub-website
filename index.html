@@ -150,16 +150,17 @@
       background: #111722;
       box-shadow: 0 0 20px rgba(255, 42, 133, 0.25);
     }
-    .hero-visual-card img, .hero-visual-card svg {
+    .hero-visual-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 60%;
       display: block;
     }
     .hero-visual-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 30%, rgba(7, 9, 14, 0.9) 100%);
+      background: linear-gradient(180deg, transparent 30%, rgba(7, 9, 14, 0.85) 100%);
     }
 
     .hero-brief {
@@ -500,15 +501,14 @@
       border-radius: var(--radius-md);
       border: 1px solid var(--border);
     }
-    .equip-thumb img, .equip-thumb svg, .gallery-item img, .gallery-item svg {
+    .equip-thumb img, .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 0.3s;
     }
-    .equip-card:hover .equip-thumb img, .equip-card:hover .equip-thumb svg,
-    .gallery-item:hover img, .gallery-item:hover svg { transform: scale(1.05); }
+    .equip-card:hover .equip-thumb img, .gallery-item:hover img { transform: scale(1.05); }
     .equip-content { padding: 1.2rem; flex: 1; }
     .equip-content h3 { font-size: 1.05rem; margin-bottom: 0.35rem; color: #fff; }
     .equip-content p { font-size: 0.82rem; color: var(--muted); }
@@ -609,32 +609,10 @@
     </div>
   </header>
 
-  <!-- HERO SECTION WITH COMPACT BANNER & EXACT TEXT -->
+  <!-- HERO SECTION: YOUR TABLES PHOTO -->
   <section class="hero-top" id="book">
     <div class="hero-visual-card">
-      <!-- Direct Arena Visual: Butterfly Tables + Neon Sign -->
-      <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <rect width="1200" height="400" fill="#0b0e14"/>
-        <!-- Wall Slats & Glow -->
-        <rect x="0" y="0" width="160" height="400" fill="#140f10"/>
-        <line x1="20" y1="0" x2="20" y2="400" stroke="#331c15" stroke-width="4"/>
-        <line x1="60" y1="0" x2="60" y2="400" stroke="#331c15" stroke-width="4"/>
-        <line x1="100" y1="0" x2="100" y2="400" stroke="#331c15" stroke-width="4"/>
-        <!-- Ceiling Linear Neon Tubes -->
-        <line x1="260" y1="40" x2="480" y2="75" stroke="#00f0ff" stroke-width="6" stroke-linecap="round" filter="drop-shadow(0 0 15px #00f0ff)"/>
-        <line x1="530" y1="80" x2="720" y2="95" stroke="#00f0ff" stroke-width="5" stroke-linecap="round" filter="drop-shadow(0 0 15px #00f0ff)"/>
-        <line x1="750" y1="95" x2="960" y2="65" stroke="#ff2a85" stroke-width="5" stroke-linecap="round" filter="drop-shadow(0 0 15px #ff2a85)"/>
-        <!-- PingHub Neon Center Sign -->
-        <text x="360" y="150" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="52" fill="#ffffff" filter="drop-shadow(0 0 15px #00f0ff)">ping<tspan fill="#ff2a85" filter="drop-shadow(0 0 15px #ff2a85)">hub 🏓</tspan></text>
-        <text x="820" y="130" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="700" fill="#64748b" letter-spacing="4">PLAY • IMPROVE • CONNECT</text>
-        <!-- Blue Championship Tables -->
-        <polygon points="120,380 440,380 480,260 180,260" fill="#0d47a1" stroke="#ffffff" stroke-width="2"/>
-        <polygon points="520,340 760,340 780,250 560,250" fill="#1565c0" stroke="#ffffff" stroke-width="1.5"/>
-        <polygon points="800,320 980,320 990,250 830,250" fill="#1976d2" stroke="#ffffff" stroke-width="1.5"/>
-        <!-- Table Undercarriage / Butterfly Branding -->
-        <rect x="230" y="380" width="120" height="20" fill="#0f172a"/>
-        <text x="250" y="394" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="900" fill="#fff" letter-spacing="2">BUTTERFLY</text>
-      </svg>
+      <img src="tables.png" alt="PingHub Arena" onerror="this.style.opacity='0.4'">
       <div class="hero-visual-overlay"></div>
     </div>
 
@@ -646,7 +624,7 @@
       <p>The first autonomous table tennis arena in Nicosia. Book online, scan the QR code on the door and have instant access to a unique table tennis arena with high level tables, rackets and balls ready to play.</p>
     </div>
 
-    <!-- BOOKING ENGINE: TABS IN ORDER -->
+    <!-- BOOKING ENGINE: TABS IN REQUESTED ORDER -->
     <div class="booking-wrapper">
       <div class="mode-tabs">
         <!-- 1st: Standard Court with €10 off peak hours -->
@@ -748,25 +726,17 @@
     </div>
   </section>
 
-  <!-- GEAR SECTION WITH PRO RACKETS & ITTF BALLS -->
+  <!-- GEAR SECTION -->
   <section id="equipment">
     <div class="sec-tag">Top-Tier Hardware</div>
     <h2 class="sec-title neon-text">Equipment & Gear Ready On Court</h2>
     <p class="sec-desc">Zero preparation required. Tournament-approved hardware is ready when the door unlocks.</p>
 
     <div class="equip-grid">
-      <!-- 1. TABLES IMAGE: BUTTERFLY TOURNAMENT ARENA -->
+      <!-- 1. TABLES PHOTO -->
       <div class="equip-card">
         <div class="equip-thumb">
-          <svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="600" height="380" fill="#090d14"/>
-            <text x="180" y="70" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="34" fill="#ffffff" filter="drop-shadow(0 0 10px #00f0ff)">ping<tspan fill="#ff2a85">hub</tspan></text>
-            <polygon points="40,360 480,360 540,200 120,200" fill="#1565c0" stroke="#fff" stroke-width="2"/>
-            <polygon points="40,360 40,375 480,375 480,360" fill="#0a192f"/>
-            <line x1="280" y1="200" x2="260" y2="360" stroke="#ffffff" stroke-width="2"/>
-            <rect x="180" y="345" width="130" height="22" fill="#000" rx="3"/>
-            <text x="195" y="361" font-family="sans-serif" font-weight="900" font-size="12" fill="#fff" letter-spacing="2">BUTTERFLY</text>
-          </svg>
+          <img src="tables.png" alt="ITTF Competition Tables" onerror="this.style.opacity='0.4'">
         </div>
         <div class="equip-content">
           <h3>ITTF Competition Tables</h3>
@@ -774,7 +744,7 @@
         </div>
       </div>
 
-      <!-- 2. PRO RACKETS UNLOCKED -->
+      <!-- 2. PRO RACKETS -->
       <div class="equip-card">
         <div class="equip-thumb">
           <img src="https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?auto=format&fit=crop&w=700&q=80" alt="Pro Rackets Unlocked">
@@ -785,35 +755,10 @@
         </div>
       </div>
 
-      <!-- 3. ITTF APPROVED BALLS: 40+ WHITE BALL ON BLUE TABLE -->
+      <!-- 3. YOUR ITTF BALL PHOTO -->
       <div class="equip-card">
         <div class="equip-thumb">
-          <svg viewBox="0 0 500 350" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="ballShade" cx="40%" cy="35%" r="60%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="60%" stop-color="#f1f5f9"/>
-                <stop offset="100%" stop-color="#94a3b8"/>
-              </radialGradient>
-              <radialGradient id="tableShine" cx="50%" cy="100%" r="90%">
-                <stop offset="0%" stop-color="#2563eb"/>
-                <stop offset="100%" stop-color="#0f2b66"/>
-              </radialGradient>
-            </defs>
-            <rect width="500" height="350" fill="url(#tableShine)"/>
-            <!-- Tournament Net -->
-            <rect x="0" y="20" width="500" height="55" fill="#1e293b" opacity="0.6"/>
-            <line x1="0" y1="20" x2="500" y2="20" stroke="#cbd5e1" stroke-width="4"/>
-            <!-- White Center Line -->
-            <line x1="0" y1="200" x2="500" y2="200" stroke="#ffffff" stroke-width="3" opacity="0.9"/>
-            <!-- Shadow under Ball -->
-            <ellipse cx="260" cy="245" rx="55" ry="16" fill="#051026" opacity="0.75"/>
-            <!-- White ITTF 40+ Star Ball -->
-            <circle cx="260" cy="190" r="65" fill="url(#ballShade)"/>
-            <!-- Official ITTF Stamp -->
-            <text x="260" y="195" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="13" fill="#1e293b" text-anchor="middle">ITTF</text>
-            <text x="260" y="210" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="11" fill="#1e293b" text-anchor="middle">40+ ★</text>
-          </svg>
+          <img src="ball.png" alt="ITTF Approved Balls" onerror="this.style.opacity='0.4'">
         </div>
         <div class="equip-content">
           <h3>ITTF Approved Balls</h3>
@@ -823,7 +768,7 @@
     </div>
   </section>
 
-  <!-- GALLERY SECTION (MATCH ARENA 2-PLAYERS, LOUNGE COUCH, MULTIBALL DRILLS) -->
+  <!-- GALLERY SECTION -->
   <section id="gallery">
     <div class="sec-tag">Club Atmosphere</div>
     <h2 class="sec-title">The Arena Experience</h2>
@@ -836,37 +781,15 @@
         <div class="gallery-badge">Match Arena • Court 1</div>
       </div>
 
-      <!-- 2. PLAYER LOUNGE: COUCH OVERLOOKING THE TABLES -->
+      <!-- 2. PLAYER LOUNGE: COUCH OVERLOOKING TABLES -->
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" alt="Lounge Couch Overlooking Tables">
         <div class="gallery-badge">Player Lounge & Bar</div>
       </div>
 
-      <!-- 3. MULTIBALL TRAINING: COACH FEEDING BALLS WITH BUTTERFLY BRANDING -->
+      <!-- 3. YOUR MULTIBALL DRILLS PHOTO -->
       <div class="gallery-item">
-        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="600" height="400" fill="#090d14"/>
-          <!-- Neon Butterfly Wings Background -->
-          <ellipse cx="440" cy="80" rx="20" ry="32" transform="rotate(-30 440 80)" fill="#00f0ff" opacity="0.8" filter="drop-shadow(0 0 10px #00f0ff)"/>
-          <ellipse cx="475" cy="80" rx="20" ry="32" transform="rotate(30 475 80)" fill="#00f0ff" opacity="0.8" filter="drop-shadow(0 0 10px #00f0ff)"/>
-          <text x="240" y="70" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="#94a3b8">BETTER PLAYERS BUILD TOMORROW</text>
-          <!-- Competition Table -->
-          <polygon points="60,390 540,390 580,240 160,240" fill="#1565c0" stroke="#fff" stroke-width="1.5"/>
-          <rect x="240" y="360" width="100" height="18" fill="#000"/>
-          <text x="252" y="373" font-family="sans-serif" font-weight="900" font-size="10" fill="#fff" letter-spacing="1">BUTTERFLY</text>
-          <!-- Multiball Caddy Basket -->
-          <rect x="40" y="220" width="60" height="50" fill="#111" stroke="#334155" stroke-width="2"/>
-          <text x="48" y="248" font-family="sans-serif" font-size="9" font-weight="800" fill="#fff">BUTTERFLY</text>
-          <circle cx="55" cy="216" r="5" fill="#fff"/><circle cx="68" cy="216" r="5" fill="#fff"/><circle cx="82" cy="216" r="5" fill="#fff"/>
-          <!-- Rapid Fed Multiball Arc (White Spheres) -->
-          <circle cx="160" cy="225" r="5" fill="#fff" opacity="0.9"/>
-          <circle cx="210" cy="228" r="5" fill="#fff" opacity="0.9"/>
-          <circle cx="260" cy="232" r="5.5" fill="#fff"/>
-          <!-- Player Silhouette with Red Blade -->
-          <circle cx="480" cy="200" r="18" fill="#ff2a85"/>
-          <path d="M470,220 Q485,270 510,340" stroke="#ff2a85" stroke-width="22" stroke-linecap="round"/>
-          <circle cx="430" cy="225" r="18" fill="#ef4444" stroke="#ffffff" stroke-width="2"/>
-        </svg>
+        <img src="multiball.png" alt="Coach Multiball Training" onerror="this.style.opacity='0.4'">
         <div class="gallery-badge">Pro Sparring & Drills</div>
       </div>
     </div>
