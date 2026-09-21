@@ -135,33 +135,32 @@
     .sec-title { font-size: 1.65rem; font-weight: 800; margin-bottom: 0.5rem; }
     .sec-desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.5rem; }
 
-    /* HIGH-DEFINITION EXPANDED HERO CONTAINER */
+    /* HIGH-FIDELITY HERO PRESENTATION */
     .hero-top {
       margin: 1rem auto 1.5rem;
     }
     .hero-visual-card {
       width: 100%;
-      height: clamp(240px, 32vw, 380px);
+      height: 320px;
       border-radius: var(--radius-lg);
       border: 1px solid var(--neon-pink);
       position: relative;
       overflow: hidden;
       margin-bottom: 1.2rem;
-      background: #111722;
-      box-shadow: 0 0 20px rgba(255, 42, 133, 0.25);
+      background: #090d14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(255, 42, 133, 0.25);
     }
     .hero-visual-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
       display: block;
-      image-rendering: -webkit-optimize-contrast;
-    }
-    .hero-visual-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 35%, rgba(7, 9, 14, 0.85) 100%);
+      image-rendering: auto;
     }
 
     .hero-brief {
@@ -423,9 +422,7 @@
       border-color: var(--neon-cyan);
       box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
     }
-    .time-chip.active .capacity-pill {
-      color: #000;
-    }
+    .time-chip.active .capacity-pill { color: #000; }
     .time-chip.slot-full {
       opacity: 0.35;
       cursor: not-allowed;
@@ -439,7 +436,7 @@
       font-weight: 800;
     }
 
-    /* FORM ROW (NAME, PHONE, EMAIL) */
+    /* FORM (NAME, PHONE, EMAIL) */
     .form-row {
       display: grid;
       grid-template-columns: 1fr;
@@ -469,35 +466,45 @@
     }
     .input-field input:focus { border-color: var(--neon-cyan); }
 
-    /* TERMS & CONDITIONS BOX */
+    /* TERMS & CONDITIONS ACCORDION AND CHECKBOX */
     .terms-box {
       margin-bottom: 1.2rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.65rem;
-      font-size: 0.82rem;
-      color: var(--muted);
       background: var(--surface-elevated);
-      padding: 0.75rem 0.9rem;
+      padding: 0.9rem;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border);
     }
-    .terms-box input[type="checkbox"] {
-      width: 17px;
-      height: 17px;
+    .terms-check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: #f1f5f9;
+    }
+    .terms-check-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
       accent-color: var(--neon-cyan);
       cursor: pointer;
       margin-top: 2px;
+      flex-shrink: 0;
     }
-    .terms-box label {
+    .terms-check-row label {
       cursor: pointer;
       user-select: none;
-      line-height: 1.4;
+      line-height: 1.45;
     }
-    .terms-box a {
-      color: var(--neon-cyan);
-      text-decoration: underline;
+    .terms-details-list {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.6;
+      list-style: disc inside;
     }
+    .terms-details-list li { margin-bottom: 0.35rem; }
+    .terms-details-list strong { color: #fff; }
 
     .checkout-summary {
       display: flex;
@@ -529,7 +536,7 @@
     }
     .btn-pay-stripe:hover { opacity: 0.92; }
 
-    /* GEAR & GALLERY SECTION */
+    /* EQUIPMENT & GALLERY */
     .equip-grid, .gallery-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -548,24 +555,28 @@
     }
     .equip-thumb, .gallery-item {
       width: 100%;
-      height: 240px;
+      height: 230px;
       position: relative;
       overflow: hidden;
       background: #090d14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .gallery-item {
       border-radius: var(--radius-md);
       border: 1px solid var(--border);
     }
     .equip-thumb img, .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
       display: block;
-      transition: transform 0.3s;
-      image-rendering: -webkit-optimize-contrast;
+      transition: transform 0.25s ease;
     }
-    .equip-card:hover .equip-thumb img, .gallery-item:hover img { transform: scale(1.04); }
+    .equip-card:hover .equip-thumb img, .gallery-item:hover img { transform: scale(1.03); }
     .equip-content { padding: 1.2rem; flex: 1; }
     .equip-content h3 { font-size: 1.05rem; margin-bottom: 0.35rem; color: #fff; }
     .equip-content p { font-size: 0.82rem; color: var(--muted); }
@@ -585,7 +596,7 @@
       z-index: 5;
     }
 
-    /* ABOUT US SECTION */
+    /* ABOUT US */
     .about-box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -616,7 +627,7 @@
       background: #111722;
       border: 1px solid #2e384d;
       border-radius: var(--radius-lg);
-      max-width: 440px;
+      max-width: 460px;
       width: 100%;
       padding: 1.5rem;
       max-height: 90vh;
@@ -661,16 +672,16 @@
         <a href="#book" class="active-link">Book</a>
         <a href="#equipment">Gear</a>
         <a href="#gallery">Gallery</a>
-        <a href="#about">About Us</a>
+        <a href="#rules">Rules</a>
+        <a href="#about">About</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO SECTION: YOUR TABLES PHOTO -->
+  <!-- HERO SECTION -->
   <section class="hero-top" id="book">
     <div class="hero-visual-card">
-      <img src="https://i.postimg.cc/gxb865pF/tables.png" alt="PingHub Arena">
-      <div class="hero-visual-overlay"></div>
+      <img src="https://i.postimg.cc/gxb865pF/tables.png" alt="PingHub Arena Tables">
     </div>
 
     <div class="hero-brief">
@@ -678,7 +689,7 @@
         <span>🏓 ⚡ 🏓</span> Engomi, Nicosia • 3 High-End Tournament Tables • 24/7 Smart Door Access
       </div>
       <h1 class="neon-text">BOOK ONLINE.<br>PLAY ANYTIME.</h1>
-      <p>The first autonomous table tennis arena in Nicosia. Book online, scan your QR code at the door, and get instant access to 3 professional tables with tournament balls and pro paddles ready to go.</p>
+      <p>The first autonomous table tennis arena in Nicosia. Book online, scan your QR code at the door, and get instant access to 3 professional tables with tournament balls and paddles ready to play.</p>
     </div>
 
     <!-- BOOKING ENGINE -->
@@ -769,12 +780,21 @@
         </div>
       </div>
 
-      <!-- TERMS & CONDITIONS CHECKBOX -->
+      <!-- COMPREHENSIVE TERMS & CONDITIONS -->
       <div class="terms-box">
-        <input type="checkbox" id="termsCheck" checked/>
-        <label for="termsCheck">
-          I accept the <a href="#about">Terms & Conditions</a>, club safety guidelines, and verify that all members of my party will wear clean indoor sport shoes on court.
-        </label>
+        <div class="terms-check-row">
+          <input type="checkbox" id="termsCheck"/>
+          <label for="termsCheck">
+            <strong>I have read and accept all PingHub Club Rules, Entry Guidelines & Liability Terms:</strong>
+          </label>
+        </div>
+        <ul class="terms-details-list">
+          <li><strong>2 Persons Max per Booking:</strong> Only two (2) people are authorized to enter the club premises per table reservation. Non-booked spectators or extra visitors are prohibited.</li>
+          <li><strong>1 Hour Strict Limit:</strong> Your booking is valid strictly for the 1-hour time slot selected and paid for. When your 60 minutes expire, court play must cease immediately.</li>
+          <li><strong>Equipment Return:</strong> After your session finishes, all rackets and balls must be returned to the exact caddies and holders where they were found.</li>
+          <li><strong>CCTV & Privacy Notice:</strong> The facility is under continuous 24/7 CCTV surveillance covering only the player lounge and table areas. Camera footage is private and accessible strictly by the owner, or by authorized third parties/authorities solely in the event of accidents or legal inquiries.</li>
+          <li><strong>Liability & Assumption of Risk:</strong> Customers play entirely at their own risk. PingHub and its owners accept zero liability for any personal injury, slip, trip, fall, or accident occurring on premises. All visitors are solely responsible for their own safety and physical wellbeing.</li>
+        </ul>
       </div>
 
       <div class="checkout-summary">
@@ -840,7 +860,7 @@
     <p class="sec-desc">A snapshot of the action, tournament infrastructure, and late-night lounge culture at PingHub.</p>
 
     <div class="gallery-grid">
-      <!-- 1. MATCH ARENA: 2 PLAYERS INDOOR -->
+      <!-- 1. MATCH ARENA -->
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=800&q=80" alt="2 Players Indoor Match">
         <div class="gallery-badge">Match Arena • Court 1</div>
@@ -860,24 +880,49 @@
     </div>
   </section>
 
+  <!-- RULES & SAFETY SECTION -->
+  <section id="rules">
+    <div class="sec-tag">Safety & Compliance</div>
+    <h2 class="sec-title">House Rules & Terms Summary</h2>
+    <div class="about-box" style="grid-template-columns: 1fr;">
+      <div style="font-size: 0.9rem; color: var(--muted); line-height: 1.6;">
+        <p style="margin-bottom: 0.8rem;">
+          <strong style="color: #fff;">1. Access Quota:</strong> Each reservation allows a maximum of <strong>two (2) players</strong> inside PingHub.
+        </p>
+        <p style="margin-bottom: 0.8rem;">
+          <strong style="color: #fff;">2. Session Time:</strong> Play strictly lasts <strong>60 minutes</strong> per booked hour. Once your slot concludes, tables must be vacated immediately.
+        </p>
+        <p style="margin-bottom: 0.8rem;">
+          <strong style="color: #fff;">3. Equipment Duty:</strong> Put all bats and poly balls back in their dedicated racks before exiting the optical gate.
+        </p>
+        <p style="margin-bottom: 0.8rem;">
+          <strong style="color: #fff;">4. CCTV Surveillance:</strong> For your security, the lounge and table areas are monitored 24/7 by CCTV. Video feeds are kept confidential by the owner and released only to investigating parties in case of an accident.
+        </p>
+        <p>
+          <strong style="color: #fff;">5. Liability Disclaimer:</strong> Guests use the venue and sporting facilities at their own risk. PingHub and management bear no liability for accidents, injuries, or personal property loss.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ABOUT US -->
   <section id="about">
     <div class="sec-tag">Who We Are</div>
     <h2 class="sec-title">About PingHub</h2>
     <div class="about-box">
       <div>
-        <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem; color:#fff;">Nicosia's First Autonomous Ping Pong Lounge</h3>
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem; color:#fff;">Nicosia's Autonomous Ping Pong Lounge</h3>
         <p style="color:var(--muted); font-size: 0.92rem; margin-bottom: 1rem;">
-          PingHub was built in Engomi to pull table tennis out of basements and integrate it with street culture, neon aesthetics, and effortless smartphone booking.
+          PingHub was engineered in Engomi to integrate table tennis with street culture, modern neon design, and effortless smartphone booking.
         </p>
         <p style="color:var(--muted); font-size: 0.92rem;">
-          With 3 competition-grade tables and verified contactless smart entry, PingHub offers 24/7 access whether you want casual friendly matches or high-intensity sparring.
+          Featuring 3 tournament-grade tables, high-tension rackets, poly balls, and digital access passes, PingHub gives you instant court time on your own schedule.
         </p>
       </div>
       <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.2rem;">
         <div style="font-size:0.85rem; margin-bottom:0.6rem;"><strong style="color:#fff;">📍 Location:</strong> Engomi Sports District, 2414 Nicosia</div>
         <div style="font-size:0.85rem; margin-bottom:0.6rem;"><strong style="color:#fff;">⏰ Hours:</strong> 7 Days a Week • 07:00 – 23:00</div>
-        <div style="font-size:0.85rem;"><strong style="color:#fff;">🚗 Parking:</strong> Free dedicated player spots out front</div>
+        <div style="font-size:0.85rem;"><strong style="color:#fff;">🚗 Parking:</strong> Dedicated customer parking directly in front</div>
       </div>
     </div>
   </section>
@@ -909,7 +954,7 @@
       <button class="close-modal-btn" style="position: absolute; top:1rem; right:1rem;" onclick="closePassModal()">&times;</button>
       <div style="color:var(--neon-green); font-size:0.75rem; font-weight:700; margin-bottom:0.2rem;">✔ RESERVATION CONFIRMED</div>
       <h3 class="neon-text" style="font-size:1.3rem; margin-bottom:0.2rem;">Optical Gate Pass</h3>
-      <p style="font-size:0.78rem; color:var(--muted);">Hold this QR code up to the smart reader at the front door.</p>
+      <p style="font-size:0.78rem; color:var(--muted);">Hold this QR code up to the smart reader at the entrance.</p>
       
       <div class="qr-container" id="qrTarget"></div>
       
@@ -923,12 +968,16 @@
           <strong id="passPhone" style="color:#fff;">+357 99 123456</strong>
         </div>
         <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+          <span style="color:var(--muted);">Allowed Entry:</span>
+          <strong style="color:var(--neon-amber);">Strictly 2 Persons</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
           <span style="color:var(--muted);">Type:</span>
           <strong id="passType" style="color:#fff;">Standard Court</strong>
         </div>
         <div style="display:flex; justify-content:space-between;">
           <span style="color:var(--muted);">Slot & Table:</span>
-          <strong id="passSlot" style="color:var(--neon-cyan);">17:00 - 18:00 (Table Reserved)</strong>
+          <strong id="passSlot" style="color:var(--neon-cyan);">17:00 - 18:00 • Table 1</strong>
         </div>
       </div>
     </div>
@@ -936,12 +985,7 @@
 
   <script>
     const MAX_TABLES_PER_SLOT = 3;
-
-    // Persisted or session table reservations: { "YYYY-MM-DD_HH:MM": count }
-    const bookingLedger = {
-      // Pre-seed an example so you can see a full slot in action:
-      // "2026-09-21_18:00": 3
-    };
+    const bookingLedger = {};
 
     let mode = 'court';
     let selectedCoach = 'Andreas Avraam';
@@ -1087,10 +1131,9 @@
             <span class="capacity-pill">FULL</span>
           `;
         } else {
-          const capText = `${availableTables}/3 Left`;
           chip.innerHTML = `
             <span>${slot.start}</span>
-            <span class="capacity-pill">${capText}</span>
+            <span class="capacity-pill">${availableTables}/3 Left</span>
           `;
 
           if (!activeAssigned && (slot.label === selectedSlotLabel || !selectedSlotLabel || mode === 'social')) {
@@ -1166,13 +1209,13 @@
       if (slotsDateBadge) slotsDateBadge.textContent = formattedDate;
 
       let price = '€13';
-      let title = 'Peak Standard Court';
-      let meta = `${formattedDate} • ${selectedSlotLabel} • Table & Gear Included`;
+      let title = 'Peak Standard Court (1 Hour)';
+      let meta = `${formattedDate} • ${selectedSlotLabel} • Max 2 Players • Gear Included`;
 
       if (mode === 'pro') {
         title = `Private with Pro (${selectedCoach.split(' ')[0]})`;
         price = '€25';
-        meta = `${formattedDate} • ${selectedSlotLabel} • Multi-ball & Table Included`;
+        meta = `${formattedDate} • ${selectedSlotLabel} • Multi-ball & Sparring Included`;
       } else if (mode === 'monthly') {
         title = 'Monthly Unlimited Pass';
         price = '€60';
@@ -1200,12 +1243,12 @@
       const termsAccepted = document.getElementById('termsCheck').checked;
 
       if (!name || !phone || !email) {
-        alert('Please provide your Name, Phone Number, and Email before proceeding.');
+        alert('Please provide your Full Name, Phone Number, and Email before proceeding.');
         return;
       }
 
       if (!termsAccepted) {
-        alert('Please accept the Terms & Conditions before confirming your booking.');
+        alert('You must read and check the Terms & Conditions box (accepting the 2-person limit, 1-hour session, CCTV rules, and liability waiver) to proceed.');
         return;
       }
 
@@ -1213,7 +1256,7 @@
         const slotKey = `${getSelectedDateString()}_${selectedSlotStart}`;
         const bookedCount = bookingLedger[slotKey] || 0;
         if (bookedCount >= MAX_TABLES_PER_SLOT) {
-          alert('Sorry, all 3 tables are booked for this slot. Please select another time.');
+          alert('Sorry, all 3 tables are currently booked for this time slot. Please pick another hour.');
           renderTimeSlots();
           return;
         }
@@ -1235,7 +1278,6 @@
 
       let assignedTableNumber = 1;
 
-      // Increment ledger for standard court / pro sparring
       if (mode !== 'monthly') {
         const slotKey = `${dateStr}_${selectedSlotStart}`;
         const currentBookings = bookingLedger[slotKey] || 0;
@@ -1253,7 +1295,7 @@
       const qrTarget = document.getElementById('qrTarget');
       qrTarget.innerHTML = '';
       new QRCode(qrTarget, {
-        text: `PINGHUB_${Date.now()}_TBL${assignedTableNumber}`,
+        text: `PINGHUB_PASS_${Date.now()}_TBL${assignedTableNumber}`,
         width: 140,
         height: 140,
         colorDark: "#07090e",
