@@ -135,13 +135,13 @@
     .sec-title { font-size: 1.65rem; font-weight: 800; margin-bottom: 0.5rem; }
     .sec-desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.5rem; }
 
-    /* COMPACT HERO */
+    /* HIGH-DEFINITION EXPANDED HERO CONTAINER */
     .hero-top {
       margin: 1rem auto 1.5rem;
     }
     .hero-visual-card {
       width: 100%;
-      height: 180px;
+      height: clamp(240px, 32vw, 380px);
       border-radius: var(--radius-lg);
       border: 1px solid var(--neon-pink);
       position: relative;
@@ -154,13 +154,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 60%;
+      object-position: center center;
       display: block;
+      image-rendering: -webkit-optimize-contrast;
     }
     .hero-visual-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 30%, rgba(7, 9, 14, 0.85) 100%);
+      background: linear-gradient(180deg, transparent 35%, rgba(7, 9, 14, 0.85) 100%);
     }
 
     .hero-brief {
@@ -390,15 +391,16 @@
 
     .time-slot-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
-      gap: 0.45rem;
+      grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+      gap: 0.55rem;
     }
     .time-chip {
-      height: 42px;
+      padding: 0.5rem 0.3rem;
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       color: var(--muted);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       font-size: 0.85rem;
@@ -406,6 +408,13 @@
       cursor: pointer;
       user-select: none;
       transition: all 0.15s;
+      min-height: 48px;
+    }
+    .time-chip .capacity-pill {
+      font-size: 0.62rem;
+      margin-top: 2px;
+      opacity: 0.8;
+      font-weight: 600;
     }
     .time-chip.active {
       background: var(--neon-cyan);
@@ -414,14 +423,30 @@
       border-color: var(--neon-cyan);
       box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
     }
+    .time-chip.active .capacity-pill {
+      color: #000;
+    }
+    .time-chip.slot-full {
+      opacity: 0.35;
+      cursor: not-allowed;
+      border-color: #334155;
+      background: #0d121a;
+      pointer-events: none;
+      color: #64748b;
+    }
+    .time-chip.slot-full .capacity-pill {
+      color: var(--neon-pink);
+      font-weight: 800;
+    }
 
+    /* FORM ROW (NAME, PHONE, EMAIL) */
     .form-row {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
-    @media (min-width: 640px) { .form-row { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 768px) { .form-row { grid-template-columns: 1fr 1fr 1fr; } }
     .input-field label {
       display: block;
       font-size: 0.75rem;
@@ -439,10 +464,40 @@
       color: #fff;
       padding: 0 0.9rem;
       border-radius: var(--radius-sm);
-      font-size: 1rem;
+      font-size: 0.95rem;
       outline: none;
     }
     .input-field input:focus { border-color: var(--neon-cyan); }
+
+    /* TERMS & CONDITIONS BOX */
+    .terms-box {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: var(--surface-elevated);
+      padding: 0.75rem 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+    .terms-box input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--neon-cyan);
+      cursor: pointer;
+      margin-top: 2px;
+    }
+    .terms-box label {
+      cursor: pointer;
+      user-select: none;
+      line-height: 1.4;
+    }
+    .terms-box a {
+      color: var(--neon-cyan);
+      text-decoration: underline;
+    }
 
     .checkout-summary {
       display: flex;
@@ -470,7 +525,9 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      transition: opacity 0.2s;
     }
+    .btn-pay-stripe:hover { opacity: 0.92; }
 
     /* GEAR & GALLERY SECTION */
     .equip-grid, .gallery-grid {
@@ -491,7 +548,7 @@
     }
     .equip-thumb, .gallery-item {
       width: 100%;
-      height: 220px;
+      height: 240px;
       position: relative;
       overflow: hidden;
       background: #090d14;
@@ -506,8 +563,9 @@
       object-fit: cover;
       display: block;
       transition: transform 0.3s;
+      image-rendering: -webkit-optimize-contrast;
     }
-    .equip-card:hover .equip-thumb img, .gallery-item:hover img { transform: scale(1.05); }
+    .equip-card:hover .equip-thumb img, .gallery-item:hover img { transform: scale(1.04); }
     .equip-content { padding: 1.2rem; flex: 1; }
     .equip-content h3 { font-size: 1.05rem; margin-bottom: 0.35rem; color: #fff; }
     .equip-content p { font-size: 0.82rem; color: var(--muted); }
@@ -617,10 +675,10 @@
 
     <div class="hero-brief">
       <div class="badge-bar">
-        <span>🏓 ⚡ 🏓</span> Engomi, Nicosia • 24/7 Smart Door Access
+        <span>🏓 ⚡ 🏓</span> Engomi, Nicosia • 3 High-End Tournament Tables • 24/7 Smart Door Access
       </div>
       <h1 class="neon-text">BOOK ONLINE.<br>PLAY ANYTIME.</h1>
-      <p>The first autonomous table tennis arena in Nicosia. Book online, scan the QR code on the door and have instant access to a unique table tennis arena with high level tables, rackets and balls ready to play.</p>
+      <p>The first autonomous table tennis arena in Nicosia. Book online, scan your QR code at the door, and get instant access to 3 professional tables with tournament balls and pro paddles ready to go.</p>
     </div>
 
     <!-- BOOKING ENGINE -->
@@ -628,7 +686,7 @@
       <div class="mode-tabs">
         <button class="tab-btn active" onclick="setMode('court')">
           Standard Court
-          <span>€10 off peak hours / €13 Peak</span>
+          <span>€10 Off-Peak / €13 Peak</span>
         </button>
         <button class="tab-btn" onclick="setMode('monthly')">
           Monthly Pass
@@ -688,23 +746,35 @@
 
         <div class="slots-column" id="timeSlotsBlock">
           <div class="slots-header">
-            <label style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--muted);">Available Hours:</label>
+            <label style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--muted);">Select Time (Max 3 Tables):</label>
             <span class="slots-date-badge" id="slotsDateBadge">Today</span>
           </div>
           <div class="time-slot-grid" id="timeSlotContainer"></div>
         </div>
       </div>
 
-      <!-- PLAYER CONTACT -->
+      <!-- PLAYER CONTACT (NAME, PHONE, EMAIL) -->
       <div class="form-row" id="playerDetailsRow">
         <div class="input-field">
-          <label>Full Name</label>
+          <label>Full Name *</label>
           <input type="text" id="custName" placeholder="Marios Ioannou" value="Marios Ioannou"/>
         </div>
         <div class="input-field">
-          <label>Email (QR Door Pass Destination)</label>
-          <input type="email" id="custEmail" placeholder="marios@domain.com" value="marios@example.com"/>
+          <label>Phone Number *</label>
+          <input type="tel" id="custPhone" placeholder="+357 99 123456" value="+357 99 123456"/>
         </div>
+        <div class="input-field">
+          <label>Email (QR Pass Destination) *</label>
+          <input type="email" id="custEmail" placeholder="marios@example.com" value="marios@example.com"/>
+        </div>
+      </div>
+
+      <!-- TERMS & CONDITIONS CHECKBOX -->
+      <div class="terms-box">
+        <input type="checkbox" id="termsCheck" checked/>
+        <label for="termsCheck">
+          I accept the <a href="#about">Terms & Conditions</a>, club safety guidelines, and verify that all members of my party will wear clean indoor sport shoes on court.
+        </label>
       </div>
 
       <div class="checkout-summary">
@@ -735,7 +805,7 @@
         </div>
         <div class="equip-content">
           <h3>ITTF Competition Tables</h3>
-          <p>Official 25mm high-density competition tops delivering true tournament friction and consistent bounce.</p>
+          <p>Official 25mm high-density competition tops delivering true tournament friction and consistent bounce across 3 separated arenas.</p>
         </div>
       </div>
 
@@ -801,7 +871,7 @@
           PingHub was built in Engomi to pull table tennis out of basements and integrate it with street culture, neon aesthetics, and effortless smartphone booking.
         </p>
         <p style="color:var(--muted); font-size: 0.92rem;">
-          Whether you want an impromptu late-night rally with friends or focused multi-ball training with a national-tier competitor, PingHub offers 24/7 access with verified contactless smart entry.
+          With 3 competition-grade tables and verified contactless smart entry, PingHub offers 24/7 access whether you want casual friendly matches or high-intensity sparring.
         </p>
       </div>
       <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.2rem;">
@@ -837,9 +907,9 @@
   <div class="modal-backdrop" id="passModal">
     <div class="stripe-card-modal" style="text-align: center;">
       <button class="close-modal-btn" style="position: absolute; top:1rem; right:1rem;" onclick="closePassModal()">&times;</button>
-      <div style="color:var(--neon-green); font-size:0.75rem; font-weight:700; margin-bottom:0.2rem;">✔ CONFIRMED</div>
+      <div style="color:var(--neon-green); font-size:0.75rem; font-weight:700; margin-bottom:0.2rem;">✔ RESERVATION CONFIRMED</div>
       <h3 class="neon-text" style="font-size:1.3rem; margin-bottom:0.2rem;">Optical Gate Pass</h3>
-      <p style="font-size:0.78rem; color:var(--muted);">Scan this QR badge at the door entrance reader.</p>
+      <p style="font-size:0.78rem; color:var(--muted);">Hold this QR code up to the smart reader at the front door.</p>
       
       <div class="qr-container" id="qrTarget"></div>
       
@@ -849,21 +919,34 @@
           <strong id="passPlayer" style="color:#fff;">Marios Ioannou</strong>
         </div>
         <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+          <span style="color:var(--muted);">Phone:</span>
+          <strong id="passPhone" style="color:#fff;">+357 99 123456</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
           <span style="color:var(--muted);">Type:</span>
           <strong id="passType" style="color:#fff;">Standard Court</strong>
         </div>
         <div style="display:flex; justify-content:space-between;">
-          <span style="color:var(--muted);">Slot:</span>
-          <strong id="passSlot" style="color:var(--neon-cyan);">17:00 - 18:00</strong>
+          <span style="color:var(--muted);">Slot & Table:</span>
+          <strong id="passSlot" style="color:var(--neon-cyan);">17:00 - 18:00 (Table Reserved)</strong>
         </div>
       </div>
     </div>
   </div>
 
   <script>
+    const MAX_TABLES_PER_SLOT = 3;
+
+    // Persisted or session table reservations: { "YYYY-MM-DD_HH:MM": count }
+    const bookingLedger = {
+      // Pre-seed an example so you can see a full slot in action:
+      // "2026-09-21_18:00": 3
+    };
+
     let mode = 'court';
     let selectedCoach = 'Andreas Avraam';
     let selectedSlotLabel = '17:00 - 18:00';
+    let selectedSlotStart = '17:00';
     let selectedTier = 'peak';
 
     let currentCalDate = new Date();
@@ -966,6 +1049,7 @@
       container.innerHTML = '';
       let activeAssigned = false;
 
+      const dateStr = getSelectedDateString();
       const dateObj = new Date(selectedYear, selectedMonth, selectedDay);
       const dayOfWeek = dateObj.getDay();
       const isSocialDay = (dayOfWeek === 2 || dayOfWeek === 4);
@@ -991,22 +1075,41 @@
       slotList.forEach(slot => {
         const chip = document.createElement('div');
         chip.className = 'time-chip';
-        chip.textContent = slot.start;
 
-        if (!activeAssigned && (slot.label === selectedSlotLabel || !selectedSlotLabel || mode === 'social')) {
-          chip.classList.add('active');
-          selectedSlotLabel = slot.label;
-          selectedTier = slot.tier;
-          activeAssigned = true;
+        const slotKey = `${dateStr}_${slot.start}`;
+        const currentBookings = bookingLedger[slotKey] || 0;
+        const availableTables = MAX_TABLES_PER_SLOT - currentBookings;
+
+        if (availableTables <= 0) {
+          chip.classList.add('slot-full');
+          chip.innerHTML = `
+            <span>${slot.start}</span>
+            <span class="capacity-pill">FULL</span>
+          `;
+        } else {
+          const capText = `${availableTables}/3 Left`;
+          chip.innerHTML = `
+            <span>${slot.start}</span>
+            <span class="capacity-pill">${capText}</span>
+          `;
+
+          if (!activeAssigned && (slot.label === selectedSlotLabel || !selectedSlotLabel || mode === 'social')) {
+            chip.classList.add('active');
+            selectedSlotLabel = slot.label;
+            selectedSlotStart = slot.start;
+            selectedTier = slot.tier;
+            activeAssigned = true;
+          }
+
+          chip.onclick = () => {
+            document.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            selectedSlotLabel = slot.label;
+            selectedSlotStart = slot.start;
+            selectedTier = slot.tier;
+            updateSummary();
+          };
         }
-
-        chip.onclick = () => {
-          document.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
-          chip.classList.add('active');
-          selectedSlotLabel = slot.label;
-          selectedTier = slot.tier;
-          updateSummary();
-        };
 
         container.appendChild(chip);
       });
@@ -1030,6 +1133,7 @@
       if (mode === 'court') {
         tabs[0].classList.add('active');
         selectedSlotLabel = '17:00 - 18:00';
+        selectedSlotStart = '17:00';
       } else if (mode === 'monthly') {
         tabs[1].classList.add('active-gold');
         calSlotsRow.style.display = 'none';
@@ -1037,6 +1141,7 @@
         tabs[2].classList.add('active');
         socialNotice.classList.add('visible');
         selectedSlotLabel = '17:00 - 18:00 (Social)';
+        selectedSlotStart = '17:00';
       } else if (mode === 'pro') {
         tabs[3].classList.add('active-pro');
         proSelector.classList.add('active');
@@ -1062,16 +1167,16 @@
 
       let price = '€13';
       let title = 'Peak Standard Court';
-      let meta = `${formattedDate} • ${selectedSlotLabel} • Equipment Included`;
+      let meta = `${formattedDate} • ${selectedSlotLabel} • Table & Gear Included`;
 
       if (mode === 'pro') {
         title = `Private with Pro (${selectedCoach.split(' ')[0]})`;
         price = '€25';
-        meta = `${formattedDate} • ${selectedSlotLabel} • Multi-ball & Sparring Included`;
+        meta = `${formattedDate} • ${selectedSlotLabel} • Multi-ball & Table Included`;
       } else if (mode === 'monthly') {
-        title = 'Monthly Unlimited Membership';
+        title = 'Monthly Unlimited Pass';
         price = '€60';
-        meta = '30-Day Instant Terminal Key & Unlimited Court Play';
+        meta = '30-Day Instant Terminal Key & Unlimited Court Access';
       } else if (mode === 'social') {
         title = 'Social Play Night (Tue / Thu)';
         price = '€10';
@@ -1089,6 +1194,31 @@
     }
 
     function openStripeModal() {
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const email = document.getElementById('custEmail').value.trim();
+      const termsAccepted = document.getElementById('termsCheck').checked;
+
+      if (!name || !phone || !email) {
+        alert('Please provide your Name, Phone Number, and Email before proceeding.');
+        return;
+      }
+
+      if (!termsAccepted) {
+        alert('Please accept the Terms & Conditions before confirming your booking.');
+        return;
+      }
+
+      if (mode !== 'monthly') {
+        const slotKey = `${getSelectedDateString()}_${selectedSlotStart}`;
+        const bookedCount = bookingLedger[slotKey] || 0;
+        if (bookedCount >= MAX_TABLES_PER_SLOT) {
+          alert('Sorry, all 3 tables are booked for this slot. Please select another time.');
+          renderTimeSlots();
+          return;
+        }
+      }
+
       document.getElementById('stripeAmount').textContent = `${document.getElementById('sumPrice').textContent}.00`;
       document.getElementById('stripeOrderDesc').textContent = document.getElementById('sumLabel').textContent;
       document.getElementById('stripeModal').classList.add('active');
@@ -1098,15 +1228,32 @@
 
     function processPaymentAndConfirm() {
       closeStripeModal();
+
       const name = document.getElementById('custName').value || 'Marios Ioannou';
+      const phone = document.getElementById('custPhone').value || '+357 99 123456';
+      const dateStr = getSelectedDateString();
+
+      let assignedTableNumber = 1;
+
+      // Increment ledger for standard court / pro sparring
+      if (mode !== 'monthly') {
+        const slotKey = `${dateStr}_${selectedSlotStart}`;
+        const currentBookings = bookingLedger[slotKey] || 0;
+        assignedTableNumber = currentBookings + 1;
+        bookingLedger[slotKey] = currentBookings + 1;
+      }
+
       document.getElementById('passPlayer').textContent = name;
+      document.getElementById('passPhone').textContent = phone;
       document.getElementById('passType').textContent = document.getElementById('sumLabel').textContent;
-      document.getElementById('passSlot').textContent = (mode === 'monthly') ? '30 Days Access' : `${getSelectedDateString()} (${selectedSlotLabel})`;
+      document.getElementById('passSlot').textContent = (mode === 'monthly') 
+        ? '30 Days Access' 
+        : `${dateStr} (${selectedSlotLabel}) • Table ${assignedTableNumber}`;
 
       const qrTarget = document.getElementById('qrTarget');
       qrTarget.innerHTML = '';
       new QRCode(qrTarget, {
-        text: `PINGHUB_GATE_${Date.now()}`,
+        text: `PINGHUB_${Date.now()}_TBL${assignedTableNumber}`,
         width: 140,
         height: 140,
         colorDark: "#07090e",
@@ -1115,6 +1262,7 @@
       });
 
       document.getElementById('passModal').classList.add('active');
+      renderTimeSlots();
     }
 
     function closePassModal() { document.getElementById('passModal').classList.remove('active'); }
